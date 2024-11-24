@@ -60,6 +60,7 @@ const audioFiles = [
     {name: 'matter_strike_hit_alt', src: 'audio/matter_strike_hit_alt.mp3'},
     {name: 'matter_strike_hit_alt_2', src: 'audio/matter_strike_hit_alt_2.mp3'},
     {name: 'matter_strike_hit2', src: 'audio/matter_strike_hit2.mp3'},
+    {name: 'matter_ultimate', src: 'audio/matter_ultimate.mp3'},
 
     {name: 'mind_strike', src: 'audio/mind_strike.mp3'},
     {name: 'mind_strike_hit', src: 'audio/mind_strike_hit.mp3'},
@@ -90,6 +91,7 @@ const audioFiles = [
     {name: 'void_body', src: 'audio/void_body.mp3'},
     {name: 'void_shield', src: 'audio/void_shield.mp3'},
     {name: 'void_enhance', src: 'audio/void_enhance.mp3'},
+    {name: 'void_ultimate', src: 'audio/void_ultimate.mp3'},
     {name: 'meat_click_left', src: 'audio/meat_click_left.mp3'},
     {name: 'meat_click_right', src: 'audio/meat_click_right.mp3'},
 

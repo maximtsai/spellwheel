@@ -513,6 +513,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">misc/reward.png</key>
+            <key type="filename">misc/reward_hover.png</key>
+            <key type="filename">misc/reward_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>51,24,101,47</rect>
+                <key>scale9Paddings</key>
+                <rect>51,24,101,47</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">misc/scythe1.png</key>
             <key type="filename">misc/scythe2.png</key>
             <key type="filename">misc/scythe3.png</key>

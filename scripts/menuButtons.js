@@ -477,15 +477,11 @@ function showMainMenuButtons() {
                 let titleText = getLangText('new_game') + "?";
                 showYesNoPopup(getLangText('cont_ui'), getLangText('back'), titleText, getLangText('new_game_long'), () => {
                     clearOnlyMenuButtons();
-                    crazyGamesMidgameAd(() => {
-                        beginPreLevel(0)
-                    })
+                    beginPreLevel(0);
                 }, true)
             } else {
                 clearOnlyMenuButtons();
-                crazyGamesMidgameAd(() => {
-                    beginPreLevel(0)
-                })
+                beginPreLevel(0);
             }
         }
     });

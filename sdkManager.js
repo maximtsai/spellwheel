@@ -1,5 +1,19 @@
 function sdkShowRewardAd(onStart, onFinish, onError) {
-
+    muteAll();
+    const callbacks = {
+        adStarted: () => {
+            onStart();
+        },
+        adFinished: () => {
+            unmuteAll();
+            onFinish();
+        },
+        adError: () => {
+            unmuteAll();
+            onError();
+        },
+    };
+    window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
 }
 
 function sdkLoadingStart() {

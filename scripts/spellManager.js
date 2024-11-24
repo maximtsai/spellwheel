@@ -3,6 +3,7 @@ class SpellManager {
         this.scene = scene;
         this.particlesRock = [];
         messageBus.subscribe('castSpell', this.handleSpell.bind(this));
+        messageBus.subscribe('showRandUlt', this.showRandUlt.bind(this));
         this.initializePoolStuff();
     }
     initializePoolStuff() {
@@ -1869,7 +1870,41 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName, boost);
     }
     castTimeUltimate() {
-        this.castTimeStrike();
+        const spellID = 'timeUnload';
+
+        let multiplier = globalObjects.player.spellMultiplier();
+
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let statusObj;
+        if (existingBuff) {
+            // already got a buff in place
+            statusObj = existingBuff.statusObj;
+        }
+        let turnsAdded = 0;
+        while (multiplier > 0) {
+            multiplier--;
+            turnsAdded += Math.max(3, 7 - globalObjects.player.getPlayerTimeExhaustion());
+            globalObjects.player.incrementTimeExhaustion()
+        }
+        messageBus.publish('manualSetTimeSlowRatio', 0.01);
+        messageBus.publish('selfTakeEffect', {
+            name: spellID,
+            spellID: spellID,
+            turns: turnsAdded,
+            spriteSrc1: 'rune_unload_glow.png',
+            spriteSrc2: 'rune_time_glow.png',
+            displayAmt: turnsAdded,
+            statusObj: statusObj,
+            cleanUp: (statuses) => {
+                if (statuses[spellID]) {
+                    globalObjects.magicCircle.cancelTimeSlow();
+                    statuses[spellID] = null;
+                }
+            }
+        });
+        let spellName = turnsAdded + " TURN\n" + getBasicText('rune_time_rune_unload');
+
+        this.postNonAttackCast(spellID, spellName);
     }
 
     castMindStrike() {
@@ -2558,7 +2593,7 @@ class SpellManager {
     castVoidReinforce(elem, embodi) {
         this.castMatterReinforce(elem, embodi);
     }
-    castVoidEnhance() {
+    castVoidEnhance(isSuper = false) {
         const spellID = 'voidEnhance';
         let existingBuff = globalObjects.player.getStatuses()[spellID];
         let multiplier = globalObjects.player.spellMultiplier();
@@ -2568,6 +2603,10 @@ class SpellManager {
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             buffAmt += existingBuff.multiplier;
+        }
+        if (isSuper) {
+            multiplier = 4;
+            buffAmt = 4;
         }
 
         if (!this.pulseCircle) {
@@ -2601,6 +2640,9 @@ class SpellManager {
             alpha: 1,
             onComplete: () => {
                 let healthLost = 3 * multiplier;
+                if (isSuper) {
+                    healthLost = 0;
+                }
                 let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - healthLost);
                 let newHealth = globalObjects.player.getHealth() - healthLost;
                 globalObjects.player.setHealth(newHealth);
@@ -2712,7 +2754,213 @@ class SpellManager {
         this.castMatterProtect(shieldID, rotation);
     }
     castVoidUltimate() {
-        this.castMindStrike();
+        const spellID = 'voidUnload';
+        let numTotalAttacks = globalObjects.player.attackEnhanceMultiplier();
+        let additionalDamage = globalObjects.player.attackDamageAdder();
+
+        let numBlackHolePre = 1;
+        if (numTotalAttacks >= 7) {
+            numBlackHolePre = 4;
+        } else if (numTotalAttacks >= 4) {
+            numBlackHolePre = 3;
+        } else if (numTotalAttacks >= 2) {
+            numBlackHolePre = 2;
+        }
+        let isPowerful = numTotalAttacks * (20 + additionalDamage) > 58;
+
+        for (let i = 0; i < numBlackHolePre; i++) {
+            let voidObjPre = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'blackHolePre.png');
+            voidObjPre.rotation = Math.random() * 6.28;
+            voidObjPre.setAlpha(0.05);
+            voidObjPre.setScale(1 + 0.25 * i);
+            voidObjPre.setDepth(15);
+            this.scene.tweens.add({
+                targets: voidObjPre,
+                delay: i * 50,
+                duration: 600,
+                rotation: (i % 2 == 0) ? voidObjPre.rotation + 5 - i : voidObjPre.rotation - 5 + i,
+                scaleX: "+=0.2",
+                scaleY: "+=0.2",
+                ease: 'Quad.easeInOut'
+            });
+            this.scene.tweens.add({
+                targets: voidObjPre,
+                delay: i * 50,
+                duration: 200,
+                alpha: 0.8 - i * 0.1,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                    this.scene.tweens.add({
+                        targets: voidObjPre,
+                        duration: 350,
+                        alpha: 0,
+                        ease: 'Cubic.easeIn'
+                    });
+                }
+            });
+        }
+
+        let voidObj = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'blackHoleBig.png');
+        voidObj.setDepth(15);
+        voidObj.rotation = Math.random() * 0.1;
+        voidObj.setScale(1 + numTotalAttacks * 0.15);
+        voidObj.setAlpha(0.5);
+
+        let initialDelay = 200 + numTotalAttacks * 10 + additionalDamage;
+        let voidDuration = 1700 + numTotalAttacks * 150 + additionalDamage * 2;
+        let voidScale = 0.88 + numTotalAttacks * 0.15 + additionalDamage * 0.02;
+        messageBus.publish('enableVoidArm', initialDelay, voidDuration, 0.75 + voidScale * 0.5);
+        // let blackBG = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(-1).setAlpha(0.01);
+        // this.scene.tweens.add({
+        //     targets: voidObj,
+        //     delay: initialDelay,
+        //     duration: 250,
+        //     alpha: 1,
+        //     scaleX: voidScale,
+        //     scaleY: voidScale,
+        //     ease: 'Cubic.easeOut',
+        //     onStart: () => {
+        //         blackBG.alpha = voidScale * 0.3;
+        //         zoomTemp(1.005);
+        //         this.scene.tweens.add({
+        //             targets: blackBG,
+        //             duration: 450,
+        //             alpha: 0,
+        //             ease: 'Cubic.easeOut',
+        //             onComplete: () => {
+        //                 blackBG.destroy();
+        //             }
+        //         });
+        //     }
+        // });
+        this.scene.tweens.add({
+            targets: voidObj,
+            delay: gameVars.gameManualSlowSpeed * initialDelay,
+            duration: gameVars.gameManualSlowSpeed * voidDuration,
+            rotation: 5 + numTotalAttacks,
+            ease: 'Cubic.easeInOut',
+            onComplete: () => {
+                voidObj.destroy();
+            }
+        });
+        this.scene.tweens.add({
+            targets: voidObj,
+            delay: gameVars.gameManualSlowSpeed * (initialDelay + voidDuration - 500),
+            scaleY: voidScale * 1.5,
+            scaleX: voidScale * 1.5,
+            duration: gameVars.gameManualSlowSpeed * 500,
+            ease: 'Cubic.easeOut',
+            alpha: 0,
+            onStart: () => {
+            }
+        });
+
+        playSound('void_ultimate');
+        let whiteObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setScale(500).setDepth(0).setAlpha(0);
+        let blackObj = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(500).setDepth(0).setAlpha(0);
+        for (let i = 0; i < numTotalAttacks; i++) {
+            let isFirstAttack = i === numTotalAttacks - 1;
+            let thisDurationDelay = voidDuration - voidDuration * (i / numTotalAttacks);
+            if (numTotalAttacks == 1) {
+                thisDurationDelay = voidDuration * 0.75;
+            }
+            PhaserScene.time.delayedCall(Math.max(0, initialDelay * 0.1 + thisDurationDelay * 0.85 - 280), () => {
+                PhaserScene.time.delayedCall(180, () => {
+                    zoomTemp(1.005 + numTotalAttacks * 0.002);
+                    whiteObj.alpha = 0.5;
+                    setTimeout(() => {
+                        if (i === 0) {
+                            whiteObj.destroy();
+                        } else {
+                            whiteObj.alpha = 0;
+                        }
+                        blackObj.alpha = 0.4;
+                        this.scene.tweens.add({
+                            targets: blackObj,
+                            alpha: 0,
+                            duration: 250,
+                            onComplete: () => {
+                                if (i === 0) {
+                                    blackObj.destroy();
+                                } else {
+                                    blackObj.alpha = 0;
+                                }
+                            }
+                        });
+                    }, 15);
+                    messageBus.publish('enemyTakeDamagePercent', 9, additionalDamage, 'void');
+                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
+                    messageBus.publish('setPauseDur', 25);
+                    screenShake(5);
+
+                    if (isPowerful && i === numTotalAttacks - 1) {
+                        let powerfulEffect = getTempPoolObject('tutorial', 'rune_void_large.png', 'specialAttack', 1300);
+                        powerfulEffect.setAlpha(0.05).setDepth(999).setScale(5).setPosition(gameConsts.halfWidth, 235).setRotation(-3);
+                        playSound('void_body');
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 110,
+                            alpha: 1,
+                            onComplete: () => {
+                                zoomTemp(1.08);
+                                screenShake(3);
+                                messageBus.publish('tempPause', 250, 0.05);
+                            }
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 1250,
+                            rotation: 0,
+                            ease: 'Quart.easeOut'
+                        });
+                        this.scene.tweens.add({
+                            targets: powerfulEffect,
+                            duration: 125,
+                            scaleX: 3,
+                            scaleY: 3,
+                            ease: "Quint.easeIn",
+                            onComplete: () => {
+                                messageBus.publish('setSlowMult', 0.25, 15);
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    alpha: 0,
+                                    ease: "Cubic.easeOut"
+                                });
+                                this.scene.tweens.add({
+                                    delay: 200,
+                                    targets: powerfulEffect,
+                                    duration: 900,
+                                    scaleX: 3.75,
+                                    scaleY: 3.75,
+                                    ease: 'Cubic.easeIn'
+                                });
+                            }
+                        });
+                    }
+
+                });
+                if (additionalDamage > 1) {
+                    let rockObj = this.scene.add.image(gameConsts.halfWidth, 210, 'spells', 'rockCircle.png');
+                    rockObj.alpha = 0.05;
+                    rockObj.rotation = Math.random() * Math.PI * 2;
+                    rockObj.setScale(1 + additionalDamage * 0.005);
+                    this.scene.tweens.add({
+                        targets: rockObj,
+                        scaleY: 0,
+                        scaleX: 0,
+                        duration: 380,
+                        ease: 'Quad.easeIn',
+                        alpha: 1.25,
+                        rotation: '+=1'
+                    });
+                }
+            });
+        }
+
+        let spellName = getBasicText('rune_void_rune_unload');
+        this.postAttackCast(spellID, 220, spellName);
     }
 
 
@@ -2892,6 +3140,30 @@ class SpellManager {
                 alpha: 0,
             }
             messageBus.publish('animateBlockNum', gameConsts.halfWidth, globalObjects.player.getY() + 30, "-THORNS", 0.75, param, param2);
+        }
+    }
+
+
+    showRandUlt() {
+        let randI = Math.floor(Math.random() * 3.99);
+        switch (randI) {
+            case 0:
+                this.castMatterUltimate();
+                break;
+            case 1:
+                this.castTimeUltimate()
+                break;
+            case 2:
+                this.castMindUltimate();
+                break;
+            case 3:
+                let randChance = Math.random();
+                if (randChance > 0.5) {
+                    this.castVoidUltimate();
+                } else {
+                    this.castVoidEnhance(true)
+                }
+                break;
         }
     }
 }

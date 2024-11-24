@@ -118,6 +118,7 @@ let timeUpdateCounterMax = 3;
 let canResizeGame = true;
 let url1 = 'crazygames';// 'crazygames';
 let url2 = 'juegos';// '1001juegos';
+let url3 = 'localhost';// '1001juegos';
 // let url3 = 'adayofjoy';// '1001juegos';
 // let url4 = 'classic.itch';// '1001juegos';
 let sdkIsLoaded = false;
@@ -127,6 +128,9 @@ async function loadSDK() {
     await window.CrazyGames.SDK.init().then(() => {
         console.log("sdk inited, preloadcompleted: ",preloadCompleted)
         sdkIsLoaded = true;
+        if (PhaserScene) {
+            sdkLoadingStart();
+        }
         beginLoadIfAllReady();
         // initUser();
     });
@@ -152,13 +156,23 @@ function getUser() {
     }
 }
 
+let preloadHasStarted = false;
+function tryTruePreload() {
+    if (sdkIsLoaded && PhaserScene && !preloadHasStarted) {
+
+    }
+}
+
 function preload ()
 {
     console.log("preload started")
     PhaserScene = this;
     handleBorders();
 
-    sdkLoadingStart();
+    preloadHasStarted = true;
+    if (sdkIsLoaded) {
+        sdkLoadingStart();
+    }
     gameVars.latestLevel = parseInt(sdkGetItem("latestLevel"));
     gameVars.maxLevel = parseInt(sdkGetItem("maxLevel"));
 
@@ -181,16 +195,19 @@ function preload ()
     }
 
     resizeGame();
+    loadFileList(this, imageFilesPreload, 'image');
     let gameDiv = document.getElementById('preload-notice');
     gameDiv.innerHTML = "";
-    loadFileList(this, imageFilesPreload, 'image');
+
+
     setTimeout(() => {
         resizeGame();
     }, 100)
 }
 
 function create() {
-    if ((!document.location.href.includes(url1) && !document.location.href.includes(url2))) {
+    console.log("CREATE")
+    if ((!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url3))) {
         // Stops execution of rest of game
         let gameDiv = document.getElementById('preload-notice');
         let invalidSite = document.location.href.substring(0, 25);

@@ -143,3 +143,82 @@ function isUsingCheats() {
     }
     return false;
 }
+
+function showRewardAdOption() {
+    let timerBack = PhaserScene.add.image(5, gameConsts.halfHeight - 52, 'pixels', 'black_blue_pixel.png').setScale(0, 2.5).setOrigin(0, 0.5).setDepth(999).setAlpha(0.65);
+    let timer = PhaserScene.add.image(6, gameConsts.halfHeight - 52, 'pixels', 'green_pixel.png').setScale(0, 2).setOrigin(0, 0.5).setDepth(999);
+    setTimeout(() => {
+        timerBack.setScale(52, 2.5);
+        timer.setScale(50, 2);
+        PhaserScene.tweens.add({
+            targets: timer,
+            scaleX: 0,
+            duration: 11000,
+            onComplete: () => {
+                timerBack.destroy();
+                rewardBtn.tweenToPos(-85, gameConsts.halfHeight - 80, 500, 'Cubic.easeOut');
+                setTimeout(() => {
+                    rewardBtn.destroy();
+                }, 500)
+            }
+        })
+    }, 400)
+    let rewardBtn = new Button({
+        normal: {
+            ref: "reward.png",
+            atlas: 'misc',
+            x: -60,
+            y: gameConsts.halfHeight - 80,
+            alpha: 1
+        },
+        hover: {
+            ref: "reward_hover.png",
+            atlas: 'misc',
+            alpha: 1
+        },
+        press: {
+            ref: "reward_press.png",
+            atlas: 'misc',
+            alpha: 1
+        },
+        disable: {
+            alpha: 0
+        },
+        onHover: () => {
+            if (canvas) {
+                playSound('click').detune = -100;
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
+        onMouseUp: () => {
+            rewardBtn.destroy();
+            sdkShowRewardAd(() => {
+                globalObjects.magicCircle.disableMovement();
+                messageBus.publish('pauseGame', 0.002);
+            },
+                () => {
+                    globalObjects.magicCircle.enableMovement();
+                    messageBus.publish('unpauseGame');
+                    messageBus.publish("showRandUlt");
+                },
+                () => {
+                    globalObjects.magicCircle.enableMovement();
+                    messageBus.publish('unpauseGame');
+                    messageBus.publish("showRandUlt");
+                });
+        }
+    });
+    rewardBtn.setScale(0.7)
+    rewardBtn.tweenToPos(45, gameConsts.halfHeight - 80, 500, 'Back.easeOut');
+    rewardBtn.tweenToScale(0.85, 0.85, 500, 'Back.easeOut')
+    rewardBtn.setDepth(998);
+    rewardBtn.addToDestructibles(timerBack)
+    rewardBtn.addToDestructibles(timer)
+
+    return rewardBtn;
+}

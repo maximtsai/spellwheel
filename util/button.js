@@ -509,6 +509,7 @@ class Button {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],
             ease: ease,
+            easeParams: [2.5],
             duration: duration,
             onUpdate: onUpdate,
             onComplete: () => {

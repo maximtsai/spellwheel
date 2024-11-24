@@ -31,6 +31,16 @@ class Enemy {
             messageBus.subscribe("addCastAggravate", this.addCastAggravate.bind(this)),
         ];
 
+        if (level >= 3 || level < -1) {
+            let shouldShowAd = level < -1 || level === 3 || level === 6 || (Math.random() > 0.5);
+            if (shouldShowAd) {
+                this.addDelay(() => {
+                    let btn = showRewardAdOption();
+                    this.addToDestructibles(btn);
+                }, 2000);
+            }
+        }
+
 
         this.boundUpdateFunc = this.update.bind(this);
         updateManager.addFunction(this.boundUpdateFunc);

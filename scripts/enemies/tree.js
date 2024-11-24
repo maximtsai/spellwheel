@@ -756,7 +756,7 @@
                      name: "THORNS {2",
                      announceName: "THORNS",
                      desc: "The tree creates protective thorns!",
-                     chargeAmt: 385,
+                     chargeAmt: 315,
                      chargeMult: gameVars.isHardMode ? 2 : 1,
                      isPassive: true,
                      damage: -1,
@@ -788,7 +788,7 @@
                      name: "|8x2 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 650,
+                     chargeAmt: 600,
                      damage: -1,
                      attackStartFunction: () => {
                          this.attackWithBranch(8);
@@ -806,7 +806,7 @@
                  },
                  {
                      name: " STARE...",
-                     chargeAmt: 250,
+                     chargeAmt: 200,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -849,7 +849,7 @@
                      name: gameVars.isHardMode ? ";32" : ";30",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
-                     chargeAmt: gameVars.isHardMode ? 1000 : 1100,
+                     chargeAmt: gameVars.isHardMode ? 1000 : 1050,
                     finishDelay: 3000,
                      chargeMult: 1.5,
                      damage: -1,

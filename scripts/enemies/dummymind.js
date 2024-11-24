@@ -439,6 +439,7 @@ class Dummymind extends Dummypractice {
 
 
     showComplete(darkDummy) {
+        sdkGameplayStop();
         globalObjects.encyclopedia.hideButton();
         globalObjects.options.hideButton();
         globalObjects.magicCircle.disableMovement();

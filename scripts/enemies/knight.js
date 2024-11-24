@@ -1028,11 +1028,11 @@
          this.attacks = [
              [
                  {
-                     name: gameVars.isHardMode ? "|10" : "|8",
+                     name: 10,
                      announceName: "INITIAL STRIKE",
                      desc: "The mysterious knight charges at you!",
                      chargeAmt: 415,
-                     damage: gameVars.isHardMode ? 10 : 8,
+                     damage: 10,
                      prepareSprite: 'void_knight_pullback.png',
                      attackSprites: ['void_knight_attack.png'],
                      attackStartFunction: () => {
@@ -1143,7 +1143,7 @@
                  {
                      name: "|6x3 ",
                      announceName: "ASSAULT",
-                     chargeAmt: 500,
+                     chargeAmt: 480,
                      damage: 6,
                      attackTimes: 3,
                      prepareSprite: 'void_knight_pullback.png',

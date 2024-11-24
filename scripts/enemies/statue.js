@@ -691,6 +691,7 @@
 
      initAttacks() {
         let hardModeCharge = gameVars.isHardMode ? -40 : 0;
+        let finDelayCrazy = -400;
          this.attacks = [
              [
                  // 0
@@ -719,7 +720,7 @@
                  {
                      name: "}3x2}",
                      chargeAmt: 500 + hardModeCharge,
-                     finishDelay: 1000,
+                     finishDelay: 1000 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -731,7 +732,7 @@
                  {
                      name: "}3x4}",
                      chargeAmt: 550 + hardModeCharge,
-                     finishDelay: 1600,
+                     finishDelay: 1600 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -743,7 +744,7 @@
                  {
                      name: "}3x6}",
                      chargeAmt: 600 + hardModeCharge,
-                     finishDelay: 2200,
+                     finishDelay: 2200 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -755,7 +756,7 @@
                  {
                      name: "}}3x8}}",
                      chargeAmt: 650 + hardModeCharge,
-                     finishDelay: 2800,
+                     finishDelay: 2800 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -767,7 +768,7 @@
                  {
                      name: "}}3x10}}",
                      chargeAmt: 700 + hardModeCharge,
-                     finishDelay: 3200,
+                     finishDelay: 3200 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -779,7 +780,7 @@
                  {
                      name: "}}3x12}}",
                      chargeAmt: 750 + hardModeCharge,
-                     finishDelay: 3700,
+                     finishDelay: 3700 + finDelayCrazy,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
@@ -791,7 +792,7 @@
                  {
                      name: "}}}3x14}}}",
                      chargeAmt: 800 + hardModeCharge,
-                     finishDelay: 4150,
+                     finishDelay: 4150 + finDelayCrazy,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
@@ -804,7 +805,7 @@
                  {
                      name: "}}}3x16}}}",
                      chargeAmt: 850 + hardModeCharge,
-                     finishDelay: 4500,
+                     finishDelay: 4500 + finDelayCrazy,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
@@ -817,7 +818,7 @@
                  {
                      name: "}}}3x18}}}",
                      chargeAmt: 950 + hardModeCharge,
-                     finishDelay: 4800,
+                     finishDelay: 4800 + finDelayCrazy,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {

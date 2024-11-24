@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 105;
+         this.health = gameVars.isHardMode ? 120 : 110;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;

@@ -5,7 +5,7 @@
 			"format": "RGBA8888",
 			"size": {
 				"w": 2047,
-				"h": 2013
+				"h": 2016
 			},
 			"scale": 1,
 			"frames": [
@@ -810,24 +810,74 @@
 					}
 				},
 				{
-					"filename": "creditsgame.webp",
+					"filename": "reward.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 169,
-						"h": 97
+						"w": 202,
+						"h": 95
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 3,
-						"w": 166,
-						"h": 92
+						"x": 0,
+						"y": 0,
+						"w": 201,
+						"h": 95
 					},
 					"frame": {
 						"x": 1836,
 						"y": 1666,
-						"w": 166,
-						"h": 92
+						"w": 201,
+						"h": 95
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "reward_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 202,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 201,
+						"h": 95
+					},
+					"frame": {
+						"x": 1836,
+						"y": 1763,
+						"w": 201,
+						"h": 95
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "reward_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 202,
+						"h": 95
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 6,
+						"w": 190,
+						"h": 83
+					},
+					"frame": {
+						"x": 1836,
+						"y": 1860,
+						"w": 190,
+						"h": 83
 					},
 					"anchor": {
 						"x": 0.5,
@@ -875,7 +925,7 @@
 					},
 					"frame": {
 						"x": 1836,
-						"y": 1760,
+						"y": 1945,
 						"w": 144,
 						"h": 70
 					},
@@ -1321,24 +1371,24 @@
 					}
 				},
 				{
-					"filename": "continuegame.webp",
+					"filename": "creditsgame.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 252,
-						"h": 93
+						"w": 169,
+						"h": 97
 					},
 					"spriteSourceSize": {
-						"x": 3,
-						"y": 2,
-						"w": 237,
-						"h": 91
+						"x": 1,
+						"y": 3,
+						"w": 166,
+						"h": 92
 					},
 					"frame": {
 						"x": 276,
 						"y": 358,
-						"w": 237,
-						"h": 91
+						"w": 166,
+						"h": 92
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1371,49 +1421,24 @@
 					}
 				},
 				{
-					"filename": "newgame_hover.webp",
+					"filename": "continuegame.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 264,
-						"h": 110
+						"w": 252,
+						"h": 93
 					},
 					"spriteSourceSize": {
-						"x": 23,
-						"y": 11,
-						"w": 221,
-						"h": 89
+						"x": 3,
+						"y": 2,
+						"w": 237,
+						"h": 91
 					},
 					"frame": {
-						"x": 515,
+						"x": 444,
 						"y": 356,
-						"w": 221,
-						"h": 89
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "victory_text.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 297,
-						"h": 54
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 297,
-						"h": 54
-					},
-					"frame": {
-						"x": 515,
-						"y": 447,
-						"w": 297,
-						"h": 54
+						"w": 237,
+						"h": 91
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1471,24 +1496,24 @@
 					}
 				},
 				{
-					"filename": "wishlistgame_hover.webp",
+					"filename": "newgame_hover.webp",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 159,
-						"h": 112
+						"w": 264,
+						"h": 110
 					},
 					"spriteSourceSize": {
-						"x": 15,
-						"y": 14,
-						"w": 130,
-						"h": 84
+						"x": 23,
+						"y": 11,
+						"w": 221,
+						"h": 89
 					},
 					"frame": {
-						"x": 738,
+						"x": 683,
 						"y": 353,
-						"w": 130,
-						"h": 84
+						"w": 221,
+						"h": 89
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1535,10 +1560,35 @@
 						"h": 149
 					},
 					"frame": {
-						"x": 902,
+						"x": 906,
 						"y": 352,
 						"w": 275,
 						"h": 149
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "wishlistgame_hover.webp",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 159,
+						"h": 112
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 14,
+						"w": 130,
+						"h": 84
+					},
+					"frame": {
+						"x": 1183,
+						"y": 352,
+						"w": 130,
+						"h": 84
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1594,6 +1644,31 @@
 						"x": 0.5,
 						"y": 0.5
 					}
+				},
+				{
+					"filename": "victory_text.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 297,
+						"h": 54
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 297,
+						"h": 54
+					},
+					"frame": {
+						"x": 1183,
+						"y": 438,
+						"w": 297,
+						"h": 54
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
 				}
 			]
 		}
@@ -1601,6 +1676,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:54d02320f24d26981c697ab38be3a3aa:336160dbeb03563191ab1a18251f2b00:71b7deba37d49c4a400e3c6826b292e5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9058f6fbfb713803cab5bdccc632cf81:74a9da1bcf6141f748e3d3ac34f4af3a:71b7deba37d49c4a400e3c6826b292e5$"
 	}
 }

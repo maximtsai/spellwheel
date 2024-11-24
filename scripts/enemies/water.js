@@ -4,8 +4,7 @@
          this.initSprite('water_emerge1.png', 1, undefined, undefined, 'water');
          this.bgMusic = playMusic('bite_down', 0.8, true);
 
-         globalObjects.encyclopedia.showButton();
-         globalObjects.options.showButton();
+
          // ELEMENT_ARRAY = [RUNE_MATTER, RUNE_MIND, RUNE_MIND, null, null, null , RUNE_MATTER];
 
          this.popupTimeout = this.addTimeout(() => {
@@ -13,7 +12,8 @@
              this.addToDestructibles(this.tutorialButton);
          }, 2500)
          this.addTimeout(() => {
-             // this.showElementCircle()
+             globalObjects.encyclopedia.showButton();
+             globalObjects.options.showButton();
          }, 900)
 
 

@@ -664,5 +664,6 @@ class Encyclopedia {
 
     hideButton() {
         this.button.setPos(this.startX, -100);
+
     }
 }

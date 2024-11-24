@@ -13,7 +13,7 @@ class Dummymind extends Dummypractice {
     }
 
     initStatsCustom() {
-        this.health = 30;
+        this.health = 25;
         this.chargeBarOffsetY = 7;
         this.chargeBarHeightOffset = -1;
         this.isAsleep = true;
@@ -329,43 +329,43 @@ class Dummymind extends Dummypractice {
             // dead, can't do anything
             return;
         }
-        // if (this.canShowShieldTip) {
-        //     this.canShowShieldTip = false;
-        //     this.addTimeout(() => {
-        //         let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
-        //
-        //         globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('dummy_mind_tut'), 'right');
-        //         let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
-        //         let centerXPos = globalObjects.textPopupManager.getCenterPos();
-        //         this.rune3 = this.addImage(centerXPos - 32, runeYPos + 16, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-        //         this.rune4 = this.addImage(centerXPos + 37, runeYPos + 16, 'circle', 'bright_rune_strike.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
-        //
-        //         this.addTween({
-        //             targets: [this.rune3, this.rune4],
-        //             alpha: 1,
-        //             duration: 200,
-        //             completeDelay: 1000,
-        //             onComplete: () => {
-        //                 this.playerSpellCastSub2 = messageBus.subscribe('playerCastedSpell', () => {
-        //                     this.playerSpellCastSub2.unsubscribe();
-        //                     this.addTimeout(() => {
-        //                         this.addTween({
-        //                             targets: [this.rune3, this.rune4],
-        //                             alpha: 0,
-        //                             duration: 300,
-        //                             onComplete: () => {
-        //                                 this.rune3.visible = false;
-        //                                 this.rune4.visible = false;
-        //                             }
-        //                         });
-        //                         globalObjects.textPopupManager.hideInfoText();
-        //                     }, 1000);
-        //                 });
-        //                 this.subscriptions.push(this.playerSpellCastSub2);
-        //             }
-        //         });
-        //     }, 900)
-        // }
+        if (this.canShowShieldTip) {
+            this.canShowShieldTip = false;
+            this.addTimeout(() => {
+                let runeDepth = globalObjects.bannerTextManager.getDepth() + 1;
+
+                globalObjects.textPopupManager.setInfoText(gameConsts.width, gameConsts.halfHeight - 180, getLangText('dummy_mind_tut'), 'right');
+                let runeYPos = globalObjects.textPopupManager.getBoxBottomPos();
+                let centerXPos = globalObjects.textPopupManager.getCenterPos();
+                this.rune3 = this.addImage(centerXPos - 32, runeYPos + 16, 'circle', 'bright_rune_mind.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+                this.rune4 = this.addImage(centerXPos + 37, runeYPos + 16, 'circle', 'bright_rune_strike.png').setDepth(runeDepth).setScale(0.8, 0.8).setAlpha(0);
+
+                this.addTween({
+                    targets: [this.rune3, this.rune4],
+                    alpha: 1,
+                    duration: 200,
+                    completeDelay: 1000,
+                    onComplete: () => {
+                        this.playerSpellCastSub2 = messageBus.subscribe('playerCastedSpell', () => {
+                            this.playerSpellCastSub2.unsubscribe();
+                            this.addTimeout(() => {
+                                this.addTween({
+                                    targets: [this.rune3, this.rune4],
+                                    alpha: 0,
+                                    duration: 300,
+                                    onComplete: () => {
+                                        this.rune3.visible = false;
+                                        this.rune4.visible = false;
+                                    }
+                                });
+                                globalObjects.textPopupManager.hideInfoText();
+                            }, 1000);
+                        });
+                        this.subscriptions.push(this.playerSpellCastSub2);
+                    }
+                });
+            }, 900)
+        }
     }
 
     die() {
@@ -495,6 +495,13 @@ class Dummymind extends Dummypractice {
                     duration: 1600,
                     onComplete: () => {
                         PhaserScene.tweens.add({
+                            targets: this.sprite,
+                            scaleY: "-=0.2",
+                            y: "+=7",
+                            ease: 'Back.easeOut',
+                            duration: 400,
+                        });
+                        PhaserScene.tweens.add({
                             targets: waterEnemy,
                             scaleY: 1.4,
                             scaleX: 1.4,
@@ -503,14 +510,19 @@ class Dummymind extends Dummypractice {
                             onComplete: () => {
                                 PhaserScene.tweens.add({
                                     targets: [this.sprite],
-                                    y: "-=20",
+                                    y: "-=23",
                                     ease: 'Cubic.easeInOut',
                                     duration: 400,
                                 });
                                 setTimeout(() => {
                                     waterEnemy.setFrame('water_emerge2.png');
                                 }, 100)
-
+                                PhaserScene.tweens.add({
+                                    targets: this.sprite,
+                                    scaleY: "+=0.15",
+                                    ease: 'Cubic.easeInOut',
+                                    duration: 300,
+                                });
                                 PhaserScene.tweens.add({
                                     targets: waterEnemy,
                                     scaleY: 1.65,
@@ -557,6 +569,7 @@ class Dummymind extends Dummypractice {
                                                         })
                                                     }
                                                 })
+                                                hideGlobalClickBlocker();
                                                 globalObjects.magicCircle.enableMovement();
                                                 beginLevel(2, true);
                                             }

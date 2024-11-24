@@ -1269,6 +1269,7 @@
                                 scaleY: 1,
                                 ease: 'Quint.easeOut',
                                 onComplete: () => {
+                                    preloadImage('star_bg.webp');
                                     this.addTween({
                                         targets: [death6arm, death6arm_highlight],
                                         duration: 1250,

@@ -360,6 +360,10 @@ function beginPreLevel(lvl) {
             createGlobalClickBlocker();
             fadeInPreFightStuff(lvl, [text1, text2], [introPaper, introOverlay])
             break;
+        case 14:
+            preloadImage('star_bg.webp');
+            beginLevel(lvl);
+            break;
     default:
         beginLevel(lvl);
         break;

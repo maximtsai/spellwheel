@@ -236,37 +236,71 @@
      }
 
     nowgivemeyourall() {
+        let darkBG = this.addImage(0, 0, 'blackPixel').setScale(1000);
+        darkBG.setDepth(-4).setAlpha(0.3);
+        this.addTween({
+            targets: darkBG,
+            ease: 'Quad.easeOut',
+            alpha: 0.15,
+            duration: 300,
+        });
         let img_now = this.addImage(gameConsts.halfWidth - 145, 150, 'deathfinal', 'x_now.png').setDepth(9999).setScale(1.16);
         this.quickZoom(img_now, 1.1)
         screenShake(3);
         zoomTemp(1.02);
         playSound('stomp', 0.6);
         this.addDelay(() => {
+            darkBG.setAlpha(0.3);
+            this.addTween({
+                targets: darkBG,
+                ease: 'Quad.easeOut',
+                alpha: 0.15,
+                duration: 300,
+            });
             let img_give = this.addImage(gameConsts.halfWidth + 145, 150, 'deathfinal', 'x_give.png').setDepth(9999).setScale(1.16);
             this.quickZoom(img_give, 1.1)
             screenShake(4);
             zoomTemp(1.02);
             playSound('stomp', 0.7);
             this.addDelay(() => {
+                darkBG.setAlpha(0.3);
+                this.addTween({
+                    targets: darkBG,
+                    ease: 'Quad.easeOut',
+                    alpha: 0.15,
+                    duration: 300,
+                });
                 let img_me = this.addImage(gameConsts.halfWidth - 145, isMobile ? 360 : 348, 'deathfinal', 'x_me.png').setDepth(9999).setScale(1.16);
                 this.quickZoom(img_me, 1.1)
                 screenShake(5);
                 zoomTemp(1.02);
                 playSound('stomp', 0.8);
                 this.addDelay(() => {
+                    darkBG.setAlpha(0.3);
+                    this.addTween({
+                        targets: darkBG,
+                        ease: 'Quad.easeOut',
+                        alpha: 0.15,
+                        duration: 300,
+                    });
                     let img_your = this.addImage(gameConsts.halfWidth + 145, isMobile ? 360 : 348, 'deathfinal', 'x_your.png').setDepth(9999).setScale(1.16);
                     this.quickZoom(img_your, 1.1)
                     screenShake(6);
                     zoomTemp(1.02);
                     playSound('stomp', 0.85);
                     this.addDelay(() => {
+                        darkBG.setAlpha(0.45);
+                        this.addTween({
+                            targets: darkBG,
+                            alpha: 0,
+                            duration: 450,
+                        });
                         let img_all = this.addSprite(gameConsts.halfWidth, isMobile ? 625 : 600, 'deathfinal', 'x_all2.png').setDepth(9999).setScale(1.22);
                         this.quickZoom(img_all, 1.1)
                         zoomTemp(1.1);
                         screenShakeManual(20, 0.8);
                         playSound('stomp', 0.95);
                         playSound('rock_crumble', 0.8);
-
                         if (this.bgBlur.currAnim) {
                             this.bgBlur.currAnim.stop();
                         }
@@ -3902,6 +3936,13 @@
             duration: 500,
             ease: 'Cubic.easeOut',
         })
+        let darkBG = this.addImage(0, 0, 'blackPixel').setScale(1000).setDepth(-5);
+        darkBG.setAlpha(0);
+        this.addTween({
+            targets: darkBG,
+            alpha: 0.43,
+            duration: 550,
+        });
 
         this.addTween({
             targets: this.spellCircle,
@@ -3923,6 +3964,13 @@
                     targets: [this.spellCircle, this.spellCircleGlow],
                     alpha: 0.85,
                     duration: 1500,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: darkBG,
+                            alpha: 0,
+                            duration: 500,
+                        });
+                    }
                 })
             }
         })

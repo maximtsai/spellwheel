@@ -319,9 +319,9 @@ class SpellManager {
                             } else {
                                 playSound('matter_strike_hit_alt', 0.7 + additionalVol).detune = detuneAmt;
                             }
-                        } else if (i % 2 == 1) {
+                        } else if (i % 2 === 1) {
                             playSound('matter_strike_hit2', 0.95 + additionalVol).detune = detuneAmt;
-                        } else if (i % 2 == 0) {
+                        } else if (i % 2 === 0) {
                             playSound('matter_strike_hit2', 0.6 + additionalVol).detune = detuneAmt;
                         }
                         this.createDamageEffect(rockObj.x, rockObj.y, rockObj.depth);

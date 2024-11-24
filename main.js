@@ -498,6 +498,7 @@ function switchBackground(newBG) {
 }
 
 function switchBackgroundInstant(newBG) {
+
     if (currBackground === newBG) {
         return;
     }
@@ -512,6 +513,9 @@ function switchBackgroundInstant(newBG) {
     if (windowRatio >= gameRatio) {
         background.style.opacity = '1';
     }
+    background.style['animation-duration'] = '0.5s';
+    background.style['animation-name'] = 'fastChange';
+
 
 }
 

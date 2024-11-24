@@ -1516,13 +1516,11 @@ class Options {
     }
 
     showButton() {
-        console.log("shown button");
         this.canBeClicked = true;
         this.button.setPos(this.startX, this.startY);
     }
 
     hideButton() {
-        console.log("hide button");
         this.canBeClicked = false;
         this.button.setPos(this.startX, -100);
     }

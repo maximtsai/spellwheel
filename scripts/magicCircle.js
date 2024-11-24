@@ -1138,7 +1138,7 @@ const ENABLE_KEYBOARD = true;
             this.outerCircle.rotVel *= 0.98;
         }
 
-        const torqueReleaseThreshold = 0.005; // if torque on release is higher, then full speed ahead
+        const torqueReleaseThreshold = 0.005; // if torque on release is higher, then full speed ahead 
         let lagMultReducer = 1;// Math.max(0, Math.min(1, 2 - dt * 0.5));
         if (this.innerCircle.torque === 0) {
 

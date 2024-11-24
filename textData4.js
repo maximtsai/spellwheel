@@ -922,8 +922,8 @@ let textData4 = {
         "jp": ""
     },
     "death3_angry4": {
-        "en_us": "FOR ETERNITY.",
-        "fr": "POUR L'ÉTERNITÉ",
+        "en_us": "FOREVER.",
+        "fr": "POUR TOUJOURS",
         "zh_tw": "直到永遠。",
         "zh_cn": "直到永远。",
         "ru": "",
@@ -958,19 +958,19 @@ let textData4 = {
         "jp": ""
     },
     "badend_4": {
-        "en_us": "You cry out for mercy, for an end to the torment.",
-        "fr": " \nVous criez pour la miséricorde, pour la fin du tourment.",
-        "zh_tw": "你微弱呼喊，祈求憐憫，祈求結束這個折磨。",
-        "zh_cn": "你微弱呼喊，祈求怜悯，祈求结束这个折磨。",
+        "en_us": "The world continues, yet you stagnate and rot.",
+        "fr": " \nLe monde continue, mais vous stagnez et pourrissez.",
+        "zh_tw": "世界繼續前行，而你卻滯留腐朽。",
+        "zh_cn": "世界继续前行，而你却滞留腐朽。",
         "ru": "",
         "es": "",
         "jp": ""
     },
     "badend_5": {
-        "en_us": "But nobody answered.",
-        "fr": " \nMais personne n'a répondu.",
-        "zh_tw": "但無人回應。",
-        "zh_cn": "但无人回应。",
+        "en_us": "Death has indeed abandoned you... forever.",
+        "fr": " \nLa mort t'a en effet abandonné... pour toujours..",
+        "zh_tw": "死神確實永久脫離了你們。",
+        "zh_cn": "死神确实永久脱离了你们。",
         "ru": "",
         "es": "",
         "jp": ""

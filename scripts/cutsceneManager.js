@@ -606,7 +606,7 @@ function showLoverApproach(demonsfx) {
                     let closeText3 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 250, getLangText('badend_3'), {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
                     let closeText4 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 215, getLangText('badend_4'), {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
                     let closeText5 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 180, getLangText('badend_5'), {fontFamily: 'garamondmax', fontSize: 26, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 0);
-                    let closeText6 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 30, 'Ending 2\nEternal Unrest', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
+                    let closeText6 = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 30, 'Ending 2\nDefiance', {fontFamily: 'garamondmax', fontSize: 32, color: '#FFFFFF', align: 'center'}).setDepth(CUTSCENE_DEPTH + 4).setAlpha(0).setOrigin(0.5, 1);
                     PhaserScene.tweens.add({
                         delay: 800,
                         targets: closeText,

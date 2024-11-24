@@ -1817,6 +1817,9 @@ const ENABLE_KEYBOARD = true;
     }
 
     postCastResetWheel() {
+        if (this.recharging) {
+            return;
+        }
         this.elementHighlight.visible = false;
         this.embodimentHighlight.visible = false;
         this.innerDragDisabled = true;

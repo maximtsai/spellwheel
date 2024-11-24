@@ -42,12 +42,12 @@
              scaleX: 8,
              scaleY: 8,
              rotation: "+=10",
-             duration: 540,
+             duration: 510,
          })
          this.addTween({
              targets: tempPulse,
              ease: 'Cubic.easeIn',
-             duration: 540,
+             duration: 510,
              alpha: 0,
          });
 
@@ -892,7 +892,7 @@
                                      if (this.currentAttackSetIndex === 5) {
                                          return;
                                      }
-                                     messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -30);
+                                     messageBus.publish("showCombatText", getLangText('deathFight2plusb'), -20);
                                      this.addTimeout(() => {
                                          if (this.currentAttackSetIndex === 5) {
                                              return;
@@ -3509,7 +3509,7 @@
              playSound('deep_swish', 0.4)
              playSound('void_strike_hit', 0.4)
          }, 150)
-         this.currentPowerHand = this.addImage(gameConsts.halfWidth - 10, this.y - 48, 'deathfinal', 'poke_glow.png').setAlpha(0).setScale(0.7);
+         this.currentPowerHand = this.addImage(gameConsts.halfWidth - 10, this.y - 44, 'deathfinal', 'poke_glow.png').setAlpha(0).setScale(0.7);
          this.currentPowerText = this.addBitmapText(gameConsts.halfWidth, this.currentPowerHand.y - 30, 'damage', "DMG\n+0", 34, 1).setAlpha(0).setDepth(50).setOrigin(0.5, 0.5);
          this.addTween({
              targets: this.currentPowerText,
@@ -4008,7 +4008,7 @@
             targets: [this.spellCircle, this.spellCircleGlow],
             rotation: "+=3.14159",
             ease: 'Quart.easeInOut',
-            duration: isFast ? 2400 : 2700,
+            duration: isFast ? 2400 : 2650,
             onUpdate: () => {
                 let handDist = this.spellCircle.scaleX * 166
                 for (let i = 0; i < this.glowHands.length; i++) {
@@ -4022,22 +4022,22 @@
                 this.addTween({
                     targets: this.circleHalo,
                     alpha: 0,
-                    duration: 500,
+                    duration: 400,
                 })
                 this.addTween({
                     targets: this.glowHands,
                     alpha: 0,
                     ease: 'Quad.easeOut',
-                    duration: 600
+                    duration: 450
                 });
                 this.addTween({
                     targets: [this.spellCircle, this.spellCircleGlow],
                     ease: 'Cubic.easeOut',
                     alpha: 0,
-                    duration: 600
+                    duration: 500
                 });
                 let handToUse = this.glowHands[idx];
-                this.currentHandGlow.setFrame(handToUse.frame.name).setAlpha(0).setScale(handToUse.scaleX + 0.02).setPosition(handToUse.x, handToUse.y - 2);
+                this.currentHandGlow.setFrame(handToUse.frame.name).setAlpha(0).setScale(handToUse.scaleX + 0.02).setPosition(handToUse.x, handToUse.y - 2).setDepth(handToUse.depth);
                 this.currentHandGlow.setAlpha(1.2);
                 this.currentHandGlowPulse.setFrame(handToUse.frame.name).setScale(handToUse.scaleX + 0.02).setPosition(handToUse.x, handToUse.y -2).setAlpha(0.7);
                 // let goalX = idx % 2 == 0 ? this.x - 200 : this.x + 200;
@@ -4048,30 +4048,28 @@
                     scaleX: handToUse.scaleX + 0.2,
                     scaleY: handToUse.scaleX + 0.2,
                     alpha: 0,
-                    duration: 450,
+                    duration: 300,
                 });
                 this.addTween({
                     targets: this.currentHandGlow,
-                    ease: 'Cubic.easeIn',
+                    ease: 'Quart.easeIn',
                     x: this.x,
                     y: this.y,
-                    scaleX: 0.25,
-                    scaleY: 0.25,
-                    alpha: 0,
-                    duration: 900,
+                    scaleX: 0.2,
+                    scaleY: 0.2,
+                    duration: 700,
                 });
-                this.currentHandGlow.alpha = 1;
                 this.addDelayIfAlive(() => {
                     this.fadeMainBG(true);
                     if (onCompleteFunc) {
                         onCompleteFunc();
                     }
-                }, 500);
+                }, 350);
                 this.currentHandGlow.currAnim = this.addTween({
                     targets: this.currentHandGlow,
                     alpha: 0,
                     ease: 'Quad.easeOut',
-                    duration: 900,
+                    duration: 750,
                 });
             }
         })

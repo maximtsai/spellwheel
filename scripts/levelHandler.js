@@ -396,7 +396,6 @@ function beginPreLevelTrue(lvl) {
         default:
             beginLevel(lvl);
             break;
-
     }
 }
 

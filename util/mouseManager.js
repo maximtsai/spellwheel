@@ -114,7 +114,7 @@ function setupMouseInteraction(scene) {
     //     mouseManager.onPointerDownAlt(pointer);
     // };
 }
-
+let canResizeGame = true;
 function resizeGame() {
     if (!canResizeGame) {
         return;

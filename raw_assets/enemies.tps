@@ -722,7 +722,6 @@
                 <false/>
             </struct>
             <key type="filename">enemies/lesser_dummy_dead_far.png</key>
-
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -842,6 +841,36 @@
                 <rect>169,175,337,350</rect>
                 <key>scale9Paddings</key>
                 <rect>169,175,337,350</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_1a_angry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>160,166,321,333</rect>
+                <key>scale9Paddings</key>
+                <rect>160,166,321,333</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/max_death_1b_angry.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>160,167,321,334</rect>
+                <key>scale9Paddings</key>
+                <rect>160,167,321,334</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

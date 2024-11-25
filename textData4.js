@@ -310,15 +310,6 @@ let textData4 = {
         "jp": ""
     },
 
-    "badend_5": {
-        "en_us": "But nobody answered.",
-        "fr": " \nMais personne n'a répondu.",
-        "zh_tw": "但無人回應。",
-        "zh_cn": "但无人回应。",
-        "ru": "",
-        "es": "",
-        "jp": ""
-    },
     "got_it": {
         "en_us": "GOT IT",
         "fr": "J'AI COMPRIS",

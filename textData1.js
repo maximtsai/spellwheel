@@ -104,8 +104,8 @@ let textData = {
     "matter_reinforce_desc": {
         "en_us": "Gain thorns that\nreflect 1 DMG\nwhen hit",
         "fr": "Gagnez des épines\nqui renvoient 1\npoint de dégâts",
-        "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
-        "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
+        "zh_tw": "獲得荊棘來\n保護你並反\n射 1 點傷害",
+        "zh_cn": "获得荆棘来\n保护你并反\n射 1 点伤害",
         "ru": "Получите шипы,\nотражающие 1 единицу\nурона при ударе.",
         "es": "Gana espinas\npara protegerte\ny reflejar 1 daño.",
         "jp": "とげを獲得してあな\nたを守り、1ダメ\nージを反射します"
@@ -176,8 +176,8 @@ let textData = {
     "time_protect_desc": {
         "en_us": "Create shield\nthat defers up\nto 60 DMG",
         "fr": "Crée bouclier\nqui retarde jusqu’à\n60 points de dégâts",
-        "zh_tw": "打造一個能延遲\n多達 60 點傷害的盾牌",
-        "zh_cn": "打造一个能延迟\n多达 60 点伤害的盾牌",
+        "zh_tw": "打造一個能延遲\n多達 60 點傷害\n的盾牌",
+        "zh_cn": "打造一个能延迟\n多达 60 点伤害\n的盾牌",
         "ru": "Создать щит\nоткладываюший до\n60 единиц урона",
         "es": "Crea un escudo\nque retrasa hasta\n60 de daño",
         "jp": "最大60ダメージ\nを遅らせるシール\nドを作成"
@@ -311,8 +311,8 @@ let textData = {
     "void_protect_desc": {
         "en_us": "Create shield\nthat completely\nblocks one attack",
         "fr": "Crée bouclier\nqui annule\ncomplètement\nune attaque",
-        "zh_tw": "創建一個完全抵消\n一次攻擊的盾牌",
-        "zh_cn": "打造一个完全抵消\n一次攻击的盾牌",
+        "zh_tw": "創建一個完全\n抵消一次攻擊\n的盾牌",
+        "zh_cn": "打造一个完全\n抵消一次攻击\n的盾牌",
         "ru": "Создать щит\nполностью отражающий\nодну атаку",
         "es": "Crea un escudo\nque anula por\ncompleto un ataque",
         "jp": "1回の攻撃を完全\nに無効にするシ\nールドを作る"
@@ -329,8 +329,8 @@ let textData = {
     "void_reinforce_desc": {
         "en_us": "HEAL to full,\nbut lose 10\nmax HP",
         "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
-        "zh_tw": "完全治癒自己，但\n失去10 點總生命值",
-        "zh_cn": "完全治愈自己，但\n失去10 点总生命值",
+        "zh_tw": "完全治癒自己，\n但失去10 點總\n生命值",
+        "zh_cn": "完全治愈自己，\n但失去10 点总\n生命值",
         "ru": "Полностью восстановите\nздоровье, но потеряйте\n10 единиц максимального\nздоровья",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
@@ -347,8 +347,8 @@ let textData = {
     "void_unload_desc": {
         "en_us": "9% enemy current\nHP DMG. Disrupt\nenemy action",
         "fr": "Inflige des dégâts\néquivalant à 9% des\nPV actuels de\nl'ennemi et perturbe\nson action",
-        "zh_tw": "9% 敵人當前生命\n值傷害。擾亂敵人\n行動。",
-        "zh_cn": "9% 敌人当前生命\n值伤害。扰乱敌人\n行动。",
+        "zh_tw": "9% 敵人當前生\n命值傷害。打亂\n敵人行動。",
+        "zh_cn": "9% 敌人当前生\n命值伤害。打乱\n敌人行动。",
         "ru": "Нанести урон равный\n9% от текущего\nздоровья врага и\nостанавливающи его\nдействие",
         "es": "Inflige daño al\n9% de los PS\nactuales del enemigo\ne interrumpe su acción",
         "jp": "敵の現在HPの9%にダ\nメージを与え、敵の\n行動を妨害する"

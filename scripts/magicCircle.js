@@ -1,5 +1,5 @@
-const DECAY = 0.000045;
-const STATIC = 0.0054;
+const DECAY = 0.000046;
+const STATIC = 0.0057;
 const MIN_VEL = 0.0001;
 const ENABLE_KEYBOARD = true;
 
@@ -1154,9 +1154,9 @@ const ENABLE_KEYBOARD = true;
                 } else if (maxTorqueOnRelease > innerTorqueReleaseThreshold) {
                     let slowOnRelease = Math.min(1.8, Math.max(1, maxTorqueOnRelease * lagMultReducer / innerTorqueReleaseThreshold));
                     this.innerCircle.rotVel *= slowOnRelease;
-                    if (this.innerCircle.rotVel > -0.05 && this.innerCircle.rotVel < -0.006) {
+                    if (this.innerCircle.rotVel > -0.05 && this.innerCircle.rotVel < -0.001) {
                         this.innerCircle.rotVel = -0.045;
-                    } else if (this.innerCircle.rotVel < 0.05 && this.innerCircle.rotVel > 0.006) {
+                    } else if (this.innerCircle.rotVel < 0.05 && this.innerCircle.rotVel > 0.001) {
                         this.innerCircle.rotVel = 0.045;
                     } else {
                     }
@@ -1183,9 +1183,9 @@ const ENABLE_KEYBOARD = true;
                 } else if (maxTorqueOnRelease > torqueReleaseThreshold) {
                     let slowOnRelease = Math.min(1.8, Math.max(1, maxTorqueOnRelease * lagMultReducer / torqueReleaseThreshold));
                     this.outerCircle.rotVel *= slowOnRelease;
-                    if (this.outerCircle.rotVel > -0.046 && this.outerCircle.rotVel < -0.006) {
+                    if (this.outerCircle.rotVel > -0.046 && this.outerCircle.rotVel < -0.001) {
                         this.outerCircle.rotVel = -0.038;
-                    } else if (this.outerCircle.rotVel < 0.046 && this.outerCircle.rotVel > 0.006) {
+                    } else if (this.outerCircle.rotVel < 0.046 && this.outerCircle.rotVel > 0.001) {
                         this.outerCircle.rotVel = 0.038;
                     }
                     this.outerCircle.nextRotation += this.outerCircle.rotVel;
@@ -1817,6 +1817,9 @@ const ENABLE_KEYBOARD = true;
     }
 
     postCastResetWheel() {
+        if (this.recharging) {
+            return;
+        }
         this.elementHighlight.visible = false;
         this.embodimentHighlight.visible = false;
         this.innerDragDisabled = true;

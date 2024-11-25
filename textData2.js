@@ -757,7 +757,7 @@ let textData2 = {
         "en_us": "I need something to\ndefend myself with.",
         "fr": "J'ai besoin de quelque\nchose pour me défendre.",
         "zh_tw": "我必須找到方法来保護自己",
-        "zh_cn": "我必須找到方法来保護自己",
+        "zh_cn": "我必须找到方法来保护自己",
         "ru": "",
         "es": "",
         "jp": ""

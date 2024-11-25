@@ -127,6 +127,7 @@ function disableKeyboardMovement() {
     });
 }
 
+let canResizeGame = true;
 function resizeGame() {
     if (!canResizeGame) {
         return;

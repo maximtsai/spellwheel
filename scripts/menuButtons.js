@@ -1173,10 +1173,11 @@ function showLevelSelectScreen(){
 
     let listOfBtns = [];
 
-    let maxLevel = Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 15));
+    let maxLevel = Math.min(15, Math.max(gameVars.latestLevel + 1, Math.min(gameVars.maxLevel, 15)));
     if (maxLevel >= 8) {
         maxLevel = 15;
     }
+
     for (let i = 1; i <= maxLevel; i++) {
         let xPos = positionsX[i - 1];
         let yPos = positionsY[i - 1];

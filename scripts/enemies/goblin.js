@@ -13,7 +13,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 150 : 90;
+         this.health = gameVars.isHardMode ? 100 : 85;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -352,7 +352,7 @@
                  {
                      name: "GETTING KNIVES!",
                      isPassive: true,
-                     chargeAmt: 250,
+                     chargeAmt: 200,
                      chargeMult: 4,
                      isBigMove: true,
                      startFunction: () => {

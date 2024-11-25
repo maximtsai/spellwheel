@@ -3,7 +3,7 @@ let pixelWidth = isMobile ? 594 : 604
 let pixelHeight = isMobile ? 810 : 775
 handleBorders();
 
-let gameVersion = "v.1.12";
+let gameVersion = "v.1.13";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -115,7 +115,6 @@ let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 3;
-let canResizeGame = true;
 let url1 = 'localhost';// 'crazygames';
 let url2 = 'maximtsai';// 'localhost';
 let url3 = 'adayofjoy';// '1001juegos';

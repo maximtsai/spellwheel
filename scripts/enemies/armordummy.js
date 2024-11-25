@@ -40,9 +40,6 @@ class ArmorDummy extends Enemy {
             if (gameVars.maxLevel >= 5) {
                 this.health = 150;
             }
-            if (gameVars.maxLevel >= 8) {
-                this.health = 180;
-            }
         };
         this.isAsleep = true;
     }

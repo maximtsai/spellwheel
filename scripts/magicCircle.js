@@ -1154,9 +1154,9 @@ const ENABLE_KEYBOARD = true;
                 } else if (maxTorqueOnRelease > innerTorqueReleaseThreshold) {
                     let slowOnRelease = Math.min(1.8, Math.max(1, maxTorqueOnRelease * lagMultReducer / innerTorqueReleaseThreshold));
                     this.innerCircle.rotVel *= slowOnRelease;
-                    if (this.innerCircle.rotVel > -0.05 && this.innerCircle.rotVel < -0.006) {
+                    if (this.innerCircle.rotVel > -0.05 && this.innerCircle.rotVel < -0.001) {
                         this.innerCircle.rotVel = -0.045;
-                    } else if (this.innerCircle.rotVel < 0.05 && this.innerCircle.rotVel > 0.006) {
+                    } else if (this.innerCircle.rotVel < 0.05 && this.innerCircle.rotVel > 0.001) {
                         this.innerCircle.rotVel = 0.045;
                     } else {
                     }
@@ -1183,9 +1183,9 @@ const ENABLE_KEYBOARD = true;
                 } else if (maxTorqueOnRelease > torqueReleaseThreshold) {
                     let slowOnRelease = Math.min(1.8, Math.max(1, maxTorqueOnRelease * lagMultReducer / torqueReleaseThreshold));
                     this.outerCircle.rotVel *= slowOnRelease;
-                    if (this.outerCircle.rotVel > -0.046 && this.outerCircle.rotVel < -0.006) {
+                    if (this.outerCircle.rotVel > -0.046 && this.outerCircle.rotVel < -0.001) {
                         this.outerCircle.rotVel = -0.038;
-                    } else if (this.outerCircle.rotVel < 0.046 && this.outerCircle.rotVel > 0.006) {
+                    } else if (this.outerCircle.rotVel < 0.046 && this.outerCircle.rotVel > 0.001) {
                         this.outerCircle.rotVel = 0.038;
                     }
                     this.outerCircle.nextRotation += this.outerCircle.rotVel;

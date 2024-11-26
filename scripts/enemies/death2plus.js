@@ -160,7 +160,7 @@
                  globalObjects.options.showButton();
                  this.addDelayIfAlive(() => {
                     this.nowgivemeyourall()
-                 }, 1200)
+                 }, 800)
              });
 
              this.addDelayIfAlive(() => {

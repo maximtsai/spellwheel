@@ -679,13 +679,13 @@ class SpellManager {
         animation1.setDepth(1);
         animation1.setOrigin(0.5, 1);
         animation1.setScale(0.75);
-        animation1.origScaleX = 0.97 + spellMultiplier * 0.025;
+        animation1.origScaleX = 1;
         animation1.rotation = 0;
 
         let textHealth = this.scene.add.bitmapText(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT - 222, 'armor', '0', 32, 1);
         textHealth.startX = textHealth.x;
         textHealth.startY = textHealth.y;
-        textHealth.setOrigin(0.5, 0.5);
+        textHealth.setOrigin(0.5, 0.54 - Math.min(3, spellMultiplier) * 0.05);
         textHealth.setDepth(123);
         textHealth.setScale(0);
 

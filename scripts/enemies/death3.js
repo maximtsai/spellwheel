@@ -9,7 +9,7 @@ class Death3 extends Enemy {
         gameVars.latestLevel = this.level;
         gameVars.currLevel = this.level;
         localStorage.setItem("latestLevel", (gameVars.latestLevel).toString());
-        gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level);
+        gameVars.maxLevel = Math.max(gameVars.maxLevel, this.level + 1);
         localStorage.setItem("maxLevel", gameVars.maxLevel.toString());
 
         this.initSprite('max_death_3_white.png', 1, 0, 0, 'deathfinal');

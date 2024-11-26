@@ -154,7 +154,7 @@
              this.spellCircle = this.addImage(this.x, this.spellStartY, 'deathfinal', 'spellcircle.png').setAlpha(0.1).setScale(0.5);
              this.rotateSpellCircleTo(0, false, () => {
                  // this.fadeOutCurrentHand();
-                 this.createHandShield(gameVars.isHardMode ? 10 : 9);
+                 this.createHandShield(7);
                  globalObjects.magicCircle.enableMovement();
                  globalObjects.encyclopedia.showButton();
                  globalObjects.options.showButton();
@@ -3145,6 +3145,12 @@
                  this.finalHands[i].destroy();
              }
          }
+         if (this.finalArms) {
+             for (let i in this.finalArms) {
+                 this.finalArms[i].visible = false;
+             }
+         }
+
          if (this.spellCirclePulse) {
              this.spellCirclePulse.visible = false;
          }

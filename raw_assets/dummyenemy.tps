@@ -430,6 +430,10 @@
                 <false/>
             </struct>
             <key type="filename">dummyenemy/super_dummy_angry.png</key>
+            <key type="filename">dummyenemy/super_dummy_matter0.png</key>
+            <key type="filename">dummyenemy/super_dummy_matter1.png</key>
+            <key type="filename">dummyenemy/super_dummy_matter2.png</key>
+            <key type="filename">dummyenemy/super_dummy_matter3.png</key>
             <key type="filename">dummyenemy/super_dummy_wide.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

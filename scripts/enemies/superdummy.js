@@ -17,6 +17,50 @@
         this.initMisc();
     }
 
+    createAngrySymbol() {
+        let angrySymbol = getTempPoolObject('misc', 'angry1.png', 'angrysymb', 2000);
+        angrySymbol.play('angrybig').setScale(0.8).setDepth(25).setPosition(this.x + 65 - Math.random() * 130, this.y - 45 - Math.random() * 55);
+        this.latestAngrySymbol2 = this.latestAngrySymbol;
+        this.latestAngrySymbol = angrySymbol;
+        this.sprite.rotation = Math.random() < 0.5 ? -0.08 : 0.08;
+        this.injuries.rotation = this.sprite.rotation;
+
+        this.injuryTween = this.addTween({
+            targets: [this.sprite, this.injuries],
+            rotation: 0,
+            ease: 'Bounce.easeOut',
+            duration: 500
+        })
+
+        this.addTween({
+            targets: angrySymbol,
+            scaleX: 1.4,
+            scaleY: 1.4,
+            ease: 'Quart.easeOut',
+            duration: 200,
+            onComplete: () => {
+                this.addTween({
+                    targets: angrySymbol,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Back.easeOut',
+                    duration: 250,
+                    completeDelay: 1200,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: angrySymbol,
+                            scaleX: 0,
+                            scaleY: 0,
+                            ease: 'Back.easeIn',
+                            duration: 250,
+                        })
+                    }
+                })
+            }
+        })
+
+    }
+
     initSpriteAnim(scale) {
         this.sprite.setScale(scale * 0.98, scale * 0.9).setRotation(-0.25).setPosition(gameConsts.halfWidth - 30, this.sprite.y);
         this.scene.tweens.add({
@@ -51,23 +95,99 @@
         this.extraRepeatDelay = 200;
         this.pullbackHoldRatio = 0.6;
         this.attackSlownessMult = 1;
+        this.angryCount = 0;
+        this.accumulatedDamageReaction
      }
 
      initMisc() {
         if (!this.snort) {
             this.snort = this.addSprite(this.x - 5, this.y - 96, 'dummyenemy', 'dummysnort.png').setOrigin(0.5, -0.05).setScale(this.sprite.startScale * 0.8).setDepth(11).setAlpha(0);
-            this.destructibles.push(this.snort);
         }
         this.stars = this.addSprite(this.x - 5, this.y - 96, 'dummyenemy', 'super_dummy_stars.png').setOrigin(0.5, 0.5).setScale(this.sprite.startScale * 0.7).setDepth(150).setAlpha(0);
-        this.destructibles.push(this.stars);
 
+        this.injuries = this.addSprite(this.x, this.y, 'dummyenemy', 'super_dummy_matter0.png').setScale(this.sprite.startScale).setDepth(this.sprite.depth - 1);
+     }
+
+     reactToDamageTypes(amt, isAttack, type) {
+         if (!type || this.isFirstMode || this.isUsingAttack) {
+             return;
+         }
+         this.accumulatedDamageReaction += amt;
+         if (this.reactTimeout) {
+             clearTimeout(this.reactTimeout);
+         }
+         this.reactTimeout = setTimeout(() => {
+
+             this.addTween({
+                 targets: this.injuries,
+                 ease: 'Cubic.easeIn',
+                 scaleX: this.sprite.startScale * 0.65,
+                 scaleY: this.sprite.startScale * 0.65,
+                 duration: 150,
+                 onComplete: () => {
+                     this.injuries.setScale(this.sprite.startScale);
+                     this.injuries.setFrame('super_dummy_matter0.png');
+                     this.accumulatedDamageReaction = 0;
+                     this.reactTimeout = null;
+                     this.justPlayedInjury1 = false;
+                     this.justPlayedInjury2 = false;
+                     this.justPlayedInjury3 = false;
+                 }
+             })
+         }, 1600)
+
+         if (!this.isFirstMode && this.angryCount <= 1 && !this.isUsingAttack && isAttack) {
+             this.angryCount++;
+             this.addDelay(() => {
+                 this.angryCount = 0;
+             }, 2400)
+             this.createAngrySymbol();
+         }
+
+         if (type !== 'mind') {
+             if (this.accumulatedDamageReaction >= 80 && !this.justPlayedInjury3) {
+                 this.justPlayedInjury3 = true;
+                 if (!this.justPlayedInjury2) {
+                     this.justPlayedInjury2 = true;
+                     this.justPlayedInjury1 = true;
+                     this.injuries.setFrame('super_dummy_matter2.png');
+                     playSound('derp', 0.5).detune = 300;
+                     this.addDelay(() => {
+                         this.injuries.setFrame('super_dummy_matter3.png');
+                         playSound('derp', 0.5).detune = 600;
+                     }, 120)
+                 } else {
+                     playSound('derp', 0.5).detune = 600;
+                     this.injuries.setFrame('super_dummy_matter3.png');
+                 }
+             } else if (this.accumulatedDamageReaction >= 50 && !this.justPlayedInjury2) {
+                 this.justPlayedInjury2 = true;
+                 if (!this.justPlayedInjury1) {
+                     this.justPlayedInjury1 = true;
+                     playSound('derp', 0.4);
+                     this.injuries.setFrame('super_dummy_matter1.png');
+                     this.addDelay(() => {
+                         this.injuries.setFrame('super_dummy_matter2.png');
+                         playSound('derp', 0.5).detune = 300;
+                     }, 120)
+                 } else {
+                     playSound('derp', 0.5).detune = 300;
+                     this.injuries.setFrame('super_dummy_matter2.png');
+                 }
+
+             } else if (this.accumulatedDamageReaction >= 20 && !this.justPlayedInjury1) {
+                 this.justPlayedInjury1 = true;
+                 playSound('derp', 0.4);
+                 this.injuries.setFrame('super_dummy_matter1.png');
+             }
+         }
      }
 
      setHealth(newHealth) {
          super.setHealth(newHealth);
          let prevHealthPercent = this.prevHealth / this.healthMax;
          let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
+         if (currHealthPercent === 0) {
              // dead, can't do anything
              return;
          }
@@ -107,6 +227,9 @@
          if (this.currAnim) {
              this.currAnim.stop();
          }
+         if (this.injuryTween) {
+             this.injuryTween.stop();
+         }
          if (this.bgMusic) {
             this.bgMusic.stop();
          }
@@ -128,6 +251,8 @@
          if (this.rune2) {
              this.rune2.destroy();
          }
+         this.injuries.visible = false;
+
          if (this.isFirstMode) {
             this.isLoading = true;
             this.isFirstMode = false;
@@ -441,6 +566,11 @@
                         this.setDefaultSprite('dummy_angry.png', 0.95);
                         this.dummyRightArm = this.addSprite(this.x + 51, this.startY + 30, 'dummyenemy', 'super_dummy_rightarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(0.5);
                         this.dummyLeftArm = this.addSprite(this.x - 51, this.startY + 30, 'dummyenemy', 'super_dummy_leftarm.png').setScale(this.sprite.startScale * 0.4).setDepth(0).setRotation(-0.5);
+
+                         this.injuries.visible = true;
+                         this.injuries.y = this.sprite.y;
+                         this.injuries.setOrigin(this.sprite.originX, this.sprite.originY);
+                         this.injuries.setScale(this.sprite.scaleX);
 
                          this.addTween({
                              targets: [this.dummyRightArm, this.dummyLeftArm],
@@ -1278,6 +1408,15 @@
 
     buffUp() {
         if (this.isBuffing) {
+            this.injuries.setFrame('super_dummy_matter0.png');
+
+            if (this.latestAngrySymbol2) {
+                this.latestAngrySymbol2.visible = false;
+            }
+            if (this.latestAngrySymbol) {
+                this.latestAngrySymbol.visible = false;
+            }
+
             let buffDur = this.isAngry ? 250 : 500;
             if (this.buffFast) {
                 buffDur = buffDur * 0.25 + 140;

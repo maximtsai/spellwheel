@@ -1,10 +1,13 @@
-const DECAY = 0.000046;
-const STATIC = 0.0057;
+const DECAY = 0.000047;
+let STATIC = 0.0059;
 const MIN_VEL = 0.0001;
 const ENABLE_KEYBOARD = true;
 
  class MagicCircle {
     constructor(scene, x, y) {
+        if (isMobile) {
+            STATIC += 0.0004;
+        }
         this.scene = scene;
         this.reset(x, y);
         this.buildCircles(x, y, scene);

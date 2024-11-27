@@ -2490,7 +2490,7 @@ class Enemy {
         pullbackDurMult *= this.pullbackDurMult ? this.pullbackDurMult : 1;
         let timeSlowMult = gameVars.timeSlowRatio < 0.9 ? 0.5 : 1;
 
-        let durationPullback = isRepeatedAttack ? (200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay) : (400 * extraTimeMult * pullbackDurMult);
+        let durationPullback = isRepeatedAttack ? (200 * extraTimeMult * pullbackDurMult + this.extraRepeatDelay) : (475 * extraTimeMult * pullbackDurMult);
 
         if (prepareSprite) {
             let spriteToPrepare = prepareSprite;

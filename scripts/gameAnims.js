@@ -247,6 +247,18 @@ function createAnimations(scene) {
         repeat: -1
     });
     scene.anims.create({
+        key: 'angrybig',
+        frames: scene.anims.generateFrameNames('misc', {
+            prefix: 'angrybig',
+            suffix: '.png',
+            start: 1,
+            end: 2,
+            zeroPad: 0,
+        }),
+        frameRate: 3,
+        repeat: 7
+    });
+    scene.anims.create({
         key: 'mindBurn',
         frames: scene.anims.generateFrameNames('spells', {
             prefix: 'mindBurn',

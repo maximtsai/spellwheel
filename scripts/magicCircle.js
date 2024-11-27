@@ -80,6 +80,12 @@ const ENABLE_KEYBOARD = true;
         this.keyE = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         this.keyP = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
 
+        this.key4 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_FOUR);
+        this.key6 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SIX);
+        this.key7 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_SEVEN);
+        this.key9 = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.NUMPAD_NINE);
+
+
         this.keyLeft = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         this.keyRight = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         this.keyUp = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
@@ -168,7 +174,7 @@ const ENABLE_KEYBOARD = true;
         }
 
         if (ENABLE_KEYBOARD && !this.outerDragDisabled && !this.innerDragDisabled && !this.manualDisabled) {
-            if (this.keyA.isDown || this.keyDown.isDown) {
+            if (this.keyA.isDown || this.keyDown.isDown || this.key4.isDown) {
                 if (this.keyboardRotateInner > -0.0001) {
                     this.keyboardRotateInner = -1.46;
                     this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
@@ -180,7 +186,7 @@ const ENABLE_KEYBOARD = true;
                 } else {
                     this.keyboardRotateInner = -1;
                 }
-            } else if (this.keyD.isDown || this.keyUp.isDown) {
+            } else if (this.keyD.isDown || this.keyUp.isDown || this.key6.isDown) {
                 if (this.keyboardRotateInner < 0.0001) {
                     this.keyboardRotateInner = 1.46;
                     this.keyboardRotateInnerDeadTime = this.defaultDeadTime;
@@ -196,7 +202,7 @@ const ENABLE_KEYBOARD = true;
                 this.keyboardRotateInner = 0;
             }
 
-            if (this.keyW.isDown || this.keyRight.isDown || this.keyE.isDown) {
+            if (this.keyW.isDown || this.keyRight.isDown || this.keyE.isDown || this.key9.isDown) {
                 if (this.keyboardRotateOuter < 0.0001) {
                     this.keyboardRotateOuter = 1.35;
                     this.outerCircle.rotVel = Math.max(0, this.outerCircle.rotVel)
@@ -207,7 +213,7 @@ const ENABLE_KEYBOARD = true;
                 } else {
                     this.keyboardRotateOuter = 1;
                 }
-            } else if (this.keyS.isDown || this.keyLeft.isDown || this.keyQ.isDown) {
+            } else if (this.keyS.isDown || this.keyLeft.isDown || this.keyQ.isDown || this.key7.isDown) {
                 if (this.keyboardRotateOuter > -0.0001) {
                     this.keyboardRotateOuter = -1.35;
                     this.keyboardRotateOuterDeadTime = this.defaultDeadTime;

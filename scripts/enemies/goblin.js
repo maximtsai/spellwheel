@@ -9,7 +9,6 @@
 
          // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
-
      }
 
      initStatsCustom() {

@@ -793,15 +793,15 @@
 						"h": 250
 					},
 					"spriteSourceSize": {
-						"x": 6,
-						"y": 6,
-						"w": 247,
+						"x": 5,
+						"y": 5,
+						"w": 246,
 						"h": 80
 					},
 					"frame": {
 						"x": 1299,
 						"y": 1847,
-						"w": 247,
+						"w": 246,
 						"h": 80
 					},
 					"anchor": {
@@ -849,7 +849,7 @@
 						"h": 40
 					},
 					"frame": {
-						"x": 1548,
+						"x": 1547,
 						"y": 1857,
 						"w": 298,
 						"h": 40
@@ -874,7 +874,7 @@
 						"h": 61
 					},
 					"frame": {
-						"x": 1548,
+						"x": 1547,
 						"y": 1899,
 						"w": 257,
 						"h": 61
@@ -910,31 +910,6 @@
 					}
 				},
 				{
-					"filename": "darkSlice.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 160,
-						"h": 137
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 6,
-						"w": 160,
-						"h": 125
-					},
-					"frame": {
-						"x": 1880,
-						"y": 1650,
-						"w": 160,
-						"h": 125
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "eyeShieldTriple.png",
 					"rotated": false,
 					"trimmed": true,
@@ -953,6 +928,31 @@
 						"y": 1962,
 						"w": 190,
 						"h": 71
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "darkSlice.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 160,
+						"h": 137
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 6,
+						"w": 160,
+						"h": 125
+					},
+					"frame": {
+						"x": 1880,
+						"y": 1650,
+						"w": 160,
+						"h": 125
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1124,7 +1124,7 @@
 						"h": 66
 					},
 					"frame": {
-						"x": 1848,
+						"x": 1847,
 						"y": 1892,
 						"w": 189,
 						"h": 66
@@ -2476,6 +2476,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f1bfd0c72733c7c85375580510cddb28:928bb6a06c463c6b86109b6c166c14cf:c357989966e3ba71c701d894923dde60$"
+		"smartupdate": "$TexturePacker:SmartUpdate:54d05a4a0a5d6cd93090e9cfd61201b6:1fb92531f74a8de3b6b841f33ee3a730:c357989966e3ba71c701d894923dde60$"
 	}
 }

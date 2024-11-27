@@ -68,7 +68,7 @@
          }
          if (isAttack && !isTrue && !this.isUsingAttack) {
              this.missCount++;
-             if (this.missCount === 3) {
+             if (this.missCount === 2) {
                  this.showEnergyTut()
                  this.weakHitCount--;
              }

@@ -52,6 +52,7 @@
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
+         this.pullbackDurMult = 0.25;
          this.damageCanEmit = true;
          this.shieldAmts = 0;
          this.shieldTextFont = "void";
@@ -900,7 +901,7 @@
                         dmgEffect.play('damageEffect');
                         dmgEffect.setPosition(gameConsts.halfWidth + (Math.random() - 0.5) * 25, globalObjects.player.getY() - 180).setDepth(998).setScale(1.35)
                     }, 150)
-                    let isLast = i == times - 1;
+                    let isLast = i === times - 1;
 
                     let darkBG = getBackgroundBlackout();
                     darkBG.setDepth(-3).setAlpha(isLast ? (0.33 + times * 0.04) : 0.3);

@@ -528,7 +528,7 @@
                         this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
                         this.pullbackInitialDelay = 450;
-                        this.attackSlownessMult = 2;
+                        this.attackSlownessMult = 1.9;
                         this.attackDurMult = 0.4;
                     },
                     finaleFunction: () => {
@@ -719,7 +719,7 @@
                         this.attackScale = 1.5;
                         this.pullbackHoldRatio = 0.9;
                         this.pullbackInitialDelay = 450;
-                        this.attackSlownessMult = 2;
+                        this.attackSlownessMult = 1.9;
                         this.attackDurMult = 0.4;
                     },
                     finaleFunction: () => {

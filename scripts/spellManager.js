@@ -719,7 +719,7 @@ class SpellManager {
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {
-            shieldHealth = 80;
+            shieldHealth = 30;
         }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
@@ -2888,8 +2888,8 @@ class SpellManager {
                             }
                         });
                     }, 15);
-                    messageBus.publish('enemyTakeDamagePercent', 9, additionalDamage, 'void');
-                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.6 : 0.35);
+                    messageBus.publish('enemyTakeDamagePercent', 15, additionalDamage, 'void');
+                    messageBus.publish('disruptOpponentAttackPercent', isFirstAttack ? 0.75 : 0.4);
                     messageBus.publish('setPauseDur', 25);
                     screenShake(5);
 
@@ -3145,7 +3145,7 @@ class SpellManager {
 
 
     showRandUlt() {
-        let randI = Math.floor(Math.random() * 3.99);
+        let randI = Math.floor(Math.random() * 4.5);
         switch (randI) {
             case 0:
                 this.castMatterUltimate();
@@ -3163,6 +3163,9 @@ class SpellManager {
                 } else {
                     this.castVoidEnhance(true)
                 }
+                break;
+            case 4:
+                messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_superprotect"}, 'shield9', 0);
                 break;
         }
     }

@@ -673,6 +673,7 @@ class SpellManager {
 
         let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
         if (isSuper) {
+            spellMultiplier = 3;
             shieldFile = 'stoneShieldTriple.png';
         }
 
@@ -719,7 +720,7 @@ class SpellManager {
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {
-            shieldHealth = 30;
+            shieldHealth = 36;
         }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
@@ -3145,13 +3146,17 @@ class SpellManager {
 
 
     showRandUlt() {
-        let randI = Math.floor(Math.random() * 4.5);
+        let randI = Math.floor(Math.random() * 4.8);
         switch (randI) {
             case 0:
                 this.castMatterUltimate();
                 break;
             case 1:
-                this.castTimeUltimate()
+                if (Math.random() < 0.3) {
+                    this.castMatterUltimate();
+                } else {
+                    this.castTimeUltimate()
+                }
                 break;
             case 2:
                 this.castMindUltimate();

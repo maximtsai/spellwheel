@@ -3,7 +3,7 @@ let pixelWidth = isMobile ? 594 : 604
 let pixelHeight = isMobile ? 810 : 775
 handleBorders();
 
-let gameVersion = "v.1.12";
+let gameVersion = "v.1.14";
 let config = {
     type: Phaser.AUTO,
     scale: {
@@ -162,6 +162,7 @@ function tryTruePreload() {
 
     }
 }
+
 
 function preload ()
 {
@@ -574,6 +575,7 @@ function switchBackground(newBG) {
 }
 
 function switchBackgroundInstant(newBG) {
+
     if (currBackground === newBG) {
         return;
     }
@@ -588,6 +590,9 @@ function switchBackgroundInstant(newBG) {
     if (windowRatio >= gameRatio) {
         background.style.opacity = '1';
     }
+    background.style['animation-duration'] = '0.5s';
+    background.style['animation-name'] = 'fastChange';
+
 
 }
 

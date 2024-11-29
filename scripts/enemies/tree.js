@@ -948,7 +948,7 @@
                      damage: gameVars.isHardMode ? 44 : 40,
                      isBigMove: true,
                      startFunction: () => {
-                         this.attackSlownessMult = 2.4;
+                         this.attackSlownessMult = 2.1;
                          this.pullbackDurMult = 1.13;
 
                          if (!this.glowBG) {

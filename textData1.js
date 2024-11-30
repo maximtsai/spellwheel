@@ -382,7 +382,7 @@ let textData = {
     },
     "mind_enhance_desc": {
         "en_us": "Next attack\nburns enemy for\n2 TRUE DMG/sec\nfor 5 seconds",
-        "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvrais par seconde\npendant 5 secondes.",
+        "fr": "Prochaine attaque\nbrûle l'ennemi\npour 2 dégâts\nvéritables/s\npendant 5 secondes.",
         "zh_tw": "下一次攻擊造成\n每秒 2 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成\n每秒 2 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nподжигает врага,\nнанося 3 истинного\nурона в секунду\nв течение 5 секунд",
@@ -391,7 +391,7 @@ let textData = {
     },
     "mind_enhance_desc_long": {
         "en_us": "Next attack burns enemy for\n2 TRUE DMG/sec for 5 seconds",
-        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts vrais par seconde pendant 5 secondes.",
+        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables/s pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n2 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n2 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
@@ -400,7 +400,7 @@ let textData = {
     },
     "mind_enhance_plus_desc": {
         "en_us": "Next attack burns\nenemy for 3\nTRUE DMG/sec\nfor 5 seconds",
-        "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts vrais par seconde\npendant 5 secondes.",
+        "fr": "Prochaine attaque\nbrûle l'ennemi pour 3\ndégâts véritables/s\npendant 5 secondes.",
         "zh_tw": "下一次攻擊對敵人\n造成每秒 3 點真實\n傷害，持續 5 秒",
         "zh_cn": "下一次攻击对敌人\n造成每秒 3 点真实\n伤害，持续 5 秒",
         "ru": "Следующая атака\nподжигает врага,\nнанося 3 истинного\nурона в секунду\nв течение 5 секунд",
@@ -409,7 +409,7 @@ let textData = {
     },
     "mind_enhance_plus_desc_long": {
         "en_us": "Next attack burns enemy for\n3 TRUE DMG/sec for 5 seconds",
-        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts vrais par seconde pendant 5 secondes.",
+        "fr": "Prochaine attaque brûle l'ennemi pour\n2 dégâts véritables/s pendant 5 secondes.",
         "zh_tw": "下一次攻擊造成每秒\n3 點真實傷害，持續 5 秒",
         "zh_cn": "下一次攻击造成每秒\n3 点真实伤害，持续 5 秒",
         "ru": "Следующая атака поджигает врага, нанося 3\nистинного урона в секунду в течение 5 секунд",
@@ -552,10 +552,10 @@ let textData = {
         "jp": "エネルギーのルーンは、生のエネルギーをコントロールすることを可能にします。エネルギー呪文は強力なサポート効果を持ち、敵の防御を迂回するトゥルーダメージを与えることができます。"
     },
     "mind_plus_tut_desc": {
-        "en_us": "Your mastery over the Energy\nelement strengthens some of\nyour existing Energy spells.",
-        "fr": "Votre maîtrise de l'élément\nÉnergie renforce certains de\nvos sorts Énergie existants.",
-        "zh_tw": "你對能量元素的掌握加強了\n你現有的一些能量法術。",
-        "zh_cn": "你对能量元素的掌握加强了\n你现有的一些能量法术。",
+        "en_us": "Your mastery over the Energy\nelement strengthens some of\nyour existing Energy spells.\n\nEnergy+Enhance 2 DMG/s -> 3 DMG/s",
+        "fr": "Votre maîtrise de l'élément\nÉnergie renforce certains de\nvos sorts Énergie existants.\n\nEnergy+Enhance 2 Dégâts/s -> 3 Dégâts/s",
+        "zh_tw": "你對能量元素的掌握加強了\n你現有的一些能量法術。\n\nEnergy+Strike 每秒2點傷害 -> 每秒3點傷害",
+        "zh_cn": "你对能量元素的掌握加强了\n你现有的一些能量法术。\n\nEnergy+Strike 每秒2点伤害 -> 每秒3点伤害",
         "ru": "Ваше мастерство над стихией\nЭнергии усиливает некоторые из\nваших существующих энергетических\nзаклинаний.",
         "es": "Tu dominio sobre el elemento fortalece algunos de tus hechizos de Energía existentes.",
         "jp": "元素をマスターすると、既存のエネルギー呪文の一部が強化されます。"

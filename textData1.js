@@ -66,7 +66,7 @@ let textData = {
         "jp": "次の通常攻撃は+6ダメージを獲得"
     },
     "matter_protect_desc": {
-        "en_us": "Create 12HP Shield",
+        "en_us": "Create 12HP\nshield",
         "fr": "Créer un bouclier\nde 12 points\nde vie",
         "zh_tw": "打造 12 點\n生命的盾牌",
         "zh_cn": "打造 12 点\n生命的盾牌",

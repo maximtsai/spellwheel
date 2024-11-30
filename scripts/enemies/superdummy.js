@@ -108,6 +108,22 @@
         this.injuries = this.addSprite(this.x, this.y, 'dummyenemy', 'super_dummy_matter0.png').setScale(this.sprite.startScale).setDepth(this.sprite.depth - 1);
      }
 
+     launchAttack(attackTimes, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast) {
+        super.launchAttack(attackTimes, prepareSprite, preAttackSprite, attackSprites, isRepeatedAttack, finishDelay, transitionFast);
+         this.addTween({
+             targets: this.injuries,
+             ease: 'Cubic.easeIn',
+             scaleX: this.sprite.startScale * 0.6,
+             scaleY: this.sprite.startScale * 0.6,
+             duration: 150,
+             onComplete: () => {
+                 this.injuries.setScale(this.sprite.startScale);
+                 this.injuries.setFrame('super_dummy_matter0.png');
+             }
+         })
+
+     }
+
      reactToDamageTypes(amt, isAttack, type) {
          if (!type || this.isFirstMode || this.isUsingAttack) {
              return;
@@ -144,7 +160,7 @@
              this.createAngrySymbol();
          }
 
-         if (type !== 'mind') {
+         if (type !== 'mind' && !this.isBuffing) {
              if (this.accumulatedDamageReaction >= 80 && !this.justPlayedInjury3) {
                  this.justPlayedInjury3 = true;
                  if (!this.justPlayedInjury2) {
@@ -201,6 +217,7 @@
              ease: "Cubic.easeIn",
              duration: 1000,
              onComplete: () => {
+                 this.isFirstMode = false;
                  playSound('victory_2');
                  this.addTimeout(() => {
                     this.showFalseVictory();
@@ -255,7 +272,6 @@
 
          if (this.isFirstMode) {
             this.isLoading = true;
-            this.isFirstMode = false;
              this.y += this.sprite.height * this.sprite.scaleY * 0.49;
              this.sprite.y = this.y;
              this.sprite.setOrigin(0.51, 0.98);
@@ -678,9 +694,12 @@
 
         if (this.rune1) {
             this.rune1.setFrame(rune1Text);
-            this.rune2.setFrame(rune2Text);
         } else {
             this.rune1 = this.addSprite(centerXPos - 34, runeYPos + 17, 'circle', rune1Text);
+        }
+        if (this.rune2) {
+            this.rune2.setFrame(rune2Text);
+        } else {
             this.rune2 = this.addSprite(centerXPos + 34, runeYPos + 17, 'circle', rune2Text);
         }
         this.rune1.setPosition(centerXPos - 34, runeYPos + 17).setAlpha(0).setScale(0.75).setDepth(globalObjects.textPopupManager.getDepth() + 1);
@@ -742,7 +761,7 @@
                      startFunction: () => {
                          this.pullbackScale = 0.9;
                         this.attackScale = 1.2;
-                        // this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
+                        this.createTutSolo(getLangText('superdummy_ult'), 'rune_unload_glow.png');
                          if (!this.showTut1) {
                              this.createTutIcon(getLangText('superdummy_void'), 'bright_rune_unload.png', 'bright_rune_void.png')
                          }

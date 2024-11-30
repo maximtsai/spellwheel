@@ -36,6 +36,7 @@
          this.extrasOnDie = [];
          this.finalArms = [];
          this.angerMult = 1;
+         this.pullbackDurMult = 0.7;
      }
 
      startBreathTween() {
@@ -883,7 +884,7 @@
                  // 0
                  {
                      name: "WAKING UP!",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      damage: 0,
                      chargeMult: 18,
                      startFunction: () => {
@@ -973,7 +974,7 @@
                      }
                  },
                  {
-                     name: "HEAL\\35",
+                     name: "HEAL\\30",
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
@@ -989,7 +990,7 @@
                      },
                      finaleFunction: () => {
                          this.stopBreathTween(false);
-                        this.healAnim(35);
+                        this.healAnim(30);
                      }
                  },
                  {

@@ -27,12 +27,25 @@ class LesserDummy extends Enemy {
         let origY = this.sprite.y;
         this.sprite.setScale(scale * 0.78, scale * 0.78).setAlpha(0.01);
         this.sprite.y += 96;
+        let helmHeight = 211;
+        let helmXOffset = 21;
+        this.helmet = this.addSprite(this.sprite.x - helmXOffset * 0.78, this.sprite.y - helmHeight * 0.78, 'enemies', 'hat.png').setScale(this.sprite.scaleX * 0.95, this.sprite.scaleY * 0.95).setAlpha(0.01).setDepth(this.sprite.depth + 1).setRotation(0.35);
         this.addTween({
-            targets: this.sprite,
+            targets: [this.sprite, this.helmet],
             alpha: 1,
             ease: 'Quart.easeOut',
             duration: 1250
         })
+        this.addTween({
+            targets: this.helmet,
+            duration: 1500,
+            ease: 'Quint.easeInOut',
+            scaleX: scale * 0.95,
+            scaleY: scale * 0.95,
+            x: this.sprite.x - helmXOffset,
+            y: origY - helmHeight,
+        });
+
         this.addTween({
             targets: this.sprite,
             duration: 1500,
@@ -61,12 +74,12 @@ class LesserDummy extends Enemy {
     }
 
     initTutorial(x, y) {
-        let dummyShadow = this.addImage(x - 6, y - 50, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
+        let dummyShadow = this.addImage(x - 6, y - 58, 'misc', 'shadow_circle.png').setScale(13).setDepth(9999).setAlpha(0);
         this.addTween({
             targets: dummyShadow,
             alpha: 0.4,
             ease: "Cubic.easeInOut",
-            y: y - 114,
+            y: y - 124,
             scaleX: 8,
             scaleY: 8,
             duration: 1500,
@@ -336,9 +349,10 @@ class LesserDummy extends Enemy {
                     });
                 });
 
+                this.shadow.setDepth(this.sprite.depth + 1);
                 this.currShadowTween = this.addTween({
                     targets: this.shadow,
-                    alpha: 0.55,
+                    alpha: 0.2,
                     ease: "Cubic.easeOut",
                     scaleX: 13,
                     scaleY: 13,
@@ -471,6 +485,50 @@ class LesserDummy extends Enemy {
 
     setHealth(newHealth) {
         super.setHealth(newHealth);
+        if (!this.lostHat) {
+            this.lostHat = true;
+            this.helmet.y -= 2;
+            this.helmet.x -= 2;
+            playSound('clunk');
+            this.addTween({
+                targets: this.helmet,
+                rotation: "-=6.5",
+                duration: 900,
+                onComplete: () => {
+                    this.addTween({
+                        delay: 500,
+                        targets: this.helmet,
+                        alpha: 0,
+                        ease: 'Quad.easeIn',
+                        duration: 1000,
+                    })
+                }
+            })
+            this.addTween({
+                targets: this.helmet,
+                x: '-=118',
+                duration: 940,
+            })
+            this.addTween({
+                targets: this.helmet,
+                y: '+=200',
+                ease: 'Back.easeIn',
+                easeParams: [3],
+                duration: 900,
+                onComplete: () => {
+                    this.helmet.y -= 7;
+                    playSound('clunk2', 0.7).detune = -100;
+                    this.addTween({
+                        targets: this.helmet,
+                        y: '+=7',
+                        ease: 'Bounce.easeOut',
+                        rotation: 0.5,
+                        easeParams: [2.5],
+                        duration: 700,
+                    })
+                }
+            })
+        }
         if (newHealth > 0) {
             if (newHealth > 14) {
                 this.eyeSprite.play('dummyblink');

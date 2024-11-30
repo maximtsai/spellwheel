@@ -32,7 +32,7 @@ class Enemy {
         ];
 
         if (level >= 3 || level < -1) {
-            let shouldShowAd = level < -1 || level === 3 || level === 6 || (Math.random() > 0.5);
+            let shouldShowAd = level < -1 || level === 3 || level >= 6 || (Math.random() > 0.5);
             if (shouldShowAd) {
                 this.addDelay(() => {
                     let btn = showRewardAdOption();

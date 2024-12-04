@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 105;
+         this.health = gameVars.isHardMode ? 120 : 100;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -35,7 +35,7 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-             if (newEffect.name == 'mindStrike' && this.lifeOne && !this.dead && !this.isBeingFlattened) {
+             if (newEffect.name === 'mindStrike' && this.lifeOne && !this.dead && !this.isBeingFlattened) {
                  this.sprite.stop();
                  this.isBeingShocked = true;
                  this.setSprite('time_magi_shock1.png');
@@ -1173,7 +1173,7 @@
                     }
                  },
                  {
-                     name: "}3x2 ",
+                     name: "}3x3 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: gameVars.isHardMode ? 365 : 405,
                      damage: -1,

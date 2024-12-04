@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 105;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -320,7 +320,7 @@
              ],
              [
                  {
-                     name: "FULL HEAL! \\100",
+                     name: "BIG HEAL! \\80",
                      chargeAmt: 480,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -398,8 +398,8 @@
              ],
              [
                  {
-                     name: "FULL HEAL! \\100",
-                     chargeAmt: 850,
+                     name: "BIG HEAL! \\80",
+                     chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
                      isBigMove: true,

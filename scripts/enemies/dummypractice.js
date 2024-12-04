@@ -25,10 +25,58 @@
         this.addTimeout(() => {
             this.initTutorial();
         }, 50)
-        // this.popupTimeout = this.addTimeout(() => {
-        //     this.tutorialButton = createTutorialBtn(this.level);
-        //     this.addToDestructibles(this.tutorialButton);
-        // }, 3500)
+
+        this.popupTimeout = this.addTimeout(() => {
+            this.skipBtn = this.createSkipBtn();
+            this.addToDestructibles(this.skipBtn);
+        }, 2500)
+    }
+
+    createSkipBtn() {
+        playSound('flip3');
+        let buttonX = gameConsts.width - 45; let buttonY = isMobile ? 140 : 130;
+        let returnButton = new Button({
+            normal: {
+                atlas: "buttons",
+                ref: "btn_small.png",
+                alpha: 1,
+                x: buttonX + 55,
+                y: buttonY,
+            },
+            hover: {
+                atlas: "buttons",
+                ref: "btn_small_hover.png",
+                alpha: 1,
+            },
+            press: {
+                atlas: "buttons",
+                ref: "btn_small_press.png",
+                alpha: 1,
+            },
+            disable: {
+                alpha: 0
+            },
+            onHover: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
+            onMouseUp: () => {
+                returnButton.tweenToPos(buttonX + 55, buttonY, 400, 'Cubic.easeOut');
+                this.addDelay(() => {
+                    returnButton.destroy();
+                }, 420);
+            }
+        });
+        returnButton.setDepth(129);
+        returnButton.setState(DISABLE);
+        returnButton.setOrigin(0.5, 0.5);
+        return returnButton;
     }
 
      initStatsCustom() {

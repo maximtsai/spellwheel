@@ -917,6 +917,15 @@ let textData2 = {
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"
     },
+    "skip": {
+        "en_us": "SKIP",
+        "fr": "SAUTER",
+        "zh_tw": "跳过",
+        "zh_cn": "跳過",
+        "ru": "ПОКИДАТЬ",
+        "es": "ABANDONAR",
+        "jp": "やめる"
+    },
     "exit": {
         "en_us": "EXIT",
         "fr": "QUITTER",
@@ -943,6 +952,24 @@ let textData2 = {
         "ru": "ГЛАВНОЕ МЕНЮ?",
         "es": "MENÚ PRINCIPAL?",
         "jp": "メインメニュー？"
+    },
+    "skip_q": {
+        "en_us": "SKIP TRAINING?",
+        "fr": "SAUTER L'ENTRAINEMENT ?",
+        "zh_tw": "跳過訓練？",
+        "zh_cn": "跳过训练？",
+        "ru": "ГЛАВНОЕ МЕНЮ?",
+        "es": "MENÚ PRINCIPAL?",
+        "jp": "メインメニュー？"
+    },
+    "skip_long": {
+        "en_us": "Skip to the next level?",
+        "fr": "Passer au niveau suivant ?",
+        "zh_tw": "跳到下一級？",
+        "zh_cn": "跳到下一级？",
+        "ru": "Выйти из боя и вернуться\nв главное меню?",
+        "es": "¿Salir de la pelea y\nvolver al menú principal?",
+        "jp": "戦闘を終了してメイン\nメニューに戻りますか?"
     },
     "exit_long": {
         "en_us": "Exit the fight and\nreturn to main menu?",

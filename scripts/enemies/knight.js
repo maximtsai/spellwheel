@@ -333,7 +333,7 @@
              onComplete: () => {
                  this.fogTween = this.addTween({
                      targets: this.fogThick,
-                     duration: 1800,
+                     duration: 2000,
                      y: goalY,
                      alpha: 0.6,
                      scaleX: goalScaleX,
@@ -1716,7 +1716,7 @@
                             scaleX: 1,
                             scaleY: 1,
                             ease: "Cubic.easeOut",
-                            duration: 1500,
+                            duration: 2000,
                             onComplete: () => {
                                 this.showVictory(rune);
                             }

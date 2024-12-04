@@ -10,6 +10,7 @@
         this.pullbackScale = 1;
         this.damageCanEmit = true;
         this.spellsCastCount = 0;
+         this.disableSkip = true;
      }
 
      initTutorial() {
@@ -26,6 +27,8 @@
 
              this.addTimeout(() => {
                  this.createPicketSign();
+                 this.skipBtn = this.createSkipBtn();
+                 this.addToDestructibles(this.skipBtn);
              }, 100);
 
              this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
@@ -229,6 +232,7 @@
         if (this.picketVisual.currAnim) {
             this.picketVisual.currAnim.stop();
         }
+        this.picketButton = null;
         this.addTween({
             targets: this.picketVisual,
             scaleY: 0,
@@ -279,6 +283,14 @@
          if (this.malfunctionTween) {
             this.malfunctionTween.stop();
          }
+
+         if (this.text){
+             this.text.destroy();
+         }
+         if (this.backingBox) {
+             this.backingBox.destroy();
+         }
+
         playSound('clunk2');
          if (this.runTween) {
             this.runTween.stop();
@@ -288,7 +300,26 @@
          }
         if (this.picketButton) {
             this.picketButton.destroy();
+            this.flyBird();
+            if (this.picketVisual.currAnim) {
+                this.picketVisual.currAnim.stop();
+            }
+            this.addTween({
+                targets: this.picketVisual,
+                scaleY: 0,
+                scaleX: 0.5,
+                ease: "Back.easeIn",
+                duration: 400,
+                easeParams: [1.5],
+                completeDelay: 400,
+                onComplete: () => {
+                    this.picketVisual.destroy();
+                }
+            });
         }
+
+
+
         super.die();
      }
 

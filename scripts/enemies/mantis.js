@@ -27,7 +27,7 @@
          });
      }
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 260 : 220;
+         this.health = gameVars.isHardMode ? 225 : 210;
          this.pullbackDurMult = 0.5;
          this.pullbackScale = 0.99;
          this.pullbackScaleDefault = 0.99;

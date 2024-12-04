@@ -2386,8 +2386,8 @@ class Enemy {
              targets: rune,
              y: gameConsts.halfHeight - 110,
              ease: 'Cubic.easeOut',
-             duration: gameVars.gameManualSlowSpeedInverse * 400,
-             completeDelay: 300,
+             duration: gameVars.gameManualSlowSpeedInverse * 500,
+             completeDelay: 350,
              onComplete: () => {
                 if (this.dieClickBlocker) {
                     if (canvas) {

@@ -87,7 +87,7 @@
 
      initStatsCustom() {
          this.health = 24;
-        this.secondHealth = gameVars.isHardMode ? 600 : 550;
+        this.secondHealth = 550;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;

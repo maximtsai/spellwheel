@@ -701,7 +701,7 @@
                             scaleX: 1,
                             scaleY: 1,
                             ease: "Cubic.easeOut",
-                            duration: 1500,
+                            duration: 2200,
                             onComplete: () => {
                                 this.showVictory(rune);
                             }

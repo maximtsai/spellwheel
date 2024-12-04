@@ -48,7 +48,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 280 : 265;
+         this.health = gameVars.isHardMode ? 280 : 260;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -690,15 +690,15 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
+        let hardModeCharge = gameVars.isHardMode ? -45 : -20;
          this.attacks = [
              [
                  // 0
                  {
                      name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #8",
-                     chargeAmt: 888,
+                     chargeAmt: 777,
                      chargeMult: 20,
-                     finishDelay: 2300,
+                     finishDelay: 2100,
                      damage: -1,
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
@@ -713,7 +713,7 @@
              [
                  {
                      name: "BOOTING UP...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 600,
+                     chargeAmt: gameVars.isHardMode ? 40 : 600,
                      damage: 0,
                  },
                  {

@@ -1,4 +1,4 @@
- class Dummypractice extends Enemy {
+class Dummypractice extends Enemy {
     constructor(scene, x, y, level) {
         super(scene, x, y, level);
         this.shieldOffsetY = -100;
@@ -25,120 +25,199 @@
         this.addTimeout(() => {
             this.initTutorial();
         }, 50)
-        // this.popupTimeout = this.addTimeout(() => {
-        //     this.tutorialButton = createTutorialBtn(this.level);
-        //     this.addToDestructibles(this.tutorialButton);
-        // }, 3500)
+
+        this.popupTimeout = this.addTimeout(() => {
+            if (!this.disableSkip) {
+                this.skipBtn = this.createSkipBtn();
+                this.addToDestructibles(this.skipBtn);
+            }
+        }, 2500)
     }
 
-     initStatsCustom() {
-         this.health = 100;
-         this.isAsleep = true;
+    clearSkipBtn() {
+
+    }
+
+    createSkipBtn() {
+        playSound('flip3');
+        let buttonX = gameConsts.width + 13; let buttonY = isMobile ? 136 : 120;
+
+        this.arrow = this.addImage(buttonX + 65, buttonY, 'buttons', 'arrow.png');
+        this.arrow.setDepth(130).setScale(0.5).setOrigin(0.47, 0.5);
+        this.addTween({
+            targets: this.arrow,
+            x: buttonX,
+            duration: 400,
+            ease: 'Back.easeOut'
+        })
+
+        let returnButton = new Button({
+            normal: {
+                atlas: "buttons",
+                ref: "btn_small.png",
+                alpha: 1,
+                scaleX: 0.82,
+                scaleY: 0.82,
+                x: buttonX + 65,
+                y: buttonY,
+            },
+            hover: {
+                atlas: "buttons",
+                ref: "btn_small_hover.png",
+                alpha: 1,
+            },
+            press: {
+                atlas: "buttons",
+                ref: "btn_small_press.png",
+                alpha: 1,
+            },
+            disable: {
+                alpha: 0
+            },
+            onHover: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
+            onMouseUp: () => {
+                this.popupElements = showYesNoPopup(getLangText('skip'), getLangText('back'), getLangText('skip_q'), getLangText('skip_long'), () => {
+                    returnButton.tweenToPos(buttonX + 65, buttonY, 400, 'Cubic.easeOut');
+                    this.addDelay(() => {
+                        returnButton.destroy();
+                        this.arrow.destroy();
+                    }, 420);
+                    messageBus.publish('enemyTakeDamage', 999)
+                    this.addTween({
+                        targets: this.arrow,
+                        x: buttonX + 65,
+                        duration: 400,
+                        ease: 'Back.easeOut'
+                    })
+                }, true)
+            }
+        });
+
+        returnButton.tweenToPos(buttonX, buttonY, 400, 'Back.easeOut');
+        returnButton.setDepth(129);
+        returnButton.setOrigin(0.5, 0.5);
+
+        return returnButton;
+    }
+
+    initStatsCustom() {
+        this.health = 100;
+        this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.damageCanEmit = true;
-     }
+    }
 
-     initSpriteAnim(scale) {
-         this.sprite.setScale(scale * 0.98, scale * 0.3).setRotation(Math.random() * 0.4 - 0.2);
-         setTimeout(() => {
-             playSound('balloon', 0.4).detune = -50;
-         }, 50)
-         this.scene.tweens.add({
-             targets: this.sprite,
-             duration: 700,
-             ease: 'Quart.easeOut',
-             scaleX: scale,
-             scaleY: scale,
-             rotation: 0,
-             alpha: 1
-         });
-     }
+    initSpriteAnim(scale) {
+        this.sprite.setScale(scale * 0.98, 0).setRotation(Math.random() * 0.4 - 0.2);
+        setTimeout(() => {
+            playSound('balloon', 0.4).detune = -50;
+        }, 250)
+        this.scene.tweens.add({
+            delay: 200,
+            targets: this.sprite,
+            duration: 800,
+            ease: 'Quart.easeOut',
+            scaleX: scale,
+            scaleY: scale,
+            rotation: 0,
+            alpha: 1
+        });
+    }
 
-     showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
-         this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
-         this.poster.setRotation(-0.7);
-         this.addExtraSprite(this.poster);
-         this.addTween({
-             delay: 100,
-             targets: this.poster,
-             scaleX: this.sprite.startScale,
-             scaleY: this.sprite.startScale,
-             duration: 500,
-             onComplete: () => {
-                 // this.addTween({
-                 //     targets: this.poster,
-                 //     scaleX: this.sprite.startScale,
-                 //     scaleY: this.sprite.startScale,
-                 //     rotation: finalRot,
-                 //     ease: 'Bounce.easeOut',
-                 //     duration: 400
-                 // })
-             }
-         })
-         this.addTween({
-             delay: 100,
-             targets: this.poster,
-             rotation: 0,
-             ease: 'Quint.easeIn',
-             duration: 500,
-             onComplete: () => {
-                 playSound('boing');
-                 this.addTween({
-                     targets: this.poster,
-                     rotation: -0.2,
-                     ease: 'Quart.easeOut',
-                     duration: 100,
-                     onComplete: () => {
-                         this.addTween({
-                             targets: this.poster,
-                             rotation: -0.02,
-                             ease: 'Bounce.easeOut',
-                             duration: 260,
+    showPoster(startImg = 'dummy_paper_hit.png', finalRot = 0) {
+        this.poster = this.addSprite(this.sprite.x, this.sprite.y, 'dummyenemy', startImg).setDepth(this.sprite.depth - 1).setScale(this.sprite.startScale*0.1);
+        this.poster.setRotation(-0.7);
+        this.addExtraSprite(this.poster);
+        this.addTween({
+            delay: 100,
+            targets: this.poster,
+            scaleX: this.sprite.startScale,
+            scaleY: this.sprite.startScale,
+            duration: 500,
+            onComplete: () => {
+                // this.addTween({
+                //     targets: this.poster,
+                //     scaleX: this.sprite.startScale,
+                //     scaleY: this.sprite.startScale,
+                //     rotation: finalRot,
+                //     ease: 'Bounce.easeOut',
+                //     duration: 400
+                // })
+            }
+        })
+        this.addTween({
+            delay: 100,
+            targets: this.poster,
+            rotation: 0,
+            ease: 'Quint.easeIn',
+            duration: 500,
+            onComplete: () => {
+                playSound('boing');
+                this.addTween({
+                    targets: this.poster,
+                    rotation: -0.2,
+                    ease: 'Quart.easeOut',
+                    duration: 100,
+                    onComplete: () => {
+                        this.addTween({
+                            targets: this.poster,
+                            rotation: -0.02,
+                            ease: 'Bounce.easeOut',
+                            duration: 260,
 
-                         })
-                     }
-                 })
-             }
-         })
-     }
+                        })
+                    }
+                })
+            }
+        })
+    }
 
-     hidePosterFast() {
-         if (!this.poster) {
-             return;
-         }
+    hidePosterFast() {
+        if (!this.poster) {
+            return;
+        }
 
-         playSound('balloon', 0.4);
-         let currScale = this.poster.scaleX;
-         this.addTween({
-             targets: this.poster,
-             scaleX: currScale * 1.03,
-             scaleY: currScale * 1.03,
-             rotation: -0.04,
-             ease: 'Quint.easeOut',
-             duration: 135,
-             onComplete: () => {
-                 if (this.posterTween) {
-                     this.posterTween.stop();
-                 }
-                 this.addTween({
-                     targets: this.poster,
-                     scaleX: 0,
-                     scaleY: 0,
-                     ease: 'Quart.easeIn',
-                     duration: 700
-                 })
-                 this.addTween({
-                     targets: this.poster,
-                     rotation: -0.7,
-                     ease: 'Quad.easeIn',
-                     duration: 600
-                 })
-             }
-         })
-     }
+        playSound('balloon', 0.4);
+        let currScale = this.poster.scaleX;
+        this.addTween({
+            targets: this.poster,
+            scaleX: currScale * 1.03,
+            scaleY: currScale * 1.03,
+            rotation: -0.04,
+            ease: 'Quint.easeOut',
+            duration: 135,
+            onComplete: () => {
+                if (this.posterTween) {
+                    this.posterTween.stop();
+                }
+                this.addTween({
+                    targets: this.poster,
+                    scaleX: 0,
+                    scaleY: 0,
+                    ease: 'Quart.easeIn',
+                    duration: 700
+                })
+                this.addTween({
+                    targets: this.poster,
+                    rotation: -0.7,
+                    ease: 'Quad.easeIn',
+                    duration: 600
+                })
+            }
+        })
+    }
 
-     hidePoster() {
+    hidePoster() {
         if (!this.poster) {
             return;
         }
@@ -146,42 +225,42 @@
             this.posterTween.stop();
         }
 
-         this.poster.setScale(this.sprite.startScale * 1.09);
-         this.addTween({
-             targets: this.poster,
-             scaleX: this.sprite.startScale * 0.96,
-             scaleY: this.sprite.startScale * 0.96,
-             rotation: -0.07,
-             ease: 'Bounce.easeOut',
-             duration: 230,
-             completeDelay: 20,
-             onComplete: () => {
-                 this.addTween({
-                     targets: this.poster,
-                     rotation: -0.9,
-                     scaleX: 0,
-                     scaleY: 0,
-                     ease: 'Cubic.easeIn',
-                     duration: 750
-                 })
-             }
-         })
-     }
+        this.poster.setScale(this.sprite.startScale * 1.09);
+        this.addTween({
+            targets: this.poster,
+            scaleX: this.sprite.startScale * 0.96,
+            scaleY: this.sprite.startScale * 0.96,
+            rotation: -0.07,
+            ease: 'Bounce.easeOut',
+            duration: 230,
+            completeDelay: 20,
+            onComplete: () => {
+                this.addTween({
+                    targets: this.poster,
+                    rotation: -0.9,
+                    scaleX: 0,
+                    scaleY: 0,
+                    ease: 'Cubic.easeIn',
+                    duration: 750
+                })
+            }
+        })
+    }
 
-     initTutorial() {
+    initTutorial() {
         this.bgMusic = playMusic('bite_down_simplified', 0.65, true);
     }
 
 
-     setHealth(newHealth) {
-         super.setHealth(newHealth);
-         let prevHealthPercent = this.prevHealth / this.healthMax;
-         let currHealthPercent = this.health / this.healthMax;
-         if (currHealthPercent == 0) {
-             // dead, can't do anything
-             return;
-         }
-     }
+    setHealth(newHealth) {
+        super.setHealth(newHealth);
+        let prevHealthPercent = this.prevHealth / this.healthMax;
+        let currHealthPercent = this.health / this.healthMax;
+        if (currHealthPercent == 0) {
+            // dead, can't do anything
+            return;
+        }
+    }
 
     takeDamage(amt, isAttack, yOffset) {
         super.takeDamage(amt, isAttack, yOffset);
@@ -261,21 +340,21 @@
                             }
                         });
 
-                         let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
-                         shinePattern.setPosition(this.x, this.y - 120).setScale(0.65).setDepth(-1).setAlpha(0.5);
-                         this.addTween({
-                             targets: shinePattern,
-                             scaleX: 0.85,
-                             scaleY: 0.85,
-                             duration: 700,
-                             ease: 'Cubic.easeOut'
-                         });
-                         this.addTween({
-                             targets: shinePattern,
-                             alpha: 0,
-                             ease: 'Cubic.easeIn',
-                             duration: 700,
-                         });
+                        let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
+                        shinePattern.setPosition(this.x, this.y - 120).setScale(0.65).setDepth(-1).setAlpha(0.5);
+                        this.addTween({
+                            targets: shinePattern,
+                            scaleX: 0.85,
+                            scaleY: 0.85,
+                            duration: 700,
+                            ease: 'Cubic.easeOut'
+                        });
+                        this.addTween({
+                            targets: shinePattern,
+                            alpha: 0,
+                            ease: 'Cubic.easeIn',
+                            duration: 700,
+                        });
                     }
                 });
             }
@@ -327,19 +406,19 @@
                             duration: 750,
                             onComplete: () => {
                                 messageBus.publish("selfTakeDamage", damage);
-                                 let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
-                                 this.addTween({
-                                     targets: hitEffect,
-                                     scaleX: 1.25,
-                                     scaleY: 1.25,
-                                     ease: 'Cubic.easeOut',
-                                     duration: 150,
-                                     onComplete: () => {
-                                         hitEffect.destroy();
-                                     }
-                                 });
-                                 let detuneAmt = (numTimes % 3) * 200 - 300;
-                                 playSound('punch').detune = detuneAmt;
+                                let hitEffect = this.addSprite(gameConsts.halfWidth, globalObjects.player.getY() - 190, 'spells').play('damageEffect').setRotation((Math.random() - 0.5) * 3).setScale(1.5).setDepth(195);
+                                this.addTween({
+                                    targets: hitEffect,
+                                    scaleX: 1.25,
+                                    scaleY: 1.25,
+                                    ease: 'Cubic.easeOut',
+                                    duration: 150,
+                                    onComplete: () => {
+                                        hitEffect.destroy();
+                                    }
+                                });
+                                let detuneAmt = (numTimes % 3) * 200 - 300;
+                                playSound('punch').detune = detuneAmt;
                                 this.addTween({
                                     delay: 500,
                                     targets: weapon,
@@ -532,11 +611,22 @@
         });
     }
 
-     die() {
-         if (this.dead) {
-             return;
-         }
+    die() {
+        if (this.dead) {
+            return;
+        }
         super.die();
+        if (this.skipBtn) {
+            this.skipBtn.destroy();
+        }
+        if (this.arrow) {
+            this.arrow.destroy();
+        }
+        if (this.popupElements) {
+            for (let i in this.popupElements) {
+                this.popupElements[i].destroy();
+            }
+        }
 
         globalObjects.textPopupManager.hideInfoText();
         this.dieClickBlocker = createGlobalClickBlocker(false);
@@ -545,55 +635,55 @@
         if (this.currDummyAnim) {
             this.currDummyAnim.stop();
         }
-         this.addTween({
-             targets: darkDummy,
-             alpha: 0.7,
-             ease: "Cubic.easeIn",
-             duration: 1800,
-         });
-         this.addTween({
-             targets: [this.sprite, darkDummy],
-             scaleY: 0,
-             rotation: 0.06,
-             ease: "Quad.easeIn",
-             duration: 1800,
-             onComplete: () => {
+        this.addTween({
+            targets: darkDummy,
+            alpha: 0.7,
+            ease: "Cubic.easeIn",
+            duration: 1800,
+        });
+        this.addTween({
+            targets: [this.sprite, darkDummy],
+            scaleY: 0,
+            rotation: 0.06,
+            ease: "Quad.easeIn",
+            duration: 1800,
+            onComplete: () => {
                 darkDummy.setAlpha(0.25);
-                 this.sprite.setFrame('dummy_paper_back.png');
-                 this.sprite.setRotation(0);
-                 playSound('victory_2');
-                 this.addTween({
-                     targets: [this.sprite, darkDummy],
-                     scaleY: -0.2,
-                     ease: "Cubic.easeOut",
-                     duration: 900,
-                     onComplete: () => {
+                this.sprite.setFrame('dummy_paper_back.png');
+                this.sprite.setRotation(0);
+                playSound('victory_2');
+                this.addTween({
+                    targets: [this.sprite, darkDummy],
+                    scaleY: -0.2,
+                    ease: "Cubic.easeOut",
+                    duration: 900,
+                    onComplete: () => {
                         this.showComplete(darkDummy);
-                     }
-                 });
-                 this.addTween({
-                     targets: [this.sprite, darkDummy],
-                     rotation: 0.22,
-                     ease: "Quad.easeOut",
-                     duration: 1000,
-                     onComplete: () => {
+                    }
+                });
+                this.addTween({
+                    targets: [this.sprite, darkDummy],
+                    rotation: 0.22,
+                    ease: "Quad.easeOut",
+                    duration: 1000,
+                    onComplete: () => {
 
-                     }
-                 });
-             }
-         });
-     }
+                    }
+                });
+            }
+        });
+    }
 
 
-     initAttacks() {
-         this.attacks = [
-             [
-                 // 0
-                 {
-                     name: "}5 ",
-                     chargeAmt: 300,
-                     damage: 5,
-                     isBigMove: true,
+    initAttacks() {
+        this.attacks = [
+            [
+                // 0
+                {
+                    name: "}5 ",
+                    chargeAmt: 300,
+                    damage: 5,
+                    isBigMove: true,
                     attackFinishFunction: () => {
                         playSound('body_slam')
                         let dmgEffect = this.addSprite(gameConsts.halfWidth + (Math.random() - 0.5) * 20, globalObjects.player.getY() - 185, 'spells', 'damageEffect1.png').setDepth(998).setScale(1.4);
@@ -601,10 +691,10 @@
                             dmgEffect.destroy();
                         }, 150)
                     }
-                 },
-             ]
-         ];
-     }
+                },
+            ]
+        ];
+    }
 
     showComplete(darkDummy) {
         globalObjects.encyclopedia.hideButton();
@@ -620,55 +710,55 @@
             duration: 500,
         });
 
-         PhaserScene.tweens.add({
-             targets: [victoryText],
-             alpha: 1,
-             ease: 'Quad.easeOut',
-             duration: 500,
-         });
+        PhaserScene.tweens.add({
+            targets: [victoryText],
+            alpha: 1,
+            ease: 'Quad.easeOut',
+            duration: 500,
+        });
         playSound('victory');
         this.addTimeout(() => {
-             continueText.alpha = 1;
-         }, 1000);
+            continueText.alpha = 1;
+        }, 1000);
 
-         PhaserScene.tweens.add({
-             targets: victoryText,
-             scaleX: 1,
-             scaleY: 1,
-             duration: 800,
-             onComplete: () => {
-                 if (canvas) {
-                     canvas.style.cursor = 'pointer';
-                 }
+        PhaserScene.tweens.add({
+            targets: victoryText,
+            scaleX: 1,
+            scaleY: 1,
+            duration: 800,
+            onComplete: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
                 this.dieClickBlocker.setOnMouseUpFunc(() => {
                     if (canvas) {
                         canvas.style.cursor = 'default';
                     }
                     PhaserScene.tweens.add({
-                         targets: [this.sprite, darkDummy],
-                         alpha: 0,
-                         duration: 800,
+                        targets: [this.sprite, darkDummy],
+                        alpha: 0,
+                        duration: 800,
                     });
 
                     hideGlobalClickBlocker();
                     continueText.destroy();
                     PhaserScene.tweens.add({
-                         targets: [victoryText, banner],
-                         alpha: 0,
-                         duration: 800,
+                        targets: [victoryText, banner],
+                        alpha: 0,
+                        duration: 800,
                         completeDelay: 200,
-                         onComplete: () => {
+                        onComplete: () => {
                             victoryText.destroy();
                             banner.destroy();
                             // globalObjects.magicCircle.enableMovement();
-                             // TODO: maybe just skip straight to enemy
+                            // TODO: maybe just skip straight to enemy
                             // globalObjects.postFightScreen.createWinScreenMin();
-                             let goalLevel = this.targetLevel ? this.targetLevel : -this.level + 1;
-                             beginPreLevel(goalLevel);
+                            let goalLevel = this.targetLevel ? this.targetLevel : -this.level + 1;
+                            beginPreLevel(goalLevel);
                         }
                     });
                 });
-             }
-         });
-     }
+            }
+        });
+    }
 }

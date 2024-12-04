@@ -1,5 +1,5 @@
-const DECAY = 0.000047;
-let STATIC = 0.0057;
+const DECAY = 0.000036;
+let STATIC = 0.0072;
 const MIN_VEL = 0.0001;
 const ENABLE_KEYBOARD = true;
 
@@ -483,7 +483,7 @@ const ENABLE_KEYBOARD = true;
             let horizForce = -dragPointYOrigin * dragDistXOrigin;
             let dragForceSqr = horizForce + vertForce;
 
-            let torqueConst = gameVars.wasTouch ? 0.0445 : 0.0422;
+            let torqueConst = gameVars.wasTouch ? 0.045 : 0.0435;
             if (gameVars.maxLevel >= 5) {
                 torqueConst += 0.014;
             }  else if (gameVars.maxLevel >= 2) {

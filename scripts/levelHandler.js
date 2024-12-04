@@ -402,22 +402,24 @@ function beginPreLevelTrue(lvl) {
 function fadeInPreFightStuff(lvl, texts, introbgs, startDisabled) {
     playSound('flip2')
     PhaserScene.tweens.add({
+        delay: 200,
         targets: texts,
-        duration: 500,
+        duration: 650,
         ease: 'Cubic.easeOut',
         y: "-=60",
     })
     PhaserScene.tweens.add({
-        delay: 200,
+        delay: 350,
         targets: texts,
         alpha: 0.65,
-        duration: 450,
+        duration: 675,
     })
 
     PhaserScene.tweens.add({
+        delay: 200,
         targets: introbgs,
         alpha: 1,
-        duration: 500,
+        duration: 650,
         scaleX: 1,
         scaleY: 1,
         ease: 'Cubic.easeOut',

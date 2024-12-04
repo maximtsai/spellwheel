@@ -1173,7 +1173,7 @@
                     }
                  },
                  {
-                     name: "}3x2 ",
+                     name: "}3x3 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: gameVars.isHardMode ? 365 : 405,
                      damage: -1,

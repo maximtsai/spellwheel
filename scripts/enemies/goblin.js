@@ -9,6 +9,10 @@
 
          // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
+
+         this.addTimeout(() => {
+             messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
+         }, 800)
      }
 
      initStatsCustom() {

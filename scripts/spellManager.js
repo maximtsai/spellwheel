@@ -29,6 +29,9 @@ class SpellManager {
                     case "rune_superprotect":
                         this.castMatterProtect(shieldID, rotation, true);
                         break;
+                    case "rune_lightprotect":
+                        this.castMatterProtect(shieldID, rotation, true, true);
+                        break;
                     case RUNE_UNLOAD:
                         this.castMatterUltimate();
                         break;
@@ -656,7 +659,7 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName);
     }
 
-    castMatterProtect(shieldID, rotation, isSuper) {
+    castMatterProtect(shieldID, rotation, isSuper, isLight) {
         const spellID = 'matterProtect';
         this.cleanUpExistingShield(shieldID);
         let spellMultiplier = globalObjects.player.spellMultiplier();
@@ -672,7 +675,11 @@ class SpellManager {
 
         let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
         if (isSuper) {
-            shieldFile = 'stoneShieldTriple.png';
+            if (isLight) {
+                shieldFile = 'tinShield.png';
+            } else {
+                shieldFile = 'stoneShieldTriple.png';
+            }
         }
 
         let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
@@ -718,7 +725,11 @@ class SpellManager {
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {
-            shieldHealth = 80;
+            if (isLight) {
+                shieldHealth = 8;
+            } else {
+                shieldHealth = 80;
+            }
         }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
@@ -740,10 +751,12 @@ class SpellManager {
             duration: 100,
             alpha: 1,
             onComplete: () => {
+                animation1.isLight = true;
                 messageBus.publish("selfTakeEffect", {
                     name: shieldID,
                     spellID: shieldID,
                     type: 'matter',
+                    light: isLight,
                     animObj: [animation1, textHealth, animation2],
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_matter_glow.png',
@@ -757,23 +770,49 @@ class SpellManager {
                     ignoreBuff: true,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
-                            animation2.setDepth(1);
-                            animation1.setDepth(1);
-                            statuses[shieldID].currentAnim = this.scene.tweens.add({
-                                targets: animation1,
-                                duration: 175,
-                                scaleX: "-=0.2",
-                                scaleY: "-=0.2",
-                                alpha: 0,
-                                ease: 'Quad.easeIn',
-                                onComplete: () => {
-                                    animation1.destroy();
-                                    animation2.destroy();
-                                    textHealth.destroy();
-                                }
-                            });
-                            messageBus.publish('selfClearEffect', shieldID, true);
-                            statuses[shieldID] = null;
+                            if (animation1.isLight) {
+                                playSound('clunk2');
+                                animation1.setOrigin(0.5, 0.125);
+                                animation1.y -= 242;
+                                statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 900,
+                                    x: "-=140",
+                                    rotation: "-=4.5",
+                                    onComplete: () => {
+                                        animation1.destroy();
+                                        animation2.destroy();
+                                        textHealth.destroy();
+                                    }
+                                });
+                                this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 900,
+                                    y: "+=250",
+                                    alpha: 0,
+                                    ease: 'Cubic.easeIn',
+                                });
+                                messageBus.publish('selfClearEffect', shieldID, true);
+                                statuses[shieldID] = null;
+                            } else {
+                                animation2.setDepth(1);
+                                animation1.setDepth(1);
+                                statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 175,
+                                    scaleX: "-=0.2",
+                                    scaleY: "-=0.2",
+                                    alpha: 0,
+                                    ease: 'Quad.easeIn',
+                                    onComplete: () => {
+                                        animation1.destroy();
+                                        animation2.destroy();
+                                        textHealth.destroy();
+                                    }
+                                });
+                                messageBus.publish('selfClearEffect', shieldID, true);
+                                statuses[shieldID] = null;
+                            }
                         }
                     }
                 });
@@ -809,8 +848,12 @@ class SpellManager {
             bonusSize = 0.1;
         }
         if (isSuper) {
-            spellName = "SUPER STONE SHIELD";
-            bonusSize = 0.1;
+            if (isLight) {
+                spellName = "SHIELD";
+            } else {
+                spellName = "SUPER STONE SHIELD";
+                bonusSize = 0.1;
+            }
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }

@@ -835,6 +835,31 @@
 					}
 				},
 				{
+					"filename": "tinShield.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 259,
+						"h": 244
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 17,
+						"w": 173,
+						"h": 39
+					},
+					"frame": {
+						"x": 1299,
+						"y": 2005,
+						"w": 173,
+						"h": 39
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
 					"filename": "voidCharge.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1010,31 +1035,6 @@
 					}
 				},
 				{
-					"filename": "clockShieldSpin.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 140,
-						"h": 40
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 7,
-						"w": 131,
-						"h": 32
-					},
-					"frame": {
-						"x": 1299,
-						"y": 2005,
-						"w": 131,
-						"h": 32
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
 					"filename": "voidspot.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1153,6 +1153,31 @@
 						"y": 1962,
 						"w": 79,
 						"h": 79
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "clockShieldSpin.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 7,
+						"w": 131,
+						"h": 32
+					},
+					"frame": {
+						"x": 659,
+						"y": 993,
+						"w": 131,
+						"h": 32
 					},
 					"anchor": {
 						"x": 0.5,
@@ -1324,8 +1349,8 @@
 						"h": 25
 					},
 					"frame": {
-						"x": 659,
-						"y": 993,
+						"x": 1474,
+						"y": 2005,
 						"w": 25,
 						"h": 25
 					},
@@ -1349,8 +1374,8 @@
 						"h": 20
 					},
 					"frame": {
-						"x": 760,
-						"y": 793,
+						"x": 1833,
+						"y": 1506,
 						"w": 20,
 						"h": 20
 					},
@@ -1374,8 +1399,8 @@
 						"h": 17
 					},
 					"frame": {
-						"x": 1833,
-						"y": 1506,
+						"x": 1606,
+						"y": 1681,
 						"w": 17,
 						"h": 17
 					},
@@ -2526,6 +2551,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:55c81d0c366d4b6e52a4073aa429a048:d4b5013c7b15cf59f76048c0e3e08c33:c357989966e3ba71c701d894923dde60$"
+		"smartupdate": "$TexturePacker:SmartUpdate:87bd0dfc679f3767e53b9b4eb5f39ba3:42c90c02f95edc4c105a2ebfb7387255:c357989966e3ba71c701d894923dde60$"
 	}
 }

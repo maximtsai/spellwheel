@@ -690,6 +690,15 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+    "level1_shield": {
+        "en_us": "I only have this shield\nto defend myself.",
+        "fr": "Je n'ai que ce bouclier\npour me défendre.",
+        "zh_tw": "我只有這面盾牌來保護自己。",
+        "zh_cn": "我只有这面盾牌来保护自己。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level1_tut_a": {
         "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
         "fr": "La rune Renforcer\nrend vos attaques\nplus fortes\n ",

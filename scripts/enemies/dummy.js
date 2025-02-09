@@ -338,17 +338,31 @@
             this.shownTut4 = true;
             this.clearEnhancePopup();
 
-            globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
-            // messageBus.publish('setSlowMult', 0.5, 15);
+            // globalObjects.textPopupManager.setInfoText(gameConsts.width, 253, getLangText('level1_tut_b'), 'right');
+
+            globalObjects.bannerTextManager.setDialog([getLangText('level1_shield')]);
+            globalObjects.bannerTextManager.setPosition(gameConsts.halfWidth, gameConsts.height - 135, 0);
+            globalObjects.bannerTextManager.showBanner(false);
+            globalObjects.bannerTextManager.setOnFinishFunc(() => {
+                globalObjects.bannerTextManager.setOnFinishFunc(() => {});
+                globalObjects.bannerTextManager.closeBanner();
+            });
+
+
+            this.addTimeout(() => {
+                messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
+            }, 800)
+
             this.glowBar = this.addSprite(gameConsts.halfWidth, 320, 'misc', 'shadow_bar.png').setDepth(9980).setAlpha(0).setScale(7);
             this.addTween({
                 targets: this.glowBar,
-                alpha: 0.4,
+                alpha: 0,
                 scaleY: 4.2,
                 scaleX: 5,
                 ease: 'Cubic.easeInOut',
                 duration: 800,
                 onComplete: () => {
+
                     this.glowBarAnim = this.addTween({
                         delay: 2750,
                         targets: this.glowBar,

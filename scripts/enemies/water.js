@@ -14,6 +14,8 @@
          this.addTimeout(() => {
              globalObjects.encyclopedia.showButton();
              globalObjects.options.showButton();
+             messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
+
          }, 900)
 
 

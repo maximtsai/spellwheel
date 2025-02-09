@@ -12,7 +12,7 @@
 
          this.addTimeout(() => {
              messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
-         }, 800)
+         }, 1150)
      }
 
      initStatsCustom() {

@@ -161,7 +161,7 @@
          }
 
          if (type !== 'mind' && !this.isBuffing) {
-             if (this.accumulatedDamageReaction >= 80 && !this.justPlayedInjury3) {
+             if (this.accumulatedDamageReaction >= 70 && !this.justPlayedInjury3) {
                  this.justPlayedInjury3 = true;
                  if (!this.justPlayedInjury2) {
                      this.justPlayedInjury2 = true;

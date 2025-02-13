@@ -16,7 +16,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 100 : 85;
+         this.health = gameVars.isHardMode ? 90 : 75;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -245,8 +245,8 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {45",
-                     block: 45,
+                     name: "FANCY SHIELD {40",
+                     block: 40,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 360,

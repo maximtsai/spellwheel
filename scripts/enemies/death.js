@@ -570,7 +570,7 @@
                      },
                  },
                  {
-                     name: ";16x5",
+                     name: ";14x5",
                      chargeAmt: 1300,
                      chargeMult: 1.35,
                      finishDelay: 5000,
@@ -578,11 +578,11 @@
                      isBigMove: true,
                      attackStartFunction: () => {
                          // this.hideCurrentAttack();
-                         this.swingScytheFastIntro(16, false, false,() => {
-                             this.swingScytheFast(16, false, true,() => {
-                                 this.swingScytheFast(16, false, false,() => {
-                                     this.swingScytheFast(16, false, true,() => {
-                                         this.swingScytheFast(16, false, false,() => {
+                         this.swingScytheFastIntro(14, false, false,() => {
+                             this.swingScytheFast(14, false, true,() => {
+                                 this.swingScytheFast(14, false, false,() => {
+                                     this.swingScytheFast(14, false, true,() => {
+                                         this.swingScytheFast(14, false, false,() => {
                                              super.setHealth(1);
                                              PhaserScene.tweens.add({
                                                  targets: this.mainScythe,
@@ -601,7 +601,7 @@
                      }
                  },
                  {
-                     name: ";88",
+                     name: ";66",
                      chargeAmt: 850,
                      chargeMult: 1.5,
                      finishDelay: 5000,
@@ -629,7 +629,7 @@
                      },
                      attackStartFunction: () => {
                          this.scytheCanBreak = true;
-                         this.swingScytheFastIntro(88, true, false, () => {
+                         this.swingScytheFastIntro(66, true, false, () => {
                              this.addTween({
                                  targets: this.listOfAngryPopups, scaleX: 0, scaleY: 0,
                                  ease: 'Back.easeIn', duration: 400,
@@ -667,7 +667,6 @@
      }
 
      cleanUp() {
-         console.log("cleanup?");
          super.cleanUp();
          if (this.windSfx) {
              this.windSfx.stop();

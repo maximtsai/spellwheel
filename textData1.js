@@ -102,22 +102,22 @@ let textData = {
         "jp": "14ダメージをブロックす\nるシールドを作成する"
     },
     "matter_reinforce_desc": {
-        "en_us": "Gain thorns that\nreflect 1 DMG\nwhen hit",
-        "fr": "Gagnez des épines\nqui renvoient 1\npoint de dégâts",
-        "zh_tw": "獲得荊棘來\n保護你並反\n射 1 點傷害",
-        "zh_cn": "获得荆棘来\n保护你并反\n射 1 点伤害",
-        "ru": "Получите шипы,\nотражающие 1 единицу\nурона при ударе.",
-        "es": "Gana espinas\npara protegerte\ny reflejar 1 daño.",
-        "jp": "とげを獲得してあな\nたを守り、1ダメ\nージを反射します"
+        "en_us": "Gain thorns that\nreflect 2 DMG\nwhen hit",
+        "fr": "Gagnez des épines\nqui renvoient 2\npoint de dégâts",
+        "zh_tw": "獲得荊棘來\n保護你並反\n射 2 點傷害",
+        "zh_cn": "获得荆棘来\n保护你并反\n射 2 点伤害",
+        "ru": "Получите шипы,\nотражающие 2 единицу\nурона при ударе.",
+        "es": "Gana espinas\npara protegerte\ny reflejar 2 daño.",
+        "jp": "とげを獲得してあな\nたを守り、2ダメ\nージを反射します"
     },
     "matter_reinforce_desc_long": {
-        "en_us": "Gain thorns that\nreflect 1 DMG when hit",
-        "fr": "Gagnez des épines qui\nrenvoient 1 point de dégâts",
-        "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
-        "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
-        "ru": "Получить шипы отражающие\n1 урон при ударе",
-        "es": "Gana espinas para protegerte\ny reflejar 1 daño.",
-        "jp": "とげを獲得してあなたを守り、\n1ダメージを反射します"
+        "en_us": "Gain thorns that\nreflect 2 DMG when hit",
+        "fr": "Gagnez des épines qui\nrenvoient 2 point de dégâts",
+        "zh_tw": "獲得荊棘來保護\n你並反射 2 點傷害",
+        "zh_cn": "获得荆棘来保护\n你并反射 2 点伤害",
+        "ru": "Получить шипы отражающие\n2 урон при ударе",
+        "es": "Gana espinas para protegerte\ny reflejar 2 daño.",
+        "jp": "とげを獲得してあなたを守り、\n2ダメージを反射します"
     },
     "matter_unload_desc": {
         "en_us": "Gain 20 temporary\nprotection. Grow\ntwo 20 DMG pillars.",

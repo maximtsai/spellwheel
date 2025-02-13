@@ -80,7 +80,7 @@
      }
 
      initStatsCustom() {
-         this.health = 777;
+         this.health = 666;
          this.customAngry = "angrybone";
          this.handObjects = [];
          this.glowHands = [];

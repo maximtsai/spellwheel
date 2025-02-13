@@ -45,7 +45,7 @@ class Player {
     }
 
     reInitStats() {
-        let maxHealth = 80;
+        let maxHealth = 60;
         if (cheats.extraHealth) {
             maxHealth += 1000;
         }
@@ -53,7 +53,7 @@ class Player {
             maxHealth += 20;
         }
         if (challenges.lowHealth) {
-            maxHealth -= 78;
+            maxHealth -= 40;
         }
         this.trueHealthMax = maxHealth;
         this.healthMax = this.trueHealthMax;
@@ -89,7 +89,7 @@ class Player {
         return this.healthMax;
     }
 
-    setHealth(amt = 80) {
+    setHealth(amt = 60) {
         this.health = amt;
         this.refreshHealthBar();
         if (this.health <= 0) {
@@ -97,7 +97,7 @@ class Player {
         }
     }
 
-    setHealthMaxTemp(amt = 80) {
+    setHealthMaxTemp(amt = 60) {
         this.healthMax = amt;
         this.refreshHealthBar();
         if (this.healthMax <= 0) {

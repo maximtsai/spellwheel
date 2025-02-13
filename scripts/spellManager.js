@@ -438,8 +438,8 @@ class SpellManager {
         brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.05);
         brickObj2.origScale = 0.8;
 
-        let protectionAmt = 1;
-        let damageAmt = 1;
+        let protectionAmt = 2;
+        let damageAmt = 2;
         let duration = 400 + 50 * spellMult;
         PhaserScene.time.delayedCall( duration - 175, () => {
             playSound('matter_body');
@@ -728,7 +728,7 @@ class SpellManager {
             if (isLight) {
                 shieldHealth = 8;
             } else {
-                shieldHealth = 80;
+                shieldHealth = 60;
             }
         }
         textHealth.setText(shieldHealth);

@@ -24,7 +24,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 75 : 55;
+         this.health = gameVars.isHardMode ? 60 : 50;
          this.isAsleep = false;
          this.extraRepeatDelay = 200;
          this.pullbackHoldRatio = 0.75;

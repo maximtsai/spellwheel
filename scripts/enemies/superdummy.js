@@ -87,7 +87,7 @@
 
      initStatsCustom() {
          this.health = 24;
-        this.secondHealth = 550;
+        this.secondHealth = 480;
          this.isAsleep = true;
          this.isFirstMode = true;
         this.attackScale = 1.23;
@@ -775,9 +775,9 @@
                     }
                  },
                  {
-                     name: "}20",
+                     name: "}18",
                      chargeAmt: 550,
-                     damage: 20,
+                     damage: 18,
                      prepareSprite: 'super_dummy_wide.png',
                      startFunction: () => {
                         this.pullbackScale = 0.8;
@@ -869,7 +869,7 @@
                     }
                  },
                  {
-                     name: "|22",
+                     name: "|20",
                      damage: -1,
                     finishDelay: 2200,
                      chargeAmt: 550,
@@ -940,7 +940,7 @@
                                         this.dummyRightArm.setFrame('super_dummy_leftarm_fist_large.png');
                                         this.dummyRightArm.setRotation(3).setScale(-1.33, 1.38).setDepth(200);
 
-                                        messageBus.publish("selfTakeDamage", 22);
+                                        messageBus.publish("selfTakeDamage", 20);
                                          let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 800);
                                          shinePattern.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 220).setScale(0.7).setDepth(9999).setAlpha(1);
                                          this.addTween({
@@ -1082,24 +1082,6 @@
                     }
                  },
                  {
-                     name: "|10x3",
-                     chargeAmt: 500,
-                     damage: 10,
-                     attackTimes: 3,
-                     prepareSprite: 'super_dummy_swinging.png',
-                     attackSprites: ['super_dummy_swinging_right.png', 'super_dummy_swinging_left.png'],
-                     attackStartFunction: () => {
-                        this.clearPlayerSpellTrack();
-                     },
-                    attackFinishFunction: () => {
-                        this.createPunchEffect();
-                    },
-                    finaleFunction: () => {
-                        this.setSprite('dummy_angry.png');
-                        this.reEnableArms();
-                    }
-                 },
-                 {
                      name: ";8x4",
                      chargeAmt: 550,
                      damage: -1,
@@ -1158,7 +1140,7 @@
                  },
                  {
                      name: "T-POSE",
-                     chargeAmt: 400,
+                     chargeAmt: 450,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -1234,7 +1216,7 @@
                     },
                  },
                  {
-                     name: ";8x8;",
+                     name: ";7x8;",
                      chargeAmt: 700,
                     finishDelay: 6000,
                      damage: -1,
@@ -1329,7 +1311,7 @@
                                                  powEffect.setPosition(gameConsts.halfWidth + xPosOffset2, globalObjects.player.getY() - 200 + yPosOffset2).setDepth(999).setScale(1).setAlpha(1).setRotation(Math.random() - 0.5);
 
                                             }, 45)
-                                            messageBus.publish("selfTakeDamage", 8);
+                                            messageBus.publish("selfTakeDamage", 7);
                                         }, delay)
                                     }
 

@@ -808,7 +808,7 @@
                      },
                  },
                  {
-                     name: "}3+$21",
+                     name: "}3+$15",
                      chargeAmt: 650,
                      finishDelay: 3500,
                      damage: -1,
@@ -823,7 +823,7 @@
                          let okayHandGlow = this.addImage(okayHand.x, okayHand.y, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let timeDamage = 21;
+                         let timeDamage = 15;
                          let damage = 3;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {
@@ -949,7 +949,7 @@
                      },
                  },
                  {
-                     name: "}3+$24",
+                     name: "}3+$18",
                      chargeAmt: 700,
                      finishDelay: 3500,
                      damage: -1,
@@ -966,7 +966,7 @@
                          let okayHandGlow = this.addImage(this.x + 200, this.y + 20, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let timeDamage = 24 + this.extraAttackDamage
+                         let timeDamage = 18 + this.extraAttackDamage
                          let damage = 3 + this.extraAttackDamage;
                          this.attackToStrengthen = undefined;
 
@@ -1236,7 +1236,7 @@
                      },
                  },
                  {
-                     name: "}3+$27",
+                     name: "}3+21",
                      chargeAmt: 750,
                      chargeMult: 2,
                      finishDelay: 3000,
@@ -1253,7 +1253,7 @@
                          let okayHandGlow = this.addImage(okayHand.x, okayHand.y, 'deathfinal', 'okay_glow.png').setScale(0.2).setAlpha(0).setRotation(0);
                          okayHand.setDepth(50);
                          okayHandGlow.setDepth(50);
-                         let timeDamage = 27;
+                         let timeDamage = 21;
                          let damage = 3;
 
                          this.summonHand(okayHand, okayHandGlow, 0.28, 1, () => {

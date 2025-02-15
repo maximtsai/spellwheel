@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 220 : 200;
+         this.health = gameVars.isHardMode ? 215 : 190;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -846,7 +846,7 @@
              [
                  // 3
                  {
-                     name: gameVars.isHardMode ? ";32" : ";30",
+                     name: gameVars.isHardMode ? ";30" : ";25",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1100,
@@ -870,7 +870,7 @@
                          playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
                          this.hasCrushed = true;
-                         this.createCrushAttack(gameVars.isHardMode ? 32 : 30);
+                         this.createCrushAttack(gameVars.isHardMode ? 30 : 25);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -940,12 +940,12 @@
              [
                  // 5
                  {
-                     name: gameVars.isHardMode ? "TIMBER!;44" : "TIMBER!;40",
+                     name: gameVars.isHardMode ? "TIMBER!;40" : "TIMBER!;40",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
                      chargeMult: 2.35,
-                     damage: gameVars.isHardMode ? 44 : 40,
+                     damage: gameVars.isHardMode ? 40 : 40,
                      isBigMove: true,
                      startFunction: () => {
                          this.attackSlownessMult = 2.1;

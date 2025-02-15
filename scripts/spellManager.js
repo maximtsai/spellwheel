@@ -751,7 +751,7 @@ class SpellManager {
             duration: 100,
             alpha: 1,
             onComplete: () => {
-                animation1.isLight = true;
+                animation1.isLight = isLight;
                 messageBus.publish("selfTakeEffect", {
                     name: shieldID,
                     spellID: shieldID,

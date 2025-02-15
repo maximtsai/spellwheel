@@ -516,10 +516,10 @@ let textData3 = {
         "jp": "もういじくり回す必要はありません"
     },
     "deathFight1h": {
-        "en_us": "...HMPH, SHODDY EQUIPMENT",
-        "fr": "... HMPH, ÉQUIPEMENT\nDE MAUVAISE QUALITÉ",
-        "zh_tw": "...哼，以次充好的設備",
-        "zh_cn": "...哼，以次充好的设备",
+        "en_us": "...YOU BROKE MY SCYTHE",
+        "fr": "...TU AS CASSÉ MA FAUX",
+        "zh_tw": "...你損壞了我的鐮刀",
+        "zh_cn": "...你损坏了我的镰刀",
         "ru": "... HMPH, НИЗКОПРОБНОЕ ОБОРУДОВАНИЕ",
         "es": "... HMPH, EQUIPO DE MALA CALIDAD",
         "jp": "...ふんふん、粗悪な機器"

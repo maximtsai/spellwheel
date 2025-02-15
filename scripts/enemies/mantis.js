@@ -27,7 +27,7 @@
          });
      }
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 225 : 210;
+         this.health = gameVars.isHardMode ? 210 : 200;
          this.pullbackDurMult = 0.5;
          this.pullbackScale = 0.99;
          this.pullbackScaleDefault = 0.99;
@@ -48,8 +48,8 @@
      }
 
      initAttacks() {
-        let attackDamages = gameVars.isHardMode ? 14 : 10;
-        let attackTimes = 22;
+        let attackDamages = gameVars.isHardMode ? 15 : 12;
+        let attackTimes = 18;
          this.attacks = [
              [
                  // 0
@@ -231,14 +231,14 @@
             this.gunFlash1.setVisible(true);
             this.gunFlash2.setVisible(true);
         }
-        let flashDelay = 36;
+        let flashDelay = 40;
         for (let i = 1; i <= 6; i++) {
             this.addDelay(() => {
                 if (!this.dead) {
                     let randFrameNum = Math.floor(Math.random() * 5) + 1;
                     let randFrame = 'gunflash_' + randFrameNum + '.png';
-                    let isLeft = i % 2 == 1;
-                    if (i == 1) {
+                    let isLeft = i % 2 === 1;
+                    if (i === 1) {
                         this.gunFlash1.setScale(1.8);
                         this.currGunFlash1 = this.scene.tweens.add({
                             targets: this.gunFlash1,
@@ -247,7 +247,7 @@
                             duration: 100,
                             ease: 'Cubic.easeOut',
                         });
-                    } else if (i == 2) {
+                    } else if (i === 2) {
                         this.gunFlash2.setScale(1.8);
                         this.currGunFlash2 = this.scene.tweens.add({
                             targets: this.gunFlash2,

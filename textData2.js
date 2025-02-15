@@ -520,7 +520,7 @@ let textData2 = {
         "jp": "「これは私の盾、私の盾です! 父の兄の叔母の祖父のいとこの友人の隣人からの家宝ですか!!」"
     },
     "pre_fight_1b": {
-        "en_us": "I can't waste time bartering\nwith this creature, but I\nstill need that shield of his\nfor the journey.",
+        "en_us": "I can't waste time bartering\nwith this creature, but I\ncould still use that shield of\nhis for the journey.",
         "fr": "Je ne peux pas perdre de\ntemps à marchander avec\ncette créature, mais j'ai\ntoujours besoin de son bouclier\npour le voyage.",
         "zh_tw": "我沒有時間與這個怪物進\n行討價還價。我必須拿走\n一切能得到的資源。",
         "zh_cn": "我没有时间与这个怪物进\n行讨价还价。我必須拿走\n一切能得到的資源。",
@@ -754,10 +754,10 @@ let textData2 = {
         "jp": ""
     },
     "level_water_victory_post": {
-        "en_us": "I need something to\ndefend myself with.",
-        "fr": "J'ai besoin de quelque\nchose pour me défendre.",
-        "zh_tw": "我必須找到方法来保護自己",
-        "zh_cn": "我必須找到方法来保護自己",
+        "en_us": "I need a better shield...",
+        "fr": "J'ai besoin d'un meilleur bouclier...",
+        "zh_tw": "我必須找更好的\n方法來保護自己。",
+        "zh_cn": "我必须找更好的\n方法来保护自己。",
         "ru": "",
         "es": "",
         "jp": ""

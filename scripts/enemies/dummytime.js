@@ -180,7 +180,7 @@
              [
                  // 0
                  {
-                     name: ";15x5;",
+                     name: ";12x5;",
                      chargeAmt: 620,
                      finishDelay: 3400,
                      isBigMove: true,
@@ -240,7 +240,7 @@
 
                     },
                     attackFinishFunction: () => {
-                        this.throwWeapon('sword.png', 15, 5);
+                        this.throwWeapon('sword.png', 12, 5);
                     }
                  },
                  {

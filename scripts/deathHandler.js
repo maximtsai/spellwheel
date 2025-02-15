@@ -471,7 +471,7 @@ function playReaperAnim(enemy, customFinFunc, showDarkScreen = true) {
                                                                             setTimeout(() => {
                                                                                 globalObjects.magicCircle.enableMovement();
                                                                                 globalObjects.postFightScreen.createWinScreen(level);
-                                                                            }, 200)
+                                                                            }, 900)
                                                                         }
                                                                     }
                                                                 });

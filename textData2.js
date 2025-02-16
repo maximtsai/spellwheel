@@ -718,10 +718,10 @@ let textData2 = {
         "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_tut_c": {
-        "en_us": "Cast multiple\n\nfor a powerful\nattack.",
-        "fr": "Lancez plusieurs\n\npour une attaque\npuissante",
-        "zh_tw": "施放多個\n\n以進行強\n力攻擊。",
-        "zh_cn": "施放多个\n\n以进行强\n力攻击。",
+        "en_us": "Keep an eye\non the enemy's\nnext action",
+        "fr": "Gardez un œil sur\nle prochain mouvement\nde l'ennemi",
+        "zh_tw": "留意敵人的下一步行動",
+        "zh_cn": "留意敌人的\n下一步行动",
         "ru": "",
         "es": "",
         "jp": ""

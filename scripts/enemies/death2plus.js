@@ -992,7 +992,7 @@
                      }
                  },
                  {
-                     name: "}4x4",
+                     name: "}3x4",
                      chargeAmt: 850,
                      finishDelay: 1000,
                      chargeMult: 2,
@@ -1001,7 +1001,7 @@
                      startFunction: () => {
                          this.pulseHand(3);
                          this.attackToStrengthen = 3;
-                         this.attackToStrengthenStartDmg = 4;
+                         this.attackToStrengthenStartDmg = 3;
                      },
                      attackStartFunction: () => {
                          this.fadeOutCurrentHand();

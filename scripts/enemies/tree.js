@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 215 : 190;
+         this.health = gameVars.isHardMode ? 220 : 200;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -940,12 +940,12 @@
              [
                  // 5
                  {
-                     name: gameVars.isHardMode ? "TIMBER!;40" : "TIMBER!;40",
+                     name: gameVars.isHardMode ? "TIMBER!;30" : "TIMBER!;30",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
                      chargeMult: 2.35,
-                     damage: gameVars.isHardMode ? 40 : 40,
+                     damage: gameVars.isHardMode ? 30 : 30,
                      isBigMove: true,
                      startFunction: () => {
                          this.attackSlownessMult = 2.1;

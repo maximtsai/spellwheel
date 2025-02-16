@@ -22,7 +22,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 125 : 110;
+         this.health = gameVars.isHardMode ? 120 : 100;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -1317,7 +1317,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 115 : 100);
+         this.setMaxHealth(gameVars.isHardMode ? 120 : 110);
          this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'gravedark.png').setDepth(-4);
          this.graves.setVisible(false);
          this.heal(this.healthMax);

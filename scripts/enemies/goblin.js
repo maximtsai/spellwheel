@@ -224,11 +224,11 @@
              [
                  // 0
                  {
-                     name: gameVars.isHardMode ? "}5x2 " : "}4x2 ",
+                     name: gameVars.isHardMode ? "}5x2 " : "}3x2 ",
                      desc: "The goblin waves his\nlittle knife in front\nof your face",
                      chargeAmt: 250,
                      attackTimes: 2,
-                     damage: gameVars.isHardMode ? 5 : 4,
+                     damage: gameVars.isHardMode ? 5 : 3,
                      prepareSprite: "gobbo0.png",
                      attackSprites: ['gobbo0_atk.png'],
                      attackFinishFunction: () => {

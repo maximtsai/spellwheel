@@ -13,7 +13,7 @@
      }
 
      initStatsCustom() {
-         this.health = 700;
+         this.health = 650;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -414,15 +414,18 @@
                     bird = this.addSprite(-999, 0, 'wallenemy', 'bird_2.png');
                 }
             }
-            bird.alpha = 1;
-            bird.visible = true;
-            bird.setDepth(13).setScale(this.trueStartScale * 0.25 + 0.55);
+
+            bird.setScale(this.trueStartScale * 0.25 + 0.55);
             if (!isBigPoop) {
                 bird.setFrame('bird_2.png');
             } else {
                 bird.scaleX += 0.08;
                 bird.scaleY += 0.08;
             }
+            bird.alpha = 1;
+            bird.active = true;
+            bird.visible = true;
+            bird.setDepth(13);
             bird.y = 10 + Math.random() * 120;
             let isLeft = i % 2 === 0;
             if (!isLeft) {
@@ -635,7 +638,7 @@
              [
                  // 1
                  {
-                     name: ";40",
+                     name: ";30",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1100,
                      damage: -1,
                      chargeMult: 1.5,
@@ -644,7 +647,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                          this.addTimeout(() => {
-                             this.throwWallChunk('wall_chunk.png', 40);
+                             this.throwWallChunk('wall_chunk.png', 30);
                          }, 400)
                      },
                      attackFinishFunction: () => {
@@ -658,7 +661,7 @@
              [
                  // 2
                  {
-                     name: gameVars.isHardMode ? ";60" : ";50",
+                     name: gameVars.isHardMode ? ";50" : ";40",
                      chargeAmt: gameVars.isHardMode ? 1050 : 1150,
                      damage: -1,
                      chargeMult: 1.5,
@@ -667,7 +670,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                         this.addTimeout(() => {
-                            this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 60 : 50);
+                            this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 50 : 40);
                         }, 300);
                      },
                      attackFinishFunction: () => {
@@ -681,7 +684,7 @@
              [
                  // 3
                  {
-                     name: gameVars.isHardMode ? ";80" : ";60",
+                     name: gameVars.isHardMode ? ";60" : ";40",
                      chargeAmt: gameVars.isHardMode ? 1100 : 1200,
                      damage: -1,
                      chargeMult: 1.5,
@@ -690,7 +693,7 @@
                          this.pullbackScale = 0.99;
                          this.attackScale = 1.04;
                          this.addTimeout(() => {
-                             this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 80 : 60, 1.25);
+                             this.throwWallChunk('wall_chunk_2.png', gameVars.isHardMode ? 60 : 40, 1.25);
                          }, 300);
                      },
                      attackFinishFunction: () => {

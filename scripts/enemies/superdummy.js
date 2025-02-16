@@ -753,7 +753,7 @@
              [
                  {
                      name: "|6x2",
-                     chargeAmt: 450,
+                     chargeAmt: 425,
                      damage: 6,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -776,7 +776,7 @@
                  },
                  {
                      name: "}18",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      damage: 18,
                      prepareSprite: 'super_dummy_wide.png',
                      startFunction: () => {
@@ -822,7 +822,7 @@
                  },
                  {
                      name: "BUFF UP",
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      isPassive: true,
                      damage: -1,
                      chargeMult: 2,
@@ -872,7 +872,7 @@
                      name: "|20",
                      damage: -1,
                     finishDelay: 2200,
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      startFunction: () => {
                         this.pullbackScale = 0.99;
                         this.attackScale = 1.01;
@@ -1040,7 +1040,7 @@
                  {
                      name: "BUFF UP",
                      isPassive: true,
-                     chargeAmt: 700,
+                     chargeAmt: 600,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {
@@ -1063,7 +1063,7 @@
                  },
                  {
                      name: "|10x2",
-                     chargeAmt: 450,
+                     chargeAmt: 425,
                      damage: 10,
                      attackTimes: 2,
                      prepareSprite: 'super_dummy_swinging.png',
@@ -1083,7 +1083,7 @@
                  },
                  {
                      name: ";8x4",
-                     chargeAmt: 550,
+                     chargeAmt: 500,
                      damage: -1,
                     finishDelay: 3300,
                      isBigMove: true,
@@ -1140,7 +1140,7 @@
                  },
                  {
                      name: "T-POSE",
-                     chargeAmt: 450,
+                     chargeAmt: 425,
                      damage: -1,
                      chargeMult: 2,
                      startFunction: () => {

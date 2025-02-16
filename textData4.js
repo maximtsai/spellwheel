@@ -488,6 +488,26 @@ let textData4 = {
         "es": "¿Ten piedad, por favor?",
         "jp": "どうか慈悲をお願いします。"
     },
+    "magician_e2": {
+        "en_us": "Not... even a scratch?",
+        "fr": "Pas...même une égratignure ?",
+        "zh_tw": "連道傷痕都沒有？",
+        "zh_cn": "连道伤痕都没有？",
+        "ru": "О... ты все еще... здесь?",
+        "es": "Oh... Todavía estás... ¿aquí?",
+        "jp": "おや。。。まだ...ここは。"
+    },
+    "magician_f2": {
+        "en_us": "Seems I was never your match",
+        "fr": "Je n'étais jamais à ta mesure.",
+        "zh_tw": "看來我從來不是對手。",
+        "zh_cn": "看来我从不是对手。",
+        "ru": "Боюсь, у меня мало времени.",
+        "es": "Me temo que mi tiempo es corto.",
+        "jp": "私の時間は短いです、私は恐れています。"
+    },
+
+
     "shield_dummy_overwrite": {
         "en_us": "Only one shield\ncan be active\nper spot.",
         "fr": "Un seul bouclier\npeut être actif\npar endroit.",

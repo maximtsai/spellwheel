@@ -452,7 +452,7 @@
                  this.currentAttackSetIndex = 2;
                  this.nextAttackIndex = 1;
                  this.setAsleep();
-                 let usedLangText = globalObjects.player.getHealth() >= 40 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
+                 let usedLangText = globalObjects.player.getHealth() >= 30 ? getLangText('deathFight2d') : getLangText('deathFight2dx')
 
                  if (!globalObjects.player.isDead()) {
                      globalObjects.bannerTextManager.setDialog([usedLangText]);

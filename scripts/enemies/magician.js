@@ -1026,7 +1026,7 @@
 
     startChargingUltimate() {
         let damageAmt = gameVars.isHardMode ? 3 : 2;
-        let totalAmt = gameVars.isHardMode ? 20 : 20;
+        let totalAmt = gameVars.isHardMode ? 18 : 18;
         let angleDivider = gameVars.isHardMode ? 10 : 10;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
@@ -1071,12 +1071,12 @@
                             ease: 'Quart.easeOut'
                         });
                         let numAttacks = (i + 1) * 2;
-                        if (i < 6) {
+                        if (i < 5) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
-                        } else if (i < 12) {
+                        } else if (i < 11) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 19) {
+                        } else if (i < 17) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
@@ -1114,7 +1114,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_f2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1132,7 +1136,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_g2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();

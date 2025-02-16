@@ -1542,7 +1542,7 @@
         if (this.dead) {
              return;
         }
-         switchBackground('tunnel1.webp');
+         switchBackground('tunnel.webp');
 
         super.die();
         if (this.blush) {

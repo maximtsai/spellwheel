@@ -48,19 +48,19 @@ let textData = {
         "jp": "14ダメージを与える"
     },
     "matter_enhance_desc": {
-        "en_us": "Next attack\ngains +6 DMG",
-        "fr": "Prochaine\nattaque gagne\n+6 dégâts.",
-        "zh_tw": "下一次攻擊\n獲得 +6 傷害",
-        "zh_cn": "下一次攻击\n获得 +6 伤害",
+        "en_us": "Attacks gain +2 DMG",
+        "fr": "Les attaques\ngagnent +2 DMG",
+        "zh_tw": "攻擊獲得 +2 傷害",
+        "zh_cn": "攻击获得 +2 伤害",
         "ru": "Ваша cледующая\nатака наносит\n+6 урона",
         "es": "El siguiente\nataque obtiene\n+6 de daño",
         "jp": "次の通常攻撃は\n+6ダメージを獲得"
     },
     "matter_enhance_desc_long": {
-        "en_us": "Next attack gains +6 DMG",
-        "fr": "Prochaine attaque gagne +6 dégâts.",
-        "zh_tw": "下一次攻擊獲得 +6 傷害",
-        "zh_cn": "下一次攻击获得 +6 伤害",
+        "en_us": "Attacks gain +2 DMG",
+        "fr": "Les attaques gagnent +2 DMG",
+        "zh_tw": "攻擊獲得 +2 傷害",
+        "zh_cn": "攻擊獲得 +2 傷害",
         "ru": "Ваша cледующая атака наносит +6 урона",
         "es": "El siguiente ataque obtiene +6 de daño",
         "jp": "次の通常攻撃は+6ダメージを獲得"
@@ -291,19 +291,19 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Lose 3 max health.\nPermanently\nincrease attack\ndamage by 2.",
-        "fr": "Perdez 3 points de\nvie max. Augmentez\ndéfinitivement les\ndégâts d'attaque\nde 2.",
-        "zh_tw": "犧牲 3 點總生命\n值。攻擊永久獲\n得+2 傷害。",
-        "zh_cn": "牺牲 3 点总生命\n值。攻击永久获\n得+2 伤害。",
+        "en_us": "Sacrifice 1 max\nHP. Next attack\ndeals +10 damage",
+        "fr": "Sacrifiez 1 PV\nmax. La prochaine\nattaque inflige\n+10 dégâts",
+        "zh_tw": "犧牲 1 點總生命\b值。下一次攻擊造成\n+10 點傷害",
+        "zh_cn": "牺牲 1 点总生命\n值。下一次攻击造成\n+10 伤害",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
         "es": "Tu ataque gana\npermanentemente\n+1 daño",
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Lose 3 max health. Permanently\nincrease attack damage by 2.",
-        "fr": "Perdez 3 points de vie max. Augmentez\ndéfinitivement les dégâts d'attaque de 2.",
-        "zh_tw": "犧牲 3 點總生命值。\n攻擊永久獲得+2 傷害。",
-        "zh_cn": "牺牲 3 点总生命值。\n攻击永久获得+2 伤害。",
+        "en_us": "Sacrifice 1 max HP.\nNext attack deals +10 damage",
+        "fr": "Sacrifiez 1 PV max.\nLa prochaine attaque inflige +10 dégâts",
+        "zh_tw": "犧牲 1 點總生命值。\n下一次攻擊造成 +10 點傷害",
+        "zh_cn": "牺牲 1 点总生命值。\n下一次攻击造成 +10 伤害",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
@@ -327,19 +327,19 @@ let textData = {
         "jp": "1回の攻撃を完全に無効に\nするシールドを作る"
     },
     "void_reinforce_desc": {
-        "en_us": "HEAL to full,\nbut lose 10\nmax HP",
-        "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
-        "zh_tw": "完全治癒自己，\n但失去10 點總\n生命值",
-        "zh_cn": "完全治愈自己，\n但失去10 点总\n生命值",
+        "en_us": "HEAL to full,\nbut lose 8\nmax HP",
+        "fr": "Soignez-vous\ncomplètement, mais\nperdez 8 PV max",
+        "zh_tw": "完全治癒自己，\n但失去8 點總\n生命值",
+        "zh_cn": "完全治愈自己，\n但失去8 点总\n生命值",
         "ru": "Полностью восстановите\nздоровье, но потеряйте\n10 единиц максимального\nздоровья",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
     },
     "void_reinforce_desc_long": {
-        "en_us": "HEAL to full, but lose 10 max HP",
-        "fr": "Soignez-vous complètement,\nmais perdez 10 PV max",
-        "zh_tw": "完全治癒自己，但失去 10 點总生命值",
-        "zh_cn": "完全治愈自己，但失去 10 点总生命值",
+        "en_us": "HEAL to full, but lose 8 max HP",
+        "fr": "Soignez-vous complètement,\nmais perdez 8 PV max",
+        "zh_tw": "完全治癒自己，但失去 8 點总生命值",
+        "zh_cn": "完全治愈自己，但失去 8 点总生命值",
         "ru": "Полностью восстановите здоровье, но\nпотеряйте 10 единиц максимального здоровья",
         "es": "Se cura por completo, pero\npierde 10 puntos de salud máximos.",
         "jp": "完全に回復するが、最大HPの10を失う"
@@ -498,10 +498,10 @@ let textData = {
         "jp": "固体ダメージを与える岩の球を召喚する。シンプルだけど効果的。"
     },
     "matter_tut_enhance_desc": {
-        "en_us": "Makes your next attack deal\nextra damage.",
-        "fr": "Votre prochaine attaque inflige\ndes dégâts supplémentaires.",
-        "zh_tw": "使你的下一次攻擊造成\n額外的傷害。",
-        "zh_cn": "使你的下一次攻击造成\n额外的伤害。",
+        "en_us": "Gain extra attack power\nfor the rest of the fight.",
+        "fr": "Gagnez en puissance\nd'attaque pour le reste\ndu combat.",
+        "zh_tw": "在剩餘的戰鬥中獲得\n攻擊力。",
+        "zh_cn": "在剩余的战斗中获得\n攻击力。",
         "ru": "Ваша следующая атака наносит\nдополнительный урон.",
         "es": "",
         "jp": ""
@@ -696,10 +696,10 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Sacrifice some health to\nincrease your attack damage\nfor the rest of the fight. Good\nfor long battles.",
+        "en_us": "Sacrifice some health to\ndramatically increase your\nnext attack's power.",
         "fr": "Sacrifiez un peu de santé\npour augmenter les dégâts de\nvotre attaque pour le reste du\ncombat. Idéal pour les longues\nbatailles.",
-        "zh_tw": "牺牲一些生命值来永\n久增加你的攻擊力。\n适合长时间战斗。",
-        "zh_cn": "牺牲一些生命值来永\n久增加你的攻击力。\n适合长时间战斗。",
+        "zh_tw": "犧牲一些生命值來\n大幅增加下一次攻擊\n的威力。",
+        "zh_cn": "牺牲一些生命值来\n大幅增加下一次攻击\n的威力。",
         "ru": "Увеличьте свой урон от атаки\nдо конца боя.",
         "es": ".",
         "jp": ""
@@ -822,7 +822,7 @@ let textData = {
         "jp": "。"
     },
     "rune_matter_rune_strike": "HEAVY STRIKE",
-    "rune_matter_rune_enhance": "ADD DAMAGE",
+    "rune_matter_rune_enhance": "ADD STRENGTH",
     "rune_matter_rune_protect": "STONE SHIELD",
     "rune_matter_rune_reinforce": "THORN SKIN",
     "rune_matter_rune_unload": "EARTH FORCE",
@@ -837,7 +837,7 @@ let textData = {
     "rune_time_rune_reinforce": "UNDO WOUNDS",
     "rune_time_rune_unload": "TIME FREEZE",
     "rune_void_rune_strike": "DARK STRIKE",
-    "rune_void_rune_enhance": "ADD POWER",
+    "rune_void_rune_enhance": "ADD DESTRUCTION",
     "rune_void_rune_protect": "NEGATION SHIELD",
     "rune_void_rune_reinforce": "REMAKE SELF",
     "rune_void_rune_unload": "UN-MAKE",

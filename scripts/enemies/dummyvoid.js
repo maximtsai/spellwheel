@@ -116,7 +116,7 @@ class Dummyvoid extends Dummypractice {
             [
                 // 0
                 {
-                    name: "|10x6",
+                    name: "|9x6",
                     chargeAmt: 500,
                     finishDelay: 1200,
                     chargeMult: 10,
@@ -131,7 +131,7 @@ class Dummyvoid extends Dummypractice {
 
                     },
                     attackFinishFunction: () => {
-                        this.throwTriple('sword.png', 10, 2);
+                        this.throwTriple('sword.png', 9, 2);
                     }
                 },
                 {

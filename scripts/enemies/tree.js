@@ -890,7 +890,7 @@
                  // 4
                  {
                      name: " STARE...",
-                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     chargeAmt: gameVars.isHardMode ? 200 : 230,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -908,7 +908,7 @@
                      name: "|3x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 500 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');

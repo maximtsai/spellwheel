@@ -89,10 +89,10 @@
         this.lightShineRight = this.addSprite(gameConsts.halfWidth + 220, gameConsts.halfHeight - 320, 'blurry', 'star_blur_sharp.png').setDepth(-1).setAlpha(0).setRotation(0.5);
         this.lightShineRightTop = this.addSprite(this.lightShineRight.x, this.lightShineRight.y, 'blurry', 'star_blur.png').setDepth(12).setAlpha(0).setRotation(this.lightShineRight.rotation);
 
-        this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-5 DMG', 32, 1);
+        this.minusDamage1 = this.addBitmapText(this.lightShineLeft.x, this.lightShineLeft.y + 5, 'block', '-4 DMG', 32, 1);
         this.minusDamage1.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
 
-        this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-5 DMG', 32, 1);
+        this.minusDamage2 = this.addBitmapText(this.lightShineRight.x, this.lightShineRight.y + 5, 'block', '-4 DMG', 32, 1);
         this.minusDamage2.setOrigin(0.5, -0.2).setAlpha(0).setDepth(12);
 
         this.laserCharge = this.addSprite(this.sprite.x, this.sprite.y - 15, 'enemies', 'robot_charge.png').setDepth(11).setAlpha(0);
@@ -677,7 +677,7 @@
                             scaleY: 2,
                             onComplete: () => {
                                 messageBus.publish('showCircleShadow', 0.6);
-                                this.setDefense(5);
+                                this.setDefense(4);
                                 this.addTimeout(() => {
                                     globalObjects.bannerTextManager.setDialog([getLangText("killer_robot_a"), getLangText("killer_robot_b")]);
                                     this.minusDamage1.setAlpha(0.5).setRotation(-0.12);
@@ -876,7 +876,7 @@
                                         } else {
                                             // dialogToSet = ["The stage lights are\nalready at max brightness."];
                                         }
-                                        this.setDefense(5);
+                                        this.setDefense(4);
 
                                         this.minusDamage1.setAlpha(0.55).setRotation(0.14);
                                         this.minusDamage2.setAlpha(0.55).setRotation(-0.14);

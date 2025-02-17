@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 230 : 210;
+         this.health = gameVars.isHardMode ? 200 : 180;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -732,7 +732,7 @@
                      name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 410,
+                     chargeAmt: 370,
                      damage: -1,
                      startFunction: () => {
 
@@ -824,7 +824,7 @@
                      name: "|3x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -846,7 +846,7 @@
              [
                  // 3
                  {
-                     name: gameVars.isHardMode ? ";32" : ";30",
+                     name: gameVars.isHardMode ? ";30" : ";25",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1100,
@@ -870,7 +870,7 @@
                          playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
                          this.hasCrushed = true;
-                         this.createCrushAttack(gameVars.isHardMode ? 32 : 30);
+                         this.createCrushAttack(gameVars.isHardMode ? 30 : 25);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;
@@ -890,7 +890,7 @@
                  // 4
                  {
                      name: " STARE...",
-                     chargeAmt: gameVars.isHardMode ? 250 : 300,
+                     chargeAmt: gameVars.isHardMode ? 200 : 230,
                      damage: -1,
                      isPassive: true,
                      attackStartFunction: () => {
@@ -908,7 +908,7 @@
                      name: "|3x5 ",
                      announceName: "LEAF STORM",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 500 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -940,12 +940,12 @@
              [
                  // 5
                  {
-                     name: gameVars.isHardMode ? "TIMBER!;44" : "TIMBER!;40",
+                     name: gameVars.isHardMode ? "TIMBER!;30" : "TIMBER!;30",
                      announceName: "TIMBER!!!",
                      desc: "The tree tries to crush you",
                      chargeAmt: 1250,
                      chargeMult: 2.35,
-                     damage: gameVars.isHardMode ? 44 : 40,
+                     damage: gameVars.isHardMode ? 30 : 30,
                      isBigMove: true,
                      startFunction: () => {
                          this.attackSlownessMult = 2.1;
@@ -1091,6 +1091,8 @@
          if (this.dead) {
              return;
          }
+        playSound('tree_rustle', 0.7).setSeek(0.5).detune = -400;
+
          super.die();
          this.triggerFallen();
          if (this.currAnim) {

@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 70 : 60;
+         this.health = gameVars.isHardMode ? 55 : 45;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -322,14 +322,7 @@
                  }
              });
         }
-        if (this.rune3) {
-            this.addTween({
-                targets: [this.rune3, this.rune4],
-                alpha: 0,
-                ease: 'Cubic.easeIn',
-                duration: 1300,
-            });
-        }
+
         globalObjects.textPopupManager.hideInfoText();
     }
 
@@ -398,14 +391,6 @@
                     spellListener.unsubscribe();
                     this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
-                        if (this.rune3) {
-                            this.addTween({
-                                targets: [this.rune3, this.rune4],
-                                alpha: 0,
-                                ease: 'Cubic.easeIn',
-                                duration: 1300,
-                            });
-                        }
                     }, 1200);
                 });
                 this.addTimeout(() => {
@@ -439,42 +424,10 @@
             this.shownTut5 = true;
             globalObjects.textPopupManager.setInfoText(gameConsts.width, 262, getLangText('level1_tut_c'), 'right');
             let yOffset = (language === 'zh_cn' || language === 'zh_tw') ? globalObjects.textPopupManager.getBoxCenterPos() + 24 : globalObjects.textPopupManager.getBoxCenterPos() + 25;
-            this.rune3 = this.addSprite(globalObjects.textPopupManager.getCenterPos() - 24, yOffset, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-            this.rune4 = this.addSprite(globalObjects.textPopupManager.getCenterPos() + 24, yOffset, 'circle', 'bright_rune_enhance.png').setDepth(globalObjects.textPopupManager.getDepth() + 1).setScale(0.75).setAlpha(0);
-            this.addTween({
-                targets: [this.rune3, this.rune4],
-                alpha: 1,
-                duration: 200,
-                completeDelay: 200,
-                onComplete: () => {
-                    this.addTween({
-                        targets: [this.rune3, this.rune4],
-                        scaleX: 1,
-                        scaleY: 1,
-                        ease: 'Quart.easeOut',
-                        duration: 500,
-                        onComplete: () => {
-                            this.addTween({
-                                targets: [this.rune3, this.rune4],
-                                scaleX: 0.82,
-                                scaleY: 0.82,
-                                ease: 'Back.easeOut',
-                                duration: 300,
-                            });
-                        }
-                    });
-                }
-            });
 
             this.addTimeout(() => {
                 let spellListener = this.addSubscription('spellClicked', () => {
                     spellListener.unsubscribe();
-                    this.addTween({
-                        targets: [this.rune3, this.rune4],
-                        alpha: 0,
-                        ease: 'Cubic.easeIn',
-                        duration: 1300,
-                    });
                     this.addTimeout(() => {
                         globalObjects.textPopupManager.hideInfoText();
                     }, 1200);
@@ -609,10 +562,7 @@
          if (this.rune2) {
              this.rune2.destroy();
          }
-         if (this.rune3) {
-             this.rune3.destroy();
-             this.rune4.destroy();
-         }
+
          if (this.extrasOnDie) {
             for (let i = 0; i < this.extrasOnDie.length; i++) {
                 this.extrasOnDie[i].destroy();
@@ -989,7 +939,7 @@
                      }
                  },
                  {
-                     name: "HEAL\\30",
+                     name: "HEAL\\20",
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
@@ -1005,12 +955,12 @@
                      },
                      finaleFunction: () => {
                          this.stopBreathTween(false);
-                        this.healAnim(30);
+                        this.healAnim(20);
                      }
                  },
                  {
                      name: gameVars.isHardMode ? "VERY ANGRY;25" : "VERY ANGRY;20",
-                     chargeAmt: 405,
+                     chargeAmt: 445,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
                      startFunction: () => {
@@ -1058,7 +1008,7 @@
                  },
                  {
                      name: "HEAL\\15",
-                     chargeAmt: 300,
+                     chargeAmt: 325,
                      damage: 0,
                      startFunction: () => {
                          this.startBreathTween();
@@ -1229,6 +1179,9 @@
                                                      alpha: 0,
                                                      completeDelay: 500,
                                                      onComplete: () => {
+                                                        if (this.dead) {
+                                                            return;
+                                                        }
                                                          playSound('ringknell', 0.9)
                                                          for (let i = 0; i < 4; i++) {
                                                              let startRot = 0.5;

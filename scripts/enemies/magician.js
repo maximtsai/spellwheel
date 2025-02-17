@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 100;
+         this.health = gameVars.isHardMode ? 110 : 90;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -1025,12 +1025,12 @@
     }
 
     startChargingUltimate() {
-        let damageAmt = gameVars.isHardMode ? 3 : 2;
-        let totalAmt = gameVars.isHardMode ? 20 : 20;
+        let damageAmt = gameVars.isHardMode ? 3 : 3;
+        let totalAmt = gameVars.isHardMode ? 15 : 12;
         let angleDivider = gameVars.isHardMode ? 10 : 10;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
-                delay: i * 190,
+                delay: i * 200,
                 duration: 300,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
@@ -1071,18 +1071,18 @@
                             ease: 'Quart.easeOut'
                         });
                         let numAttacks = (i + 1) * 2;
-                        if (i < 6) {
+                        if (i < 4) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
-                        } else if (i < 12) {
+                        } else if (i < 8) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 19) {
+                        } else if (i < 111) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
                             this.attackName.setText("}}}}" + damageAmt + "x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 7;
+                            this.nextAttack.chargeMult = 6.25;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1114,7 +1114,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_f2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1132,7 +1136,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_g2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1264,7 +1272,7 @@
             [
                 // 2
                 {
-                     name: gameVars.isHardMode ? "}3x1}" : "}2x1}",
+                     name: gameVars.isHardMode ? "}3x1}" : "}3x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,

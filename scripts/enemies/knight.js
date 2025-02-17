@@ -22,7 +22,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 140 : 125;
+         this.health = gameVars.isHardMode ? 120 : 100;
          this.eyeObjects = [];
          this.pullbackScale = 0.92;
          this.attackScale = 1.11;
@@ -1161,10 +1161,10 @@
                      }
                  },
                  {
-                     name: "|7 ",
+                     name: "|8 ",
                      announceName: "void strike",
                      chargeAmt: 750,
-                     damage: 7,
+                     damage: 8,
                      chargeMult: 1.5,
                      attackSprites: ['void_knight_attack.png'],
                      startFunction: () => {
@@ -1223,7 +1223,7 @@
              [
                  // 5
                 {
-                     name: gameVars.isHardMode ? "VOID SHIELD #7" : "VOID SHIELD #6",
+                     name: gameVars.isHardMode ? "VOID SHIELD #6" : "VOID SHIELD #6",
                      announceName: "VOID SHIELD",
                      chargeAmt: 800,
                      isPassive: true,
@@ -1232,7 +1232,7 @@
                      prepareSprite: 'void_knight_3.png',
                      damage: -1,
                      attackFinishFunction: () => {
-                         this.createVoidShield(gameVars.isHardMode ? 7 : 6, true);
+                         this.createVoidShield(gameVars.isHardMode ? 6 : 6, true);
                      },
                      finaleFunction: () => {
                          this.voidTentacleFront.visible = true;
@@ -1281,11 +1281,11 @@
                      }
                  },
                  {
-                     name: "|12 ",
+                     name: "|14 ",
                      announceName: "ASSAIL",
                      chargeAmt: 500,
                      chargeMult: 1.6,
-                     damage: 12,
+                     damage: 14,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -1320,11 +1320,11 @@
                      }
                  },
                  {
-                     name: "|14 ",
+                     name: "|16 ",
                      announceName: "ASSAIL",
                      chargeAmt: 550,
                      chargeMult: 1.6,
-                     damage: 14,
+                     damage: 16,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -1359,11 +1359,11 @@
                      }
                  },
                  {
-                     name: "|16 ",
+                     name: "|18 ",
                      announceName: "ASSAIL",
                      chargeAmt: 600,
                      chargeMult: 1.6,
-                     damage: 16,
+                     damage: 18,
                      prepareSprite: 'void_knight_3.png',
                      attackSprites: ['void_knight_2.png'],
                      attackFinishFunction: () => {
@@ -1442,7 +1442,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 125 : 110);
+         this.setMaxHealth(gameVars.isHardMode ? 120 : 100);
          this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'gravedark.png').setDepth(-4);
          this.graves.setVisible(false);
          this.heal(this.healthMax);

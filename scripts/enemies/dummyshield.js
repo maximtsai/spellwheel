@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 70;
+        this.health = 65;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -480,7 +480,7 @@
                     },
                  },
                  {
-                     name: ";30",
+                     name: ";24",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
@@ -498,11 +498,11 @@
                     attackFinishFunction: () => {
                         let throwSprite = 'dummy_dead.png';
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 30, 1);
+                        this.throwWeapon(throwSprite, 24, 1);
                     }
                  },
                  {
-                     name: ";12x3",
+                     name: ";10x3",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
@@ -520,7 +520,7 @@
                     attackFinishFunction: () => {
                         let throwSprite = 'sword.png';
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 12, 3);
+                        this.throwWeapon(throwSprite, 10, 3);
                     }
                 },
                  {

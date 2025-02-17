@@ -488,8 +488,6 @@ let textData3 = {
         "es": "DESPEDIDA",
         "jp": "お別れ"
     },
-
-
     "magician_death": {
         "en_us": "TIME'S UP",
         "fr": "LE TEMPS EST ÉCOULÉ",

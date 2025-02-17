@@ -69,7 +69,7 @@ class LesserDummy extends Enemy {
     }
 
     initStatsCustom() {
-        this.health = 36;
+        this.health = 30;
         this.isAsleep = true;
     }
 

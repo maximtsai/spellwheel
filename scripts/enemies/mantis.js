@@ -48,7 +48,7 @@
      }
 
      initAttacks() {
-        let attackDamages = gameVars.isHardMode ? 15 : 12;
+        let attackDamages = gameVars.isHardMode ? 14 : 12;
         let attackTimes = 18;
          this.attacks = [
              [
@@ -231,7 +231,7 @@
             this.gunFlash1.setVisible(true);
             this.gunFlash2.setVisible(true);
         }
-        let flashDelay = 40;
+        let flashDelay = 52;
         for (let i = 1; i <= 6; i++) {
             this.addDelay(() => {
                 if (!this.dead) {

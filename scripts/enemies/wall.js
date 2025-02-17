@@ -13,7 +13,7 @@
      }
 
      initStatsCustom() {
-         this.health = 650;
+         this.health = 600;
          this.pullbackScale = 0.9999;
          this.attackScale = 1;
          this.isAsleep = true;
@@ -137,7 +137,7 @@
              // this.setDefaultSprite('wall_2.png');
              this.initEye1();
              this.birdFalls();
-         } else if (this.health <= 500 && !this.firstCanCrumble) {
+         } else if (this.health <= 450 && !this.firstCanCrumble) {
              this.firstCanCrumble = true;
              this.setDefaultSprite('wall_3.png');
              this.closeEyes(0, () => {
@@ -167,7 +167,7 @@
                  this.eyes2.startOffsetY = -4 * this.trueStartScale;
                  this.reOpenEyes()
              })
-         } else if (this.health <= 100 && !this.thirdCanCrumble) {
+         } else if (this.health <= 150 && !this.thirdCanCrumble) {
              this.setDefaultSprite('wall_5.png');
              this.thirdCanCrumble = true;
              this.eyes1.setVisible(false);

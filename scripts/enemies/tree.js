@@ -15,7 +15,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 220 : 200;
+         this.health = gameVars.isHardMode ? 200 : 180;
          this.isAsleep = true;
          this.leafObjects = [];
          this.pullbackScale = 0.99;
@@ -732,7 +732,7 @@
                      name: "}10 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
-                     chargeAmt: 410,
+                     chargeAmt: 370,
                      damage: -1,
                      startFunction: () => {
 
@@ -824,7 +824,7 @@
                      name: "|3x5 ",
                      announceName: "LEAF SHOWER",
                      desc: "The tree showers you with sharp leaves",
-                     chargeAmt: gameVars.isHardMode ? 500 : 550,
+                     chargeAmt: gameVars.isHardMode ? 450 : 500,
                      damage: 0,
                      attackStartFunction: () => {
                          playSound('tree_sfx');
@@ -1091,6 +1091,8 @@
          if (this.dead) {
              return;
          }
+        playSound('tree_rustle', 0.7).setSeek(0.5).detune = -400;
+
          super.die();
          this.triggerFallen();
          if (this.currAnim) {

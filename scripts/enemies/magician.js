@@ -1025,12 +1025,12 @@
     }
 
     startChargingUltimate() {
-        let damageAmt = gameVars.isHardMode ? 3 : 2;
-        let totalAmt = gameVars.isHardMode ? 18 : 18;
+        let damageAmt = gameVars.isHardMode ? 3 : 3;
+        let totalAmt = gameVars.isHardMode ? 15 : 12;
         let angleDivider = gameVars.isHardMode ? 10 : 10;
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
-                delay: i * 190,
+                delay: i * 200,
                 duration: 300,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
@@ -1071,18 +1071,18 @@
                             ease: 'Quart.easeOut'
                         });
                         let numAttacks = (i + 1) * 2;
-                        if (i < 5) {
+                        if (i < 4) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
-                        } else if (i < 11) {
+                        } else if (i < 8) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 17) {
+                        } else if (i < 111) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
                             this.attackName.setText("}}}}" + damageAmt + "x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 7;
+                            this.nextAttack.chargeMult = 6.25;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1272,7 +1272,7 @@
             [
                 // 2
                 {
-                     name: gameVars.isHardMode ? "}3x1}" : "}2x1}",
+                     name: gameVars.isHardMode ? "}3x1}" : "}3x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,

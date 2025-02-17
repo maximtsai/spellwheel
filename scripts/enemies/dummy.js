@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 65 : 55;
+         this.health = gameVars.isHardMode ? 55 : 45;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -938,7 +938,7 @@
                      }
                  },
                  {
-                     name: "HEAL\\30",
+                     name: "HEAL\\20",
                      chargeAmt: 315,
                      damage: 0,
                      startFunction: () => {
@@ -954,12 +954,12 @@
                      },
                      finaleFunction: () => {
                          this.stopBreathTween(false);
-                        this.healAnim(30);
+                        this.healAnim(20);
                      }
                  },
                  {
                      name: gameVars.isHardMode ? "VERY ANGRY;25" : "VERY ANGRY;20",
-                     chargeAmt: 405,
+                     chargeAmt: 445,
                      damage: gameVars.isHardMode ? 25 : 20,
                      isBigMove: true,
                      startFunction: () => {
@@ -1007,7 +1007,7 @@
                  },
                  {
                      name: "HEAL\\15",
-                     chargeAmt: 300,
+                     chargeAmt: 325,
                      damage: 0,
                      startFunction: () => {
                          this.startBreathTween();
@@ -1178,6 +1178,9 @@
                                                      alpha: 0,
                                                      completeDelay: 500,
                                                      onComplete: () => {
+                                                        if (this.dead) {
+                                                            return;
+                                                        }
                                                          playSound('ringknell', 0.9)
                                                          for (let i = 0; i < 4; i++) {
                                                              let startRot = 0.5;

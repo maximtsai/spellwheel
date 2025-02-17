@@ -321,9 +321,9 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 400 : 360;
-         this.criticalThreshold = 65;
-         this.nextShieldHealth = gameVars.isHardMode ? 100 : 90;
+         this.health = gameVars.isHardMode ? 350 : 320;
+         this.criticalThreshold = 60;
+         this.nextShieldHealth = gameVars.isHardMode ? 100 : 80;
          this.shieldsBroken = 0;
          this.missileObjects = [];
          this.attackEase = "Quad.easeOut";

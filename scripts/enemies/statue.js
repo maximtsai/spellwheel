@@ -48,7 +48,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 270 : 250;
+         this.health = gameVars.isHardMode ? 260 : 230;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -714,80 +714,80 @@
                      damage: 0,
                  },
                  {
-                     name: "}3x2}",
-                     chargeAmt: 500 + hardModeCharge,
+                     name: "}4x2}",
+                     chargeAmt: 550 + hardModeCharge,
                      finishDelay: 1000,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 1);
+                         this.fireVoidAttacks(4, 1);
                      }
                  },
                  {
-                     name: "}3x4}",
-                     chargeAmt: 550 + hardModeCharge,
+                     name: "}4x4}",
+                     chargeAmt: 600 + hardModeCharge,
                      finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 2);
+                         this.fireVoidAttacks(4, 2);
                      }
                  },
                  {
-                     name: "}3x6}",
-                     chargeAmt: 600 + hardModeCharge,
+                     name: "}4x6}",
+                     chargeAmt: 650 + hardModeCharge,
                      finishDelay: 2200,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 3);
+                         this.fireVoidAttacks(4, 3);
                      }
                  },
                  {
-                     name: "}}3x8}}",
-                     chargeAmt: 650 + hardModeCharge,
+                     name: "}}4x8}}",
+                     chargeAmt: 700 + hardModeCharge,
                      finishDelay: 2800,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 4);
+                         this.fireVoidAttacks(4, 4);
                      }
                  },
                  {
-                     name: "}}3x10}}",
-                     chargeAmt: 700 + hardModeCharge,
+                     name: "}}4x10}}",
+                     chargeAmt: 800 + hardModeCharge,
                      finishDelay: 3200,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 5);
+                         this.fireVoidAttacks(4, 5);
                      }
                  },
                  {
-                     name: "}}3x12}}",
-                     chargeAmt: 750 + hardModeCharge,
+                     name: "}}4x12}}",
+                     chargeAmt: 900 + hardModeCharge,
                      finishDelay: 3700,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 6);
+                         this.fireVoidAttacks(4, 6);
                      }
                  },
                  {
-                     name: "}}}3x14}}}",
-                     chargeAmt: 800 + hardModeCharge,
+                     name: "}}}4x14}}}",
+                     chargeAmt: 1000 + hardModeCharge,
                      finishDelay: 4150,
                      isBigMove: true,
                      damage: -1,
@@ -795,33 +795,7 @@
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 7);
-                     }
-                 },
-                 {
-                     name: "}}}3x16}}}",
-                     chargeAmt: 850 + hardModeCharge,
-                     finishDelay: 4500,
-                     isBigMove: true,
-                     damage: -1,
-                     startFunction: () => {
-                         //this.prepAttack();
-                     },
-                     attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 8);
-                     }
-                 },
-                 {
-                     name: "}}}3x18}}}",
-                     chargeAmt: 950 + hardModeCharge,
-                     finishDelay: 4800,
-                     isBigMove: true,
-                     damage: -1,
-                     startFunction: () => {
-                         //this.prepAttack();
-                     },
-                     attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 8);
+                         this.fireVoidAttacks(4, 7);
                      }
                  },
                  {

@@ -145,13 +145,13 @@ class SpellManager {
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
         let bonusTrueDamage = globalObjects.player.trueDamageAdder();
-        let isExtraBuff = additionalDamage >= 6;
+        let isExtraBuff = additionalDamage >= 5;
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.025;
         let finalAdditionaScale = additionalScale * 5;
-        let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 77;
+        let isPowerful = numAdditionalAttacks * (10 + additionalDamage + bonusTrueDamage) > 64;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -394,7 +394,7 @@ class SpellManager {
                         }
                     }
 
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 12 : 10;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
                     rockObj.bg.visible = false;
@@ -550,7 +550,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         let statusObj;
         let existingBuff = globalObjects.player.getStatuses()[spellID];
-        let buffAmt = multiplier * 2;
+        let buffAmt = multiplier * 1;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             // already got a buff in place
@@ -559,7 +559,7 @@ class SpellManager {
         let leftArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'buffup_l.png').setDepth(9).setOrigin(0.94, 0.5).setScale(0.7);
         let rightArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'buffup_r.png').setDepth(9).setOrigin(0.06, 0.5).setScale(0.7);
 
-        let buffCycle = -(Math.round(buffAmt + 2) % 6);
+        let buffCycle = -(Math.round(buffAmt + 1) % 3);
         leftArm.rotation = -0.2;
         rightArm.rotation = -leftArm.rotation;
         playSound('matter_enhance').detune = buffCycle * 50;
@@ -584,7 +584,7 @@ class SpellManager {
                     scaleX: goalScale * 0.96,
                     scaleY: goalScale * 0.96
                 }
-                messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 100, "+" + buffAmt + " DMG", goalScale, param, param2);
+                messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 120, "+" + buffAmt + " DMG", goalScale, param, param2);
 
                 this.scene.tweens.add({
                     targets: leftArm,
@@ -685,7 +685,7 @@ class SpellManager {
                 }
             }
         });
-        let incAmt = multiplier * 2;
+        let incAmt = multiplier;
         let spellName = getBasicText('rune_matter_rune_enhance')+"\n+" + incAmt;
 
         // if (itemsToAnimate.length > 1) {
@@ -1369,7 +1369,7 @@ class SpellManager {
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 80;
+        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 65;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
@@ -1458,8 +1458,8 @@ class SpellManager {
             });
         }
 
-        let spellDamage = 6 + additionalDamage;
-        let halfSpellDamage = Math.ceil(spellDamage * 0.5);
+        let spellDamage = 3 + additionalDamage;
+        let halfSpellDamage = spellDamage;//Math.ceil(spellDamage * 0.5);
         let buffDelay = 0;
         if (hasFirstBuff) {
             buffDelay += 470;
@@ -2433,9 +2433,9 @@ class SpellManager {
             }
         });
 
-        let buffAmt = 3;
+        let buffAmt = 2;
         if (multiplier > 1) {
-            buffAmt = 3 * multiplier;
+            buffAmt = 2 * multiplier;
         }
         let param = {
             duration: 1650,
@@ -3221,7 +3221,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
         let statusObj;
-        let buffAmt = multiplier * 10;
+        let buffAmt = multiplier * 8;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             buffAmt += existingBuff.multiplier;

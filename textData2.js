@@ -466,10 +466,10 @@ let textData2 = {
         "jp": "呪文に固体の\n岩と石を使用"
     },
     "pre_fight_0g": {
-        "en_us": "Deal 12 Damage",
-        "fr": "Inflige 12 points\nde dégâts",
-        "zh_tw": "造成12點傷害",
-        "zh_cn": "造成 12 点伤害",
+        "en_us": "Deal 10 Damage",
+        "fr": "Inflige 10 points\nde dégâts",
+        "zh_tw": "造成10點傷害",
+        "zh_cn": "造成 10 点伤害",
         "ru": "Наносит 12 ед.\nурона",
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"

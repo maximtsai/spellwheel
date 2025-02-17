@@ -45,7 +45,7 @@ class Player {
     }
 
     reInitStats() {
-        let maxHealth = 60;
+        let maxHealth = 70;
         if (cheats.extraHealth) {
             maxHealth += 1000;
         }

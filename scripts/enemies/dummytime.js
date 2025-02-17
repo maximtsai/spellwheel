@@ -4,7 +4,7 @@
     }
 
      initStatsCustom() {
-        this.health = 105;
+        this.health = 90;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -320,7 +320,7 @@
              ],
              [
                  {
-                     name: "BIG HEAL! \\80",
+                     name: "BIG HEAL! \\60",
                      chargeAmt: 480,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -390,7 +390,7 @@
                      },
                      attackStartFunction: () => {
                          this.justShown = true;
-                         this.healAnim(100);
+                         this.healAnim(60);
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                      }
@@ -398,7 +398,7 @@
              ],
              [
                  {
-                     name: "BIG HEAL! \\80",
+                     name: "BIG HEAL! \\60",
                      chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
@@ -467,7 +467,7 @@
                          }
                      },
                      attackStartFunction: () => {
-                         this.healAnim(100);
+                         this.healAnim(60);
                          this.currentAttackSetIndex = 2;
                          this.nextAttackIndex = 0;
                      }

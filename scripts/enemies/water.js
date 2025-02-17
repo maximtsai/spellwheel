@@ -826,8 +826,8 @@
                  duration: 200,
                  completeDelay: 1000,
                  onComplete: () => {
-                     this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
-                         this.playerSpellCastSub.unsubscribe();
+                     this.playerSpellCastSub2 = this.addSubscription('playerCastedSpell', () => {
+                         this.playerSpellCastSub2.unsubscribe();
                          this.addTimeout(() => {
                              this.addTween({
                                  targets: [this.rune3],
@@ -840,6 +840,7 @@
                              globalObjects.textPopupManager.hideInfoText();
                          }, 300);
                      });
+                     this.subscriptions.push(this.playerSpellCastSub2);
                  }
              });
          }, 500)

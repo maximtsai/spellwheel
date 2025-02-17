@@ -25,7 +25,7 @@
     }
 
      initStatsCustom() {
-        this.health = 125;
+        this.health = 120;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
@@ -229,13 +229,13 @@
                      }
                  },
                  {
-                     name: "HEAL \\50",
+                     name: "HEAL \\40",
                      chargeAmt: 700,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(50);
+                         this.healAnim(40);
                      }
                  },
                  {
@@ -256,13 +256,13 @@
                     }
                  },
                  {
-                     name: "HEAL \\50",
+                     name: "HEAL \\40",
                      chargeAmt: 750,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(50);
+                         this.healAnim(40);
                      }
                  },
                  // 0
@@ -285,13 +285,13 @@
                  },
                  // 0
                  {
-                     name: "HEAL \\50",
+                     name: "HEAL \\40",
                      chargeAmt: 800,
                      finishDelay: 2000,
                      transitionFast: true,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.healAnim(50);
+                         this.healAnim(40);
                      }
                  },
                  {

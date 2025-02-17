@@ -1317,7 +1317,7 @@
          this.setDefaultSprite('void_knight_3_empty.png');
          this.sprite.setDepth(2);
          playSound('meat_click_right');
-         this.setMaxHealth(gameVars.isHardMode ? 120 : 110);
+         this.setMaxHealth(gameVars.isHardMode ? 120 : 100);
          this.bg2 = this.addImage(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'gravedark.png').setDepth(-4);
          this.graves.setVisible(false);
          this.heal(this.healthMax);

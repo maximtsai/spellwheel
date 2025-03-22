@@ -64,7 +64,7 @@ class PostFightScreen {
             this.newRuneDesc =  this.scene.add.text(gameConsts.halfWidth - 225, gameConsts.halfHeight - 95, '(insert rune description)', {fontFamily: 'garamondmax', fontSize: 22, color: '#000000', align: 'left'}).setAlpha(0).setOrigin(0, 0).setDepth(100000);
         }
         if (!this.newRuneIcon) {
-            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 55, gameConsts.halfHeight - 135, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
+            this.newRuneIcon =  this.scene.add.image(gameConsts.halfWidth - 80, gameConsts.halfHeight - 129, 'tutorial', 'rune_matter_large.png').setScale(0).setDepth(100002).setAlpha(0);
         }
         if (!this.flashObj) {
             this.flashObj = this.scene.add.image(gameConsts.width * 0.76, gameConsts.halfHeight - 160, 'blurry', 'flash.webp').setScale(0).setDepth(100002).setAlpha(0.5);
@@ -285,7 +285,7 @@ class PostFightScreen {
         this.spellsCastText.setScale(0.97);
 
         this.newRuneAnnounce.setScale(0.97);
-        this.newRuneIcon.setScale(0.4);
+        this.newRuneIcon.setScale(0.7);
         this.trainingRuneIcon.setScale(0.4).setVisible(true);
         if (isWin) {
             if (initLocket && !this.locketRecentlyClicked) {
@@ -358,9 +358,9 @@ class PostFightScreen {
 
                 PhaserScene.tweens.add({
                     delay: 200,
-                    targets: [this.newRuneIcon, this.trainingRuneIcon],
-                    scaleX: 0.435,
-                    scaleY: 0.435,
+                    targets: [this.newRuneIcon],
+                    scaleX: 0.75,
+                    scaleY: 0.75,
                     alpha: 1,
                     duration: 250,
                     onComplete: () => {
@@ -368,6 +368,14 @@ class PostFightScreen {
                         //     this.showCodeBtn.setState(NORMAL);
                         // }
                     }
+                });
+                PhaserScene.tweens.add({
+                    delay: 200,
+                    targets: [this.trainingRuneIcon],
+                    scaleX: 0.4,
+                    scaleY: 0.4,
+                    alpha: 1,
+                    duration: 250,
                 });
 
                 PhaserScene.tweens.add({

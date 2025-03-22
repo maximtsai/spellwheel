@@ -12,11 +12,33 @@ class StatusManager {
             messageBus.subscribe('enemyTakeEffect', this.manualUpdateEnemy.bind(this)),
             messageBus.subscribe("selfClearStatuses", this.clearPlayerStatuses.bind(this)),
             messageBus.subscribe("enemyHasDied", this.clearPlayerStatuses.bind(this)),
+
+            messageBus.subscribe("showStatusInfo", this.showStatusInfo.bind(this)),
+            messageBus.subscribe("hideStatusInfo", this.hideStatusInfo.bind(this)),
+            messageBus.subscribe("globalPointerDown", this.hideStatusInfo.bind(this)),
         ];
 
 
         updateManager.addFunction(this.update.bind(this));
 
+        this.textBG = this.scene.add.sprite(57, gameConsts.height + 10, 'blackPixel').setScale(50, 50).setAlpha(0.6).setDepth(200).setOrigin(0, 1).setVisible(false);
+        this.textDisplay = this.scene.add.text(62, gameConsts.height - 3, 'Test abc', {fontFamily: 'robotomedium', fontSize: 20, color: '#FFFFFF', align: 'center'}).setOrigin(0, 1).setDepth(201).setVisible(false);
+
+    }
+
+    showStatusInfo(info) {
+        if (!info) {
+            return;
+        }
+        this.textBG.setVisible(true);
+        this.textDisplay.setVisible(true);
+        this.textDisplay.setText(info);
+        this.textBG.setScale(this.textDisplay.width * 0.5 + 6, this.textDisplay.height * 0.5 + 8);
+    }
+
+    hideStatusInfo() {
+        this.textBG.setVisible(false);
+        this.textDisplay.setVisible(false);
     }
 
     manualUpdateSelf(newObj) {
@@ -41,17 +63,35 @@ class StatusManager {
 
             if (indexFound === -1) {
                 indexFound = this.playerStatusDisplayStack.length;
-                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt);
+                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt, "");
                 this.playerStatusDisplayStack.push(statusObj);
             } else {
-                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt);
+                statusObj = this.createStatusObj(spellID, this.getPlayerStatusXPos(), this.getPlayerStatusYPos(indexFound), spriteSrc1, spriteSrc2, displayAmt, "");
                 this.playerStatusDisplayStack[indexFound] = statusObj;
             }
         }
         statusObj.setAmtText(newObj.displayAmt);
         statusObj.setDurationText(newObj.duration);
         statusObj.statusOrig = newObj;
+        statusObj.setHoverText(this.generateInfoText(spellID, displayAmt));
         newObj.statusObj = statusObj;
+    }
+
+    generateInfoText(spellID, displayAmt) {
+        let returnText = "";
+        switch(spellID) {
+            case 'matterEnhance':
+                returnText = "Your attacks gain\n+" + displayAmt + " damage";
+                break;
+            case 'matterReinforce':
+                returnText = "You reflect "+displayAmt+"\ndamage back to\nyour opponent.";
+                break;
+            case 'mindReinforce':
+                returnText = "All damage you\ndeal is increased\nby +"+displayAmt+".";
+                break;
+
+        }
+        return returnText;
     }
 
     manualUpdateEnemy() {
@@ -66,12 +106,12 @@ class StatusManager {
         return gameConsts.height - 40 - index * 45;
     }
 
-    createStatusObj(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt) {
+    createStatusObj(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt, infoText) {
         let retObj = this.listOfFreeStatuses.pop();
         if (!retObj) {
-            retObj = new StatusObj(this.scene, spellID, x, y, spriteSrc1, spriteSrc2, displayAmt);
+            retObj = new StatusObj(this.scene, spellID, x, y, spriteSrc1, spriteSrc2, displayAmt, infoText);
         } else {
-            retObj.init(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt);
+            retObj.init(spellID, x, y, spriteSrc1, spriteSrc2, displayAmt, infoText);
         }
         return retObj;
     }

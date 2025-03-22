@@ -590,7 +590,7 @@ class SpellManager {
                     targets: leftArm,
                     rotation: 0.7,
                     ease: 'Back.easeOut',
-                    duration: 400,
+                    duration: 550,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: leftArm,
@@ -616,7 +616,7 @@ class SpellManager {
                     targets: rightArm,
                     rotation: -0.7,
                     ease: 'Back.easeOut',
-                    duration: 400,
+                    duration: 550,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: rightArm,

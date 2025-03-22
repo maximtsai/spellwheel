@@ -75,6 +75,7 @@ class InternalButtonManager {
         for (let i = this.buttonList.length - 1; i >= 0; i--) {
             let buttonObj = this.buttonList[i];
             if (buttonObj.checkCoordOver(mouseX, mouseY)) {
+                messageBus.publish("globalPointerDown");
                 buttonObj.onMouseDown(mouseX, mouseY);
                 this.lastClickedButton = buttonObj;
                 break;

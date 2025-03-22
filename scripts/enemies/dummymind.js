@@ -1,6 +1,5 @@
 class Dummymind extends Dummypractice {
     constructor(scene, x, y, level) {
-        debugger;
         super(scene, x, y, level);
 
         this.addTimeout(() => {

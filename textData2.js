@@ -220,13 +220,13 @@ let textData2 = {
     },
 
     "post_fight_newrune": {
-        "en_us": "New Rune",
-        "fr": "Nouvelle rune",
-        "zh_tw": "新符文",
-        "zh_cn": "新符文",
-        "ru": "Новая руна",
-        "es": "¡Nueva runa",
-        "jp": "新しいルーン"
+        "en_us": " ",
+        "fr": " ",
+        "zh_tw": " ",
+        "zh_cn": " ",
+        "ru": " ",
+        "es": " ",
+        "jp": " "
     },
     "post_fight_noupgrade": {
         "en_us": "No Upgrade",

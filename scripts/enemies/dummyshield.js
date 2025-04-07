@@ -423,7 +423,7 @@
                     }
                  },
                  {
-                     name: "|12x2",
+                     name: "|10x2",
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
@@ -440,7 +440,7 @@
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();
-                        this.throwWeapon('sword.png', 12, 2);
+                        this.throwWeapon('sword.png', 10, 2);
                     }
                  },
                  {
@@ -480,7 +480,7 @@
                     },
                  },
                  {
-                     name: ";24",
+                     name: ";20",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
@@ -498,7 +498,7 @@
                     attackFinishFunction: () => {
                         let throwSprite = 'dummy_dead.png';
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 24, 1);
+                        this.throwWeapon(throwSprite, 20, 1);
                     }
                  },
                  {

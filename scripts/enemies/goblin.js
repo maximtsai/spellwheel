@@ -245,8 +245,8 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {40",
-                     block: 40,
+                     name: "FANCY SHIELD {30",
+                     block: 30,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 360,
@@ -288,7 +288,7 @@
                  {
                      name: gameVars.isHardMode ? "}12 " : "}8 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 400,
+                     chargeAmt: 325,
                      damage: gameVars.isHardMode ? 12 : 8,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
@@ -705,7 +705,7 @@
                             scaleX: 1,
                             scaleY: 1,
                             ease: "Cubic.easeOut",
-                            duration: 2200,
+                            duration: 2100,
                             onComplete: () => {
                                 this.showVictory(rune);
                             }

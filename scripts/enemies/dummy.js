@@ -29,7 +29,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 55 : 45;
+         this.health = gameVars.isHardMode ? 55 : 50;
          this.isAsleep = true;
          this.pullbackScale = 0.78;
          this.attackScale = 1.25;
@@ -849,9 +849,9 @@
                  // 0
                  {
                      name: "WAKING UP!",
-                     chargeAmt: 600,
+                     chargeAmt: 400,
                      damage: 0,
-                     chargeMult: 18,
+                     chargeMult: 20,
                      startFunction: () => {
                          this.clearEnhancePopup();
                          this.customAngrySymbol = this.scene.add.sprite(this.x + 35, this.y - 52, 'misc', 'angry1.png').play('angry').setScale(0.3).setDepth(9999);
@@ -939,8 +939,8 @@
                      }
                  },
                  {
-                     name: "HEAL\\20",
-                     chargeAmt: 315,
+                     name: "HEAL\\15",
+                     chargeAmt: 355,
                      damage: 0,
                      startFunction: () => {
                          this.startBreathTween();
@@ -955,7 +955,7 @@
                      },
                      finaleFunction: () => {
                          this.stopBreathTween(false);
-                        this.healAnim(20);
+                        this.healAnim(15);
                      }
                  },
                  {
@@ -1008,7 +1008,7 @@
                  },
                  {
                      name: "HEAL\\15",
-                     chargeAmt: 325,
+                     chargeAmt: 375,
                      damage: 0,
                      startFunction: () => {
                          this.startBreathTween();

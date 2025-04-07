@@ -590,7 +590,7 @@ class SpellManager {
                     targets: leftArm,
                     rotation: 0.7,
                     ease: 'Back.easeOut',
-                    duration: 400,
+                    duration: 550,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: leftArm,
@@ -616,7 +616,7 @@ class SpellManager {
                     targets: rightArm,
                     rotation: -0.7,
                     ease: 'Back.easeOut',
-                    duration: 400,
+                    duration: 550,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: rightArm,
@@ -873,7 +873,7 @@ class SpellManager {
             });
         }
 
-        let shieldBaseHealth = gameVars.matterPlus ? 14 : 12;
+        let shieldBaseHealth = gameVars.matterPlus ? 12 : 10;
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {

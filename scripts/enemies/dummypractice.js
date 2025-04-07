@@ -31,7 +31,7 @@ class Dummypractice extends Enemy {
                 this.skipBtn = this.createSkipBtn();
                 this.addToDestructibles(this.skipBtn);
             }
-        }, 2500)
+        }, 3500)
     }
 
     clearSkipBtn() {

@@ -873,7 +873,7 @@ class SpellManager {
             });
         }
 
-        let shieldBaseHealth = gameVars.matterPlus ? 14 : 12;
+        let shieldBaseHealth = gameVars.matterPlus ? 12 : 10;
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {

@@ -89,7 +89,12 @@ class StatusManager {
             case 'mindReinforce':
                 returnText = "All damage you\ndeal is increased\nby +"+displayAmt+".";
                 break;
-
+            case 'timeEnhance':
+                returnText = "You attack an\nextra +" + displayAmt + "\ntimes.";
+                break;
+            case 'timeUnload':
+                returnText = "Freeze time for\nthe next "+displayAmt+"\nspellcasts.";
+                break;
         }
         return returnText;
     }

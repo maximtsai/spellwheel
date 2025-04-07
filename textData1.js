@@ -66,39 +66,39 @@ let textData = {
         "jp": "次の通常攻撃は+6ダメージを獲得"
     },
     "matter_protect_desc": {
-        "en_us": "Create 12HP Shield",
+        "en_us": "Create 10HP Shield",
+        "fr": "Créer un bouclier\nde 10 points\nde vie",
+        "zh_tw": "打造 10 點\n生命的盾牌",
+        "zh_cn": "打造 10 点\n生命的盾牌",
+        "ru": "Создать щит\nблокирующий 10 урона.",
+        "es": "Crea un escudo\nque bloquea\n10 de daño",
+        "jp": "10ダメージをブロ\nックするシール\nドを作成する"
+    },
+    "matter_protect_desc_long": {
+        "en_us": "Create 10HP Shield",
+        "fr": "Créer un bouclier de\n10 points de vie",
+        "zh_tw": "打造 10 點生命的盾牌",
+        "zh_cn": "打造 10 点生命的盾牌",
+        "ru": "Создать щит блокирующий\n10 урона.",
+        "es": "Crea un escudo que\nbloquea 10 de daño",
+        "jp": "12ダメージをブロックす\nるシールドを作成する"
+    },
+    "matter_protect_plus_desc": {
+        "en_us": "Create 12HP shield",
         "fr": "Créer un bouclier\nde 12 points\nde vie",
         "zh_tw": "打造 12 點\n生命的盾牌",
         "zh_cn": "打造 12 点\n生命的盾牌",
         "ru": "Создать щит\nблокирующий 12 урона.",
         "es": "Crea un escudo\nque bloquea\n12 de daño",
-        "jp": "12ダメージをブロ\nックするシール\nドを作成する"
-    },
-    "matter_protect_desc_long": {
-        "en_us": "Create 12HP Shield",
-        "fr": "Créer un bouclier de\n12 points de vie",
-        "zh_tw": "打造 12 點生命的盾牌",
-        "zh_cn": "打造 12 点生命的盾牌",
-        "ru": "Создать щит блокирующий\n12 урона.",
-        "es": "Crea un escudo que\nbloquea 12 de daño",
-        "jp": "12ダメージをブロックす\nるシールドを作成する"
-    },
-    "matter_protect_plus_desc": {
-        "en_us": "Create 14HP shield",
-        "fr": "Créer un bouclier\nde 14 points\nde vie",
-        "zh_tw": "打造 14 點\n生命的盾牌",
-        "zh_cn": "打造 14 点\n生命的盾牌",
-        "ru": "Создать щит\nблокирующий 14 урона.",
-        "es": "Crea un escudo\nque bloquea\n14 de daño",
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_plus_desc_long": {
-        "en_us": "Create 14HP shield",
-        "fr": "Créer un bouclier de\n14 points de vie",
-        "zh_tw": "打造一個 14 點生命的盾牌",
-        "zh_cn": "打造一个 14 点生命的盾牌",
-        "ru": "Создать щит блокирующий\n14 урона.",
-        "es": "Crea un escudo que\nbloquea 14 de daño",
+        "en_us": "Create 12HP shield",
+        "fr": "Créer un bouclier de\n12 points de vie",
+        "zh_tw": "打造一個 12 點生命的盾牌",
+        "zh_cn": "打造一个 12 点生命的盾牌",
+        "ru": "Создать щит блокирующий\n12 урона.",
+        "es": "Crea un escudo que\nbloquea 12 de daño",
         "jp": "14ダメージをブロックす\nるシールドを作成する"
     },
     "matter_reinforce_desc": {
@@ -480,10 +480,10 @@ let textData = {
         "jp": ""
     },
     "matter_plus_tut_desc": {
-        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 10 -> 12\nMatter+Shield Block 12 -> 14",
-        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 10 -> 12\nMatter+Shield Protection 12 -> 14",
-        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 10->12\nMatter+Shield 保護 12->14",
-        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 10->12\nMatter+Shield 保护 12->14",
+        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 10 -> 12\nMatter+Shield Block 10 -> 12",
+        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 10 -> 12\nMatter+Shield Protection 10 -> 12",
+        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 10->12\nMatter+Shield 保護 10->12",
+        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 10->12\nMatter+Shield 保护 10->12",
         "ru": "Ваше мастерство в элементе\nМатерии усиливает некоторые\nиз ваших текущих заклинаний\nМатерии.",
         "es": "Tu maestría sobre el elemento Materia fortalece algunos de tus hechizos de Materia existentes.",
         "jp": "物質元素をマスターすると、既存の物質呪文の一部が強化されます。"

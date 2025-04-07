@@ -785,13 +785,13 @@
              ],
              [
                  {
-                     name: "|8x2 ",
+                     name: "|7x2 ",
                      announceName: "BRANCH ATTACK",
                      desc: "The tree swipes a branch at you",
                      chargeAmt: 650,
                      damage: -1,
                      attackStartFunction: () => {
-                         this.attackWithBranch(8);
+                         this.attackWithBranch(7);
                          this.addTimeout(() => {
                              this.attackWithBranch(8, false);
                          }, 1000)
@@ -846,7 +846,7 @@
              [
                  // 3
                  {
-                     name: gameVars.isHardMode ? ";30" : ";25",
+                     name: gameVars.isHardMode ? ";30" : ";24",
                      announceName: "CRUSH",
                      desc: "The tree tries to crush you",
                      chargeAmt: gameVars.isHardMode ? 1000 : 1100,
@@ -870,7 +870,7 @@
                          playSound('magic');
                         globalObjects.textPopupManager.hideInfoText();
                          this.hasCrushed = true;
-                         this.createCrushAttack(gameVars.isHardMode ? 30 : 25);
+                         this.createCrushAttack(gameVars.isHardMode ? 30 : 24);
                      },
                      attackFinishFunction: () => {
                          this.pullbackScale = 0.99;

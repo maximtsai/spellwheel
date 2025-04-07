@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 110 : 90;
+         this.health = gameVars.isHardMode ? 100 : 85;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -1025,9 +1025,9 @@
     }
 
     startChargingUltimate() {
-        let damageAmt = gameVars.isHardMode ? 3 : 3;
-        let totalAmt = gameVars.isHardMode ? 15 : 12;
-        let angleDivider = gameVars.isHardMode ? 10 : 10;
+        let damageAmt = 3;
+        let totalAmt = gameVars.isHardMode ? 28 : 24;
+
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
                 delay: i * 200,
@@ -1046,14 +1046,14 @@
 
                         let startX = this.x;
                         let startY = this.y + 10;
-                        let dirAngle = i * Math.PI / angleDivider;
+                        let dirAngle = i * Math.PI * 2 / totalAmt;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
                         let isExtraLarge = false;
                         if (gameVars.isHardMode) {
-                            isExtraLarge = i % 5 === 0;
+                            isExtraLarge = i % 7 === 0;
                         } else {
-                            isExtraLarge = i === 0 || i === 10 || i === 5 || i === 15;
+                            isExtraLarge = i % 6 === 0;
                         }
                         let clockName = 'clock2.png';
                         if (isExtraLarge) {
@@ -1070,13 +1070,13 @@
                             y: startY + offsetY * (isExtraLarge ? 1.55 : 1.6),
                             ease: 'Quart.easeOut'
                         });
-                        let numAttacks = (i + 1) * 2;
+                        let numAttacks = i + 1;
                         if (i < 4) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
                         } else if (i < 8) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 111) {
+                        } else if (i < totalAmt - 1) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
@@ -1272,11 +1272,11 @@
             [
                 // 2
                 {
-                     name: gameVars.isHardMode ? "}3x1}" : "}3x1}",
+                     name: "}3x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
-                     chargeMult: gameVars.isHardMode ? 4 : 3,
+                     chargeMult: gameVars.isHardMode ? 3.3 : 3,
                      damage: -1,
                     finishDelay: 4200,
 
@@ -1290,7 +1290,7 @@
                          this.finishedChargingUltimate = true;
                      },
                      attackFinishFunction: () => {
-                        this.fireTimeObjects(gameVars.isHardMode ? 3 : 2, undefined, 135, true);
+                        this.fireTimeObjects(3, undefined, 135, true);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      },

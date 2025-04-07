@@ -18,7 +18,7 @@ class Player {
             messageBus.subscribe("selfTakeTrueDamage", this.takeTrueDamage.bind(this)),
             messageBus.subscribe('clearSpellMultiplier', this.clearSpellMultiplier.bind(this)),
             messageBus.subscribe('clearAttackMultiplier', this.clearAttackMultiplier.bind(this)),
-            messageBus.subscribe('clearDamageAdder', this.clearDamageAdder.bind(this)),
+            messageBus.subscribe('clearVoidDamageAdder', this.clearVoidDamageAdder.bind(this)),
 
             messageBus.subscribe('startVoidForm', this.handleVoidForm.bind(this)),
             messageBus.subscribe('stopVoidForm', this.clearVoidForm.bind(this)),
@@ -45,7 +45,7 @@ class Player {
     }
 
     reInitStats() {
-        let maxHealth = 80;
+        let maxHealth = 70;
         if (cheats.extraHealth) {
             maxHealth += 1000;
         }
@@ -53,7 +53,7 @@ class Player {
             maxHealth += 20;
         }
         if (challenges.lowHealth) {
-            maxHealth -= 78;
+            maxHealth -= 40;
         }
         this.trueHealthMax = maxHealth;
         this.healthMax = this.trueHealthMax;
@@ -89,7 +89,7 @@ class Player {
         return this.healthMax;
     }
 
-    setHealth(amt = 80) {
+    setHealth(amt = 60) {
         this.health = amt;
         this.refreshHealthBar();
         if (this.health <= 0) {
@@ -97,7 +97,7 @@ class Player {
         }
     }
 
-    setHealthMaxTemp(amt = 80) {
+    setHealthMaxTemp(amt = 60) {
         this.healthMax = amt;
         this.refreshHealthBar();
         if (this.healthMax <= 0) {
@@ -138,12 +138,11 @@ class Player {
     }
 
     attackDamageAdder() {
-        const flatDamage = 6;
         let addedAmt = 0;
         let matterEnhanceStatus = this.statuses['matterEnhance'];
         if (matterEnhanceStatus) {
-            let multiplier = matterEnhanceStatus.multiplier ? matterEnhanceStatus.multiplier : 1;
-            let damageBoost = multiplier * flatDamage;
+            let multiplier = matterEnhanceStatus.displayAmt ? matterEnhanceStatus.displayAmt : 1;
+            let damageBoost = multiplier;
             addedAmt += damageBoost
         }
         // let mindReinforceStatus = this.statuses['mindReinforce'];
@@ -182,10 +181,13 @@ class Player {
         }
     }
 
-    clearDamageAdder() {
-        if (this.statuses['matterEnhance']) {
-            this.statuses['matterEnhance'].cleanUp(this.statuses);
-            this.statuses['matterEnhance'] = null;
+    clearVoidDamageAdder() {
+        if (this.statuses['voidEnhance']) {
+            let existingBuff1 = globalObjects.player.getStatuses()['voidEnhance'];
+            if (existingBuff1) {
+                messageBus.publish('selfClearStatuses', 'voidEnhance');
+            }
+            this.statuses['voidEnhance'] = null;
         }
     }
 

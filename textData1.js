@@ -12,6 +12,24 @@ let textData = {
     },
 
     "matter_strike_desc": {
+        "en_us": "10 DMG",
+        "fr": "10 points\nde dégâts",
+        "zh_tw": "10點傷害",
+        "zh_cn": "10 点伤害",
+        "ru": "Наносит 10 ед. урона",
+        "es": "Inflige 10 de daño",
+        "jp": "10ダメージを与える"
+    },
+    "matter_strike_desc_long": {
+        "en_us": "10 DMG",
+        "fr": "10 points de dégâts",
+        "zh_tw": "10點傷害",
+        "zh_cn": "10 点伤害",
+        "ru": "Наносит 10 ед. урона",
+        "es": "Inflige 10 de daño",
+        "jp": "10ダメージを与える"
+    },
+    "matter_strike_plus_desc": {
         "en_us": "12 DMG",
         "fr": "12 points\nde dégâts",
         "zh_tw": "12點傷害",
@@ -20,104 +38,86 @@ let textData = {
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"
     },
-    "matter_strike_desc_long": {
+    "matter_strike_plus_desc_long": {
         "en_us": "12 DMG",
         "fr": "12 points de dégâts",
         "zh_tw": "12點傷害",
         "zh_cn": "12 点伤害",
         "ru": "Наносит 12 ед. урона",
         "es": "Inflige 12 de daño",
-        "jp": "12ダメージを与える"
-    },
-    "matter_strike_plus_desc": {
-        "en_us": "14 DMG",
-        "fr": "14 points\nde dégâts",
-        "zh_tw": "14點傷害",
-        "zh_cn": "14 点伤害",
-        "ru": "Наносит 14 ед. урона",
-        "es": "Inflige 14 de daño",
-        "jp": "14ダメージを与える"
-    },
-    "matter_strike_plus_desc_long": {
-        "en_us": "14 DMG",
-        "fr": "14 points de dégâts",
-        "zh_tw": "14點傷害",
-        "zh_cn": "14 点伤害",
-        "ru": "Наносит 14 ед. урона",
-        "es": "Inflige 14 de daño",
         "jp": "14ダメージを与える"
     },
     "matter_enhance_desc": {
-        "en_us": "Next attack\ngains +6 DMG",
-        "fr": "Prochaine\nattaque gagne\n+6 dégâts.",
-        "zh_tw": "下一次攻擊\n獲得 +6 傷害",
-        "zh_cn": "下一次攻击\n获得 +6 伤害",
+        "en_us": "Attacks gain +1 DMG",
+        "fr": "Les attaques\ngagnent +1 DMG",
+        "zh_tw": "攻擊獲得 +1 傷害",
+        "zh_cn": "攻击获得 +1 伤害",
         "ru": "Ваша cледующая\nатака наносит\n+6 урона",
         "es": "El siguiente\nataque obtiene\n+6 de daño",
         "jp": "次の通常攻撃は\n+6ダメージを獲得"
     },
     "matter_enhance_desc_long": {
-        "en_us": "Next attack gains +6 DMG",
-        "fr": "Prochaine attaque gagne +6 dégâts.",
-        "zh_tw": "下一次攻擊獲得 +6 傷害",
-        "zh_cn": "下一次攻击获得 +6 伤害",
+        "en_us": "Attacks gain +1 DMG",
+        "fr": "Les attaques gagnent +1 DMG",
+        "zh_tw": "攻擊獲得 +1 傷害",
+        "zh_cn": "攻擊獲得 +1 傷害",
         "ru": "Ваша cледующая атака наносит +6 урона",
         "es": "El siguiente ataque obtiene +6 de daño",
         "jp": "次の通常攻撃は+6ダメージを獲得"
     },
     "matter_protect_desc": {
-        "en_us": "Create 12HP\nshield",
+        "en_us": "Create 10HP Shield",
+        "fr": "Créer un bouclier\nde 10 points\nde vie",
+        "zh_tw": "打造 10 點\n生命的盾牌",
+        "zh_cn": "打造 10 点\n生命的盾牌",
+        "ru": "Создать щит\nблокирующий 10 урона.",
+        "es": "Crea un escudo\nque bloquea\n10 de daño",
+        "jp": "10ダメージをブロ\nックするシール\nドを作成する"
+    },
+    "matter_protect_desc_long": {
+        "en_us": "Create 10HP Shield",
+        "fr": "Créer un bouclier de\n10 points de vie",
+        "zh_tw": "打造 10 點生命的盾牌",
+        "zh_cn": "打造 10 点生命的盾牌",
+        "ru": "Создать щит блокирующий\n10 урона.",
+        "es": "Crea un escudo que\nbloquea 10 de daño",
+        "jp": "12ダメージをブロックす\nるシールドを作成する"
+    },
+    "matter_protect_plus_desc": {
+        "en_us": "Create 12HP shield",
         "fr": "Créer un bouclier\nde 12 points\nde vie",
         "zh_tw": "打造 12 點\n生命的盾牌",
         "zh_cn": "打造 12 点\n生命的盾牌",
         "ru": "Создать щит\nблокирующий 12 урона.",
         "es": "Crea un escudo\nque bloquea\n12 de daño",
-        "jp": "12ダメージをブロ\nックするシール\nドを作成する"
-    },
-    "matter_protect_desc_long": {
-        "en_us": "Create 12HP Shield",
-        "fr": "Créer un bouclier de\n12 points de vie",
-        "zh_tw": "打造 12 點生命的盾牌",
-        "zh_cn": "打造 12 点生命的盾牌",
-        "ru": "Создать щит блокирующий\n12 урона.",
-        "es": "Crea un escudo que\nbloquea 12 de daño",
-        "jp": "12ダメージをブロックす\nるシールドを作成する"
-    },
-    "matter_protect_plus_desc": {
-        "en_us": "Create 14HP shield",
-        "fr": "Créer un bouclier\nde 14 points\nde vie",
-        "zh_tw": "打造 14 點\n生命的盾牌",
-        "zh_cn": "打造 14 点\n生命的盾牌",
-        "ru": "Создать щит\nблокирующий 14 урона.",
-        "es": "Crea un escudo\nque bloquea\n14 de daño",
         "jp": "14ダメージをブロ\nックするシール\nドを作成する"
     },
     "matter_protect_plus_desc_long": {
-        "en_us": "Create 14HP shield",
-        "fr": "Créer un bouclier de\n14 points de vie",
-        "zh_tw": "打造一個 14 點生命的盾牌",
-        "zh_cn": "打造一个 14 点生命的盾牌",
-        "ru": "Создать щит блокирующий\n14 урона.",
-        "es": "Crea un escudo que\nbloquea 14 de daño",
+        "en_us": "Create 12HP shield",
+        "fr": "Créer un bouclier de\n12 points de vie",
+        "zh_tw": "打造一個 12 點生命的盾牌",
+        "zh_cn": "打造一个 12 点生命的盾牌",
+        "ru": "Создать щит блокирующий\n12 урона.",
+        "es": "Crea un escudo que\nbloquea 12 de daño",
         "jp": "14ダメージをブロックす\nるシールドを作成する"
     },
     "matter_reinforce_desc": {
-        "en_us": "Gain thorns that\nreflect 1 DMG\nwhen hit",
-        "fr": "Gagnez des épines\nqui renvoient 1\npoint de dégâts",
-        "zh_tw": "獲得荊棘來\n保護你並反\n射 1 點傷害",
-        "zh_cn": "获得荆棘来\n保护你并反\n射 1 点伤害",
-        "ru": "Получите шипы,\nотражающие 1 единицу\nурона при ударе.",
-        "es": "Gana espinas\npara protegerte\ny reflejar 1 daño.",
-        "jp": "とげを獲得してあな\nたを守り、1ダメ\nージを反射します"
+        "en_us": "Gain thorns that\nreflect 2 DMG\nwhen hit",
+        "fr": "Gagnez des épines\nqui renvoient 2\npoint de dégâts",
+        "zh_tw": "獲得荊棘來\n保護你並反\n射 2 點傷害",
+        "zh_cn": "获得荆棘来\n保护你并反\n射 2 点伤害",
+        "ru": "Получите шипы,\nотражающие 2 единицу\nурона при ударе.",
+        "es": "Gana espinas\npara protegerte\ny reflejar 2 daño.",
+        "jp": "とげを獲得してあな\nたを守り、2ダメ\nージを反射します"
     },
     "matter_reinforce_desc_long": {
-        "en_us": "Gain thorns that\nreflect 1 DMG when hit",
-        "fr": "Gagnez des épines qui\nrenvoient 1 point de dégâts",
-        "zh_tw": "獲得荊棘來保護\n你並反射 1 點傷害",
-        "zh_cn": "获得荆棘来保护\n你并反射 1 点伤害",
-        "ru": "Получить шипы отражающие\n1 урон при ударе",
-        "es": "Gana espinas para protegerte\ny reflejar 1 daño.",
-        "jp": "とげを獲得してあなたを守り、\n1ダメージを反射します"
+        "en_us": "Gain thorns that\nreflect 2 DMG when hit",
+        "fr": "Gagnez des épines qui\nrenvoient 2 point de dégâts",
+        "zh_tw": "獲得荊棘來保護\n你並反射 2 點傷害",
+        "zh_cn": "获得荆棘来保护\n你并反射 2 点伤害",
+        "ru": "Получить шипы отражающие\n2 урон при ударе",
+        "es": "Gana espinas para protegerte\ny reflejar 2 daño.",
+        "jp": "とげを獲得してあなたを守り、\n2ダメージを反射します"
     },
     "matter_unload_desc": {
         "en_us": "Gain 20 temporary\nprotection. Grow\ntwo 20 DMG pillars.",
@@ -138,19 +138,19 @@ let textData = {
         "jp": ""
     },
     "time_strike_desc": {
-        "en_us": "6 DMG. Hits a\nsecond time at\nhalf power.",
-        "fr": "6 DMG. Frappe\nune seconde fois\nà mi-puissance.",
-        "zh_tw": "6 點傷害。稍後\n以半威力進行第\n二次打擊。",
-        "zh_cn": "6 点伤害。稍后\n以半威力进行第\n二次打击。",
+        "en_us": "3 DMG. Hits twice.",
+        "fr": "3 DMG. Frappe\ndeux fois.",
+        "zh_tw": "3點傷害。\n攻擊兩次。",
+        "zh_cn": "3点伤害。\n攻击两次。",
         "ru": "Атаковать дважды.\nПервая атака наносит\n6 урона, вторая\nнаносит 50% урона\nот первой атаки.",
         "es": "Ataca dos veces.\nEl primer ataque\ninflige 6 de daño,\nel segundo ataque\ninflige el 50%\ndel primero.",
         "jp": "2回攻撃する。最初の\n攻撃は6ダメージを与え、\n2回目の攻撃は最初の\n攻撃の50%を与えます。"
     },
     "time_strike_desc_long": {
-        "en_us": "6 DMG. Hits a second\ntime at half power.",
-        "fr": "6 DMG. Frappe une\nseconde fois à mi-puissance.",
-        "zh_tw": "6 點傷害。稍後以\n半威力進行第二次打擊。",
-        "zh_cn": "6 点伤害。稍后以\n半威力进行第二次打击。",
+        "en_us": "3 DMG. Hits twice.",
+        "fr": "3 DMG. Frappe\ndeux fois.",
+        "zh_tw": "3點傷害。\n攻擊兩次。",
+        "zh_cn": "3点伤害。\n攻击两次。",
         "ru": "Атаковать дважды. Первая атака наносит 6 урона,\nвторая наносит 50% урона от первой атаки.",
         "es": "Ataca dos veces. El primer ataque inflige 6 de\ndaño, el segundo ataque inflige el 50% del primero.",
         "jp": "2回攻撃する。最初の攻撃は6ダメージを与え、\n2回目の攻撃は最初の攻撃の50%を与えます。"
@@ -291,19 +291,19 @@ let textData = {
         "jp": ""
     },
     "void_enhance_desc": {
-        "en_us": "Lose 3 max health.\nPermanently\nincrease attack\ndamage by 2.",
-        "fr": "Perdez 3 points de\nvie max. Augmentez\ndéfinitivement les\ndégâts d'attaque\nde 2.",
-        "zh_tw": "犧牲 3 點總生命\n值。攻擊永久獲\n得+2 傷害。",
-        "zh_cn": "牺牲 3 点总生命\n值。攻击永久获\n得+2 伤害。",
+        "en_us": "Sacrifice 1 max\nHP. Next attack\ndeals +8 damage",
+        "fr": "Sacrifiez 1 PV\nmax. La prochaine\nattaque inflige\n+8 dégâts",
+        "zh_tw": "犧牲 1 點總生命\b值。下一次攻擊造成\n+8 點傷害",
+        "zh_cn": "牺牲 1 点总生命\n值。下一次攻击造成\n+8 伤害",
         "ru": "Ваши атаки\nнавсегда получают\n+1 к урону",
         "es": "Tu ataque gana\npermanentemente\n+1 daño",
         "jp": "あなたの攻撃力は\n永続的に増加します\n+1ダメージ"
     },
     "void_enhance_desc_long": {
-        "en_us": "Lose 3 max health. Permanently\nincrease attack damage by 2.",
-        "fr": "Perdez 3 points de vie max. Augmentez\ndéfinitivement les dégâts d'attaque de 2.",
-        "zh_tw": "犧牲 3 點總生命值。\n攻擊永久獲得+2 傷害。",
-        "zh_cn": "牺牲 3 点总生命值。\n攻击永久获得+2 伤害。",
+        "en_us": "Sacrifice 1 max HP.\nNext attack deals +8 damage",
+        "fr": "Sacrifiez 1 PV max.\nLa prochaine attaque inflige +8 dégâts",
+        "zh_tw": "犧牲 1 點總生命值。\n下一次攻擊造成 +8 點傷害",
+        "zh_cn": "牺牲 1 点总生命值。\n下一次攻击造成 +8 伤害",
         "ru": "Ваши атаки навсегда получают +1 к урону",
         "es": "Tu ataque gana permanentemente +1 daño",
         "jp": "あなたの攻撃力は永続的に増加します+1ダメージ"
@@ -327,19 +327,19 @@ let textData = {
         "jp": "1回の攻撃を完全に無効に\nするシールドを作る"
     },
     "void_reinforce_desc": {
-        "en_us": "HEAL to full,\nbut lose 10\nmax HP",
-        "fr": "Soignez-vous\ncomplètement, mais\nperdez 10 PV max",
-        "zh_tw": "完全治癒自己，\n但失去10 點總\n生命值",
-        "zh_cn": "完全治愈自己，\n但失去10 点总\n生命值",
+        "en_us": "HEAL to full,\nbut lose 8\nmax HP",
+        "fr": "Soignez-vous\ncomplètement, mais\nperdez 8 PV max",
+        "zh_tw": "完全治癒自己，\n但失去8 點總\n生命值",
+        "zh_cn": "完全治愈自己，\n但失去8 点总\n生命值",
         "ru": "Полностью восстановите\nздоровье, но потеряйте\n10 единиц максимального\nздоровья",
         "es": "Se cura por\ncompleto, pero\npierde 10 puntos\nde salud máximos.",
         "jp": "完全に回復するが、\n最大HPの10を失う"
     },
     "void_reinforce_desc_long": {
-        "en_us": "HEAL to full, but lose 10 max HP",
-        "fr": "Soignez-vous complètement,\nmais perdez 10 PV max",
-        "zh_tw": "完全治癒自己，但失去 10 點总生命值",
-        "zh_cn": "完全治愈自己，但失去 10 点总生命值",
+        "en_us": "HEAL to full, but lose 8 max HP",
+        "fr": "Soignez-vous complètement,\nmais perdez 8 PV max",
+        "zh_tw": "完全治癒自己，但失去 8 點总生命值",
+        "zh_cn": "完全治愈自己，但失去 8 点总生命值",
         "ru": "Полностью восстановите здоровье, но\nпотеряйте 10 единиц максимального здоровья",
         "es": "Se cura por completo, pero\npierde 10 puntos de salud máximos.",
         "jp": "完全に回復するが、最大HPの10を失う"
@@ -435,19 +435,19 @@ let textData = {
         "jp": "受けるダメージの50%を吸収し、\n反射するシールドを作成する"
     },
     "mind_reinforce_desc": {
-        "en_us": "Increase all damage\nyou deal by +3.\nRefresh your\nelement runes.",
-        "fr": "Augmente tous les\ndégâts que vous\ninfligez de +3.\nRafraîchissez vos\néléments.",
-        "zh_tw": "你造成的所有傷害\n增加 +3。刷新你\n的元素。",
-        "zh_cn": "你造成的所有伤害\n增加 +3。刷新你\n的元素。",
+        "en_us": "Increase all damage\nyou deal by +2.\nRefresh your\nelement runes.",
+        "fr": "Augmente tous les\ndégâts que vous\ninfligez de +2.\nRafraîchissez vos\néléments.",
+        "zh_tw": "你造成的所有傷害\n增加 +2。刷新你\n的元素。",
+        "zh_cn": "你造成的所有伤害\n增加 +2。刷新你\n的元素。",
         "ru": "Весь наносимый\nвами урон\nувеличивается\nна +3.",
         "es": "Todo el daño\nque infliges\naumenta en +3",
         "jp": "与えるダメージ\nはすべて +3\n増加します"
     },
     "mind_reinforce_desc_long": {
-        "en_us": "Increase all damage you deal by +3.\nRefresh your element runes.",
-        "fr": "Augmente tous les dégâts que vous infligez\nde +3. Rafraîchissez vos éléments.",
-        "zh_tw": "你造成的所有傷害增加 +3。\n刷新你的元素。",
-        "zh_cn": "你造成的所有伤害增加 +3。\n刷新你的元素。",
+        "en_us": "Increase all damage you deal by +2.\nRefresh your element runes.",
+        "fr": "Augmente tous les dégâts que vous infligez\nde +2. Rafraîchissez vos éléments.",
+        "zh_tw": "你造成的所有傷害增加 +2。\n刷新你的元素。",
+        "zh_cn": "你造成的所有伤害增加 +2。\n刷新你的元素。",
         "ru": "Весь наносимый вами урон увеличивается на +3.",
         "es": "Todo el daño que infliges aumenta en +3",
         "jp": "与えるダメージは\nすべて +3増加します"
@@ -480,10 +480,10 @@ let textData = {
         "jp": ""
     },
     "matter_plus_tut_desc": {
-        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 12 -> 14\nMatter+Shield Block 12 -> 14",
-        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 12 -> 14\nMatter+Shield Protection 12 -> 14",
-        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 12->14\nMatter+Shield 保護 12->14",
-        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 12->14\nMatter+Shield 保护 12->14",
+        "en_us": "Your mastery over the\nMatter element strengthens\nsome of your existing Matter spells.\n\nMatter+Strike Damage 10 -> 12\nMatter+Shield Block 10 -> 12",
+        "fr": "Votre maîtrise de l’élément\nMatière renforce certains\nde vos sorts de Matière existants.\n\nMatter+Strike dégâts 10 -> 12\nMatter+Shield Protection 10 -> 12",
+        "zh_tw": "你對物質元素的掌握加強\n了你現有的一些物質法術。\nMatter+Strike 傷害 10->12\nMatter+Shield 保護 10->12",
+        "zh_cn": "你对物质元素的掌握加强\n了你现有的一些物质法术。\nMatter+Strike 伤害 10->12\nMatter+Shield 保护 10->12",
         "ru": "Ваше мастерство в элементе\nМатерии усиливает некоторые\nиз ваших текущих заклинаний\nМатерии.",
         "es": "Tu maestría sobre el elemento Materia fortalece algunos de tus hechizos de Materia existentes.",
         "jp": "物質元素をマスターすると、既存の物質呪文の一部が強化されます。"
@@ -498,10 +498,10 @@ let textData = {
         "jp": "固体ダメージを与える岩の球を召喚する。シンプルだけど効果的。"
     },
     "matter_tut_enhance_desc": {
-        "en_us": "Makes your next attack deal\nextra damage.",
-        "fr": "Votre prochaine attaque inflige\ndes dégâts supplémentaires.",
-        "zh_tw": "使你的下一次攻擊造成\n額外的傷害。",
-        "zh_cn": "使你的下一次攻击造成\n额外的伤害。",
+        "en_us": "Gain extra attack power\nfor the rest of the fight.",
+        "fr": "Gagnez en puissance\nd'attaque pour le reste\ndu combat.",
+        "zh_tw": "在剩餘的戰鬥中獲得\n攻擊力。",
+        "zh_cn": "在剩余的战斗中获得\n攻击力。",
         "ru": "Ваша следующая атака наносит\nдополнительный урон.",
         "es": "",
         "jp": ""
@@ -696,10 +696,10 @@ let textData = {
         "jp": ""
     },
     "void_tut_enhance_desc": {
-        "en_us": "Sacrifice some health to\nincrease your attack damage\nfor the rest of the fight. Good\nfor long battles.",
+        "en_us": "Sacrifice some health to\ndramatically increase your\nnext attack's power.",
         "fr": "Sacrifiez un peu de santé\npour augmenter les dégâts de\nvotre attaque pour le reste du\ncombat. Idéal pour les longues\nbatailles.",
-        "zh_tw": "牺牲一些生命值来永\n久增加你的攻擊力。\n适合长时间战斗。",
-        "zh_cn": "牺牲一些生命值来永\n久增加你的攻击力。\n适合长时间战斗。",
+        "zh_tw": "犧牲一些生命值來\n大幅增加下一次攻擊\n的威力。",
+        "zh_cn": "牺牲一些生命值来\n大幅增加下一次攻击\n的威力。",
         "ru": "Увеличьте свой урон от атаки\nдо конца боя.",
         "es": ".",
         "jp": ""
@@ -858,7 +858,7 @@ let textData = {
         "jp": "。"
     },
     "rune_matter_rune_strike": "HEAVY STRIKE",
-    "rune_matter_rune_enhance": "ADD DAMAGE",
+    "rune_matter_rune_enhance": "ADD STRENGTH",
     "rune_matter_rune_protect": "STONE SHIELD",
     "rune_matter_rune_reinforce": "THORN SKIN",
     "rune_matter_rune_unload": "EARTH FORCE",
@@ -873,7 +873,7 @@ let textData = {
     "rune_time_rune_reinforce": "UNDO WOUNDS",
     "rune_time_rune_unload": "TIME FREEZE",
     "rune_void_rune_strike": "DARK STRIKE",
-    "rune_void_rune_enhance": "ADD POWER",
+    "rune_void_rune_enhance": "ADD DESTRUCTION",
     "rune_void_rune_protect": "NEGATION SHIELD",
     "rune_void_rune_reinforce": "REMAKE SELF",
     "rune_void_rune_unload": "UN-MAKE",

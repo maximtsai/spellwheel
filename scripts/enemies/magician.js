@@ -22,7 +22,7 @@
     }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 120 : 110;
+         this.health = gameVars.isHardMode ? 100 : 85;
          this.damageNumOffset = 45;
          this.chargeBarOffsetY = 4;
          this.damageNumOffsetDefault = this.damageNumOffset;
@@ -35,7 +35,7 @@
 
      takeEffect(newEffect) {
          if (this.sprite) {
-             if (newEffect.name == 'mindStrike' && this.lifeOne && !this.dead && !this.isBeingFlattened) {
+             if (newEffect.name === 'mindStrike' && this.lifeOne && !this.dead && !this.isBeingFlattened) {
                  this.sprite.stop();
                  this.isBeingShocked = true;
                  this.setSprite('time_magi_shock1.png');
@@ -1026,12 +1026,12 @@
     }
 
     startChargingUltimate() {
-        let damageAmt = gameVars.isHardMode ? 3 : 2;
-        let totalAmt = gameVars.isHardMode ? 20 : 20;
-        let angleDivider = gameVars.isHardMode ? 10 : 10;
+        let damageAmt = 3;
+        let totalAmt = gameVars.isHardMode ? 28 : 24;
+
         for (let i = 0; i < totalAmt; i++) {
             this.addTween({
-                delay: i * 190,
+                delay: i * 200,
                 duration: 300,
                 targets: this.sprite,
                 scaleX: this.sprite.startScale,
@@ -1047,14 +1047,14 @@
 
                         let startX = this.x;
                         let startY = this.y + 10;
-                        let dirAngle = i * Math.PI / angleDivider;
+                        let dirAngle = i * Math.PI * 2 / totalAmt;
                         let offsetX = Math.sin(dirAngle) * 90;
                         let offsetY = -Math.cos(dirAngle) * 80;
                         let isExtraLarge = false;
                         if (gameVars.isHardMode) {
-                            isExtraLarge = i % 5 === 0;
+                            isExtraLarge = i % 7 === 0;
                         } else {
-                            isExtraLarge = i === 0 || i === 10 || i === 5 || i === 15;
+                            isExtraLarge = i % 6 === 0;
                         }
                         let clockName = 'clock2.png';
                         if (isExtraLarge) {
@@ -1071,19 +1071,19 @@
                             y: startY + offsetY * (isExtraLarge ? 1.55 : 1.6),
                             ease: 'Quart.easeOut'
                         });
-                        let numAttacks = (i + 1) * 2;
-                        if (i < 6) {
+                        let numAttacks = i + 1;
+                        if (i < 4) {
                             this.attackName.setText("}" + damageAmt + "x" + numAttacks + "}");
-                        } else if (i < 12) {
+                        } else if (i < 8) {
                             this.attackName.setText("}}" + damageAmt + "x" + numAttacks + "}}");
                             this.repositionAngrySymbol();
-                        } else if (i < 19) {
+                        } else if (i < totalAmt - 1) {
                             this.attackName.setText("}}}" + damageAmt + "x" + numAttacks + "}}}");
                             this.repositionAngrySymbol();
                         } else {
                             this.attackName.setText("}}}}" + damageAmt + "x" + numAttacks + "}}}}");
                             this.repositionAngrySymbol();
-                            this.nextAttack.chargeMult = 7;
+                            this.nextAttack.chargeMult = 6.25;
                             this.setDefaultSprite('time_magi.png');
                         }
                     }
@@ -1115,7 +1115,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_f2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_f'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1133,7 +1137,11 @@
         if (this.dead) {
             return;
         }
-        messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        if (globalObjects.player.getHealth() >= 60) {
+            messageBus.publish("showCombatText", getLangText('magician_g2'), 8);
+        } else {
+            messageBus.publish("showCombatText", getLangText('magician_g'), 8);
+        }
         this.addTimeout(() => {
             this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
                 this.playerSpellCastSub.unsubscribe();
@@ -1174,7 +1182,7 @@
                     }
                  },
                  {
-                     name: "}3x2 ",
+                     name: "}3x3 ",
                      desc: "The Time Magician cautiously\npokes you with his\nwand.",
                      chargeAmt: gameVars.isHardMode ? 365 : 405,
                      damage: -1,
@@ -1265,11 +1273,11 @@
             [
                 // 2
                 {
-                     name: gameVars.isHardMode ? "}3x1}" : "}2x1}",
+                     name: "}3x1}",
                      desc: "The Time Magician\nuses his ultimate attack",
                      chargeAmt: 1300,
                      isBigMove: true,
-                     chargeMult: gameVars.isHardMode ? 4 : 3,
+                     chargeMult: gameVars.isHardMode ? 3.3 : 3,
                      damage: -1,
                     finishDelay: 4200,
 
@@ -1283,7 +1291,7 @@
                          this.finishedChargingUltimate = true;
                      },
                      attackFinishFunction: () => {
-                        this.fireTimeObjects(gameVars.isHardMode ? 3 : 2, undefined, 135, true);
+                        this.fireTimeObjects(3, undefined, 135, true);
                          this.currentAttackSetIndex = 3;
                          this.nextAttackIndex = 0;
                      },

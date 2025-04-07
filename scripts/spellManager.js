@@ -30,6 +30,9 @@ class SpellManager {
                     case "rune_superprotect":
                         this.castMatterProtect(shieldID, rotation, true);
                         break;
+                    case "rune_lightprotect":
+                        this.castMatterProtect(shieldID, rotation, true, true);
+                        break;
                     case RUNE_UNLOAD:
                         this.castMatterUltimate();
                         break;
@@ -143,13 +146,13 @@ class SpellManager {
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
         let additionalDamage = globalObjects.player.attackDamageAdder();
         let bonusTrueDamage = globalObjects.player.trueDamageAdder();
-        let isExtraBuff = additionalDamage >= 6;
+        let isExtraBuff = additionalDamage >= 5;
 
         let pebbles = getTempPoolObject('spells', 'rockCircle.png', 'rockCircle', 800);
         pebbles.setPosition(gameConsts.halfWidth, globalObjects.player.getY() - 240);
         let additionalScale = Math.sqrt(additionalDamage) * 0.025;
         let finalAdditionaScale = additionalScale * 5;
-        let isPowerful = numAdditionalAttacks * (12 + additionalDamage + bonusTrueDamage) > 77;
+        let isPowerful = numAdditionalAttacks * (10 + additionalDamage + bonusTrueDamage) > 64;
         pebbles.setDepth(100).setAlpha(0).setScale(0.7 + additionalScale).setRotation(Math.random() * 3)
         this.scene.tweens.add({
             targets: pebbles,
@@ -392,7 +395,7 @@ class SpellManager {
                         }
                     }
 
-                    let baseDamage = gameVars.matterPlus ? 14 : 12;
+                    let baseDamage = gameVars.matterPlus ? 12 : 10;
                     messageBus.publish('enemyTakeDamage', baseDamage + additionalDamage, true, undefined, 'matter');
                     messageBus.publish('setPauseDur', isExtraBuff ? 24 : 14);
                     rockObj.bg.visible = false;
@@ -436,8 +439,8 @@ class SpellManager {
         brickObj2.setScale(1.25 + Math.sqrt(spellMult) * 0.05);
         brickObj2.origScale = 0.8;
 
-        let protectionAmt = 1;
-        let damageAmt = 1;
+        let protectionAmt = 2;
+        let damageAmt = 2;
         let duration = 400 + 50 * spellMult;
         PhaserScene.time.delayedCall( duration - 175, () => {
             playSound('matter_body');
@@ -543,6 +546,158 @@ class SpellManager {
     }
 
     castMatterEnhance() {
+        const spellID = 'matterEnhance';
+
+        let multiplier = globalObjects.player.spellMultiplier();
+        let statusObj;
+        let existingBuff = globalObjects.player.getStatuses()[spellID];
+        let buffAmt = multiplier * 1;
+        if (existingBuff) {
+            statusObj = existingBuff.statusObj;
+            // already got a buff in place
+            buffAmt += existingBuff.displayAmt;
+        }
+        let leftArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'buffup_l.png').setDepth(9).setOrigin(0.94, 0.5).setScale(0.7);
+        let rightArm = this.scene.add.sprite(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'buffup_r.png').setDepth(9).setOrigin(0.06, 0.5).setScale(0.7);
+
+        let buffCycle = -(Math.round(buffAmt + 1) % 3);
+        leftArm.rotation = -0.2;
+        rightArm.rotation = -leftArm.rotation;
+        playSound('matter_enhance').detune = buffCycle * 50;
+        playSound('matter_strike_hit2', 0.6).detune = buffCycle * 60;
+        this.scene.tweens.add({
+            targets: leftArm,
+            rotation: 0.75,
+            ease: 'Cubic.easeOut',
+            duration: 400,
+            onComplete: () => {
+                let goalScale = 1.1 + buffAmt * 0.02;
+                let param = {
+                    duration: 400,
+                    ease: 'Quad.easeOut',
+                    y: "-=1",
+                    scaleX: goalScale,
+                    scaleY: goalScale,
+                }
+                let param2 = {
+                    alpha: 0,
+                    duration: 1600,
+                    scaleX: goalScale * 0.96,
+                    scaleY: goalScale * 0.96
+                }
+                messageBus.publish('animateArmorNum', gameConsts.halfWidth, globalObjects.player.getY() - 120, "+" + buffAmt + " DMG", goalScale, param, param2);
+
+                this.scene.tweens.add({
+                    targets: leftArm,
+                    rotation: 0.7,
+                    ease: 'Back.easeOut',
+                    duration: 550,
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: leftArm,
+                            rotation: -0.2,
+                            ease: 'Cubic.easeIn',
+                            duration: 450,
+                            onComplete: () => {
+                                leftArm.destroy();
+                            }
+                        })
+                    }
+                })
+            }
+        })
+
+        this.scene.tweens.add({
+            targets: rightArm,
+            rotation: -0.75,
+            ease: 'Cubic.easeOut',
+            duration: 400,
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: rightArm,
+                    rotation: -0.7,
+                    ease: 'Back.easeOut',
+                    duration: 550,
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: rightArm,
+                            rotation: 0.2,
+                            ease: 'Cubic.easeIn',
+                            duration: 450,
+                            onComplete: () => {
+                                rightArm.destroy();
+                            }
+                        })
+                    }
+                })
+            }
+        })
+        leftArm.setAlpha(0.85);
+        rightArm.setAlpha(0.85);
+        this.scene.tweens.add({
+            targets: [leftArm, rightArm],
+            scaleX: 1.19,
+            scaleY: 1.19,
+            ease: 'Quart.easeOut',
+            duration: 425,
+            onComplete: () => {
+                leftArm.setAlpha(1);
+                rightArm.setAlpha(1);
+                this.scene.tweens.add({
+                    targets: [leftArm, rightArm],
+                    scaleX: 1.15,
+                    scaleY: 1.15,
+                    ease: 'Back.easeOut',
+                    duration: 100,
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: [leftArm, rightArm],
+                            scaleX: 1,
+                            scaleY: 1,
+                            ease: 'Quart.easeIn',
+                            alpha: 0,
+                            duration: 800,
+                        })
+                    }
+                })
+
+            }
+        })
+
+        messageBus.publish("selfTakeEffect", {
+            ignoreBuff: false,
+            name: spellID,
+            spellID: spellID,
+            multiplier: multiplier,
+            statusObj: statusObj,
+            spriteSrc1: 'rune_enhance_glow.png',
+            spriteSrc2: 'rune_matter_glow.png',
+            displayAmt: buffAmt,
+            cleanUp: (statuses) => {
+                if (statuses[spellID] && !statuses[spellID].currentAnim) {
+
+                    // statuses[spellID].currentAnim = this.scene.tweens.add({
+                    //     targets: statuses[spellID].animObj,
+                    //     duration: 350 + statuses[spellID].animObj.length * 50,
+                    //     scaleX: 0.62,
+                    //     scaleY: 0.62,
+                    //     ease: 'Quart.easeIn'
+                    // });
+                }
+            }
+        });
+        let incAmt = multiplier;
+        let spellName = getBasicText('rune_matter_rune_enhance')+"\n+" + incAmt;
+
+        // if (itemsToAnimate.length > 1) {
+        //     spellName += " X" + itemsToAnimate.length;
+        // }
+
+        this.postNonAttackCast(spellID, spellName);
+    }
+
+
+    castMatterEnhancex() {
         let newSpike;
         const spellID = 'matterEnhance';
 
@@ -554,7 +709,7 @@ class SpellManager {
             statusObj = existingBuff.statusObj;
             // already got a buff in place
             multiplier = existingBuff.multiplier;
-            itemsToTween = existingBuff.animObj;
+            // itemsToTween = existingBuff.animObj;
         }
         let itemsToAnimate = [];
         for (let i = 0; i < globalObjects.player.spellMultiplier(); i++) {
@@ -657,7 +812,7 @@ class SpellManager {
         this.postNonAttackCast(spellID, spellName);
     }
 
-    castMatterProtect(shieldID, rotation, isSuper) {
+    castMatterProtect(shieldID, rotation, isSuper, isLight) {
         const spellID = 'matterProtect';
         this.cleanUpExistingShield(shieldID);
         let spellMultiplier = globalObjects.player.spellMultiplier();
@@ -673,8 +828,12 @@ class SpellManager {
 
         let shieldFile = spellMultiplier > 1.1 ? 'stoneShieldTriple.png' : 'stoneShield.png';
         if (isSuper) {
-            spellMultiplier = 3;
-            shieldFile = 'stoneShieldTriple.png';
+            if (isLight) {
+                shieldFile = 'tinShield.png';
+            } else {
+                spellMultiplier = 3;
+                shieldFile = 'stoneShieldTriple.png';
+            }
         }
 
         let animation1 = this.scene.add.image(gameConsts.halfWidth, MAGIC_CIRCLE_HEIGHT, 'spells', shieldFile);
@@ -716,11 +875,15 @@ class SpellManager {
             });
         }
 
-        let shieldBaseHealth = gameVars.matterPlus ? 14 : 12;
+        let shieldBaseHealth = gameVars.matterPlus ? 12 : 10;
 
         let shieldHealth = shieldBaseHealth * spellMultiplier;
         if (isSuper) {
-            shieldHealth = 36;
+            if (isLight) {
+                shieldHealth = 8;
+            } else {
+                shieldHealth = 30;
+            }
         }
         textHealth.setText(shieldHealth);
         messageBus.publish('setTempRotObjs', [animation1], rotation);
@@ -742,10 +905,12 @@ class SpellManager {
             duration: 100,
             alpha: 1,
             onComplete: () => {
+                animation1.isLight = isLight;
                 messageBus.publish("selfTakeEffect", {
                     name: shieldID,
                     spellID: shieldID,
                     type: 'matter',
+                    light: isLight,
                     animObj: [animation1, textHealth, animation2],
                     spriteSrc1: 'rune_protect_glow.png',
                     spriteSrc2: 'rune_matter_glow.png',
@@ -759,23 +924,49 @@ class SpellManager {
                     ignoreBuff: true,
                     cleanUp: (statuses) => {
                         if (statuses[shieldID] && !statuses[shieldID].currentAnim) {
-                            animation2.setDepth(1);
-                            animation1.setDepth(1);
-                            statuses[shieldID].currentAnim = this.scene.tweens.add({
-                                targets: animation1,
-                                duration: 175,
-                                scaleX: "-=0.2",
-                                scaleY: "-=0.2",
-                                alpha: 0,
-                                ease: 'Quad.easeIn',
-                                onComplete: () => {
-                                    animation1.destroy();
-                                    animation2.destroy();
-                                    textHealth.destroy();
-                                }
-                            });
-                            messageBus.publish('selfClearEffect', shieldID, true);
-                            statuses[shieldID] = null;
+                            if (animation1.isLight) {
+                                playSound('clunk2');
+                                animation1.setOrigin(0.5, 0.125);
+                                animation1.y -= 242;
+                                statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 900,
+                                    x: "-=140",
+                                    rotation: "-=4.5",
+                                    onComplete: () => {
+                                        animation1.destroy();
+                                        animation2.destroy();
+                                        textHealth.destroy();
+                                    }
+                                });
+                                this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 900,
+                                    y: "+=250",
+                                    alpha: 0,
+                                    ease: 'Cubic.easeIn',
+                                });
+                                messageBus.publish('selfClearEffect', shieldID, true);
+                                statuses[shieldID] = null;
+                            } else {
+                                animation2.setDepth(1);
+                                animation1.setDepth(1);
+                                statuses[shieldID].currentAnim = this.scene.tweens.add({
+                                    targets: animation1,
+                                    duration: 175,
+                                    scaleX: "-=0.2",
+                                    scaleY: "-=0.2",
+                                    alpha: 0,
+                                    ease: 'Quad.easeIn',
+                                    onComplete: () => {
+                                        animation1.destroy();
+                                        animation2.destroy();
+                                        textHealth.destroy();
+                                    }
+                                });
+                                messageBus.publish('selfClearEffect', shieldID, true);
+                                statuses[shieldID] = null;
+                            }
                         }
                     }
                 });
@@ -811,8 +1002,12 @@ class SpellManager {
             bonusSize = 0.1;
         }
         if (isSuper) {
-            spellName = "SUPER STONE SHIELD";
-            bonusSize = 0.1;
+            if (isLight) {
+                spellName = "SHIELD";
+            } else {
+                spellName = "SUPER STONE SHIELD";
+                bonusSize = 0.1;
+            }
         }
         this.postNonAttackCast(spellID, spellName, bonusSize);
     }
@@ -1176,7 +1371,7 @@ class SpellManager {
         let hasFirstBuff = additionalDamage >= 6;
         let hasSecondBuff = additionalDamage >= 14;
         let numAdditionalAttacks = globalObjects.player.attackEnhanceMultiplier();
-        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 80;
+        let isPowerful = (numAdditionalAttacks * ((6 + additionalDamage + bonusTrueDamage) * 1.5)) > 65;
 
         let strikeObjects = [];
         let finalStrikeScale = 0.5 + Math.sqrt(additionalDamage) * 0.075 + additionalDamage * 0.02;
@@ -1265,8 +1460,8 @@ class SpellManager {
             });
         }
 
-        let spellDamage = 6 + additionalDamage;
-        let halfSpellDamage = Math.ceil(spellDamage * 0.5);
+        let spellDamage = 3 + additionalDamage;
+        let halfSpellDamage = spellDamage;//Math.ceil(spellDamage * 0.5);
         let buffDelay = 0;
         if (hasFirstBuff) {
             buffDelay += 470;
@@ -2240,9 +2435,9 @@ class SpellManager {
             }
         });
 
-        let buffAmt = 3;
+        let buffAmt = 2;
         if (multiplier > 1) {
-            buffAmt = 3 * multiplier;
+            buffAmt = 2 * multiplier;
         }
         let param = {
             duration: 1650,
@@ -2592,7 +2787,155 @@ class SpellManager {
     }
 
     castVoidReinforce(elem, embodi) {
-        this.castMatterReinforce(elem, embodi);
+        const spellID = 'voidReinforce';
+        let multiplier = globalObjects.player.spellMultiplier();
+        this.cleanseForms();
+
+        let shieldObj = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'blackHoleBig.png');
+        shieldObj.setDepth(11);
+        shieldObj.setScale(2.2);
+
+        messageBus.publish("selfClearEffect");
+        messageBus.publish("castVoidBody");
+        setTimeout(() => {
+            playSound('void_body').detune = 0;
+        }, 400);
+        this.scene.tweens.add({
+            targets: shieldObj,
+            duration: 1000,
+            scaleX: 3,
+            scaleY: 3,
+            alpha: 0,
+            onComplete: () => {
+                shieldObj.destroy();
+            }
+        });
+        let whiteFade = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'whitePixel').setDepth(99).setScale(500, 500);
+        whiteFade.setAlpha(0);
+        this.scene.tweens.add({
+            targets: whiteFade,
+            duration: 1200,
+            alpha: 0.25,
+        });
+        let blackBalls = [];
+        for (let i = 0; i < 9; i++) {
+            setTimeout(() => {
+                let randAngle = (Math.random() - 0.5) * 4.5;
+                let dist = 235 + Math.random() * 80;
+                let randX = gameConsts.halfWidth + Math.sin(randAngle) * dist;
+                let randY = globalObjects.player.getY() - Math.cos(randAngle) * dist;
+                let blackBall = this.scene.add.image(randX, randY, 'spells', 'blackCircleLarge.png').setDepth(998).setScale(0,0);
+                blackBall.setRotation(Math.random() * 6);
+
+                this.scene.tweens.add({
+                    targets: blackBall,
+                    duration: 530,
+                    scaleX: 1.47 + i * 0.03,
+                    scaleY: 1.47 + i * 0.03,
+                    ease: 'Quint.easeIn',
+                });
+                this.scene.tweens.add({
+                    targets: blackBall,
+                    duration: 540,
+                    x: gameConsts.halfWidth,
+                    y: globalObjects.player.getY(),
+                    ease: 'Cubic.easeIn',
+                    onComplete: () => {
+                        blackBalls.push(blackBall);
+                        let fades = [];
+                        if (i == 2) {
+                            let healPerTick = Math.ceil((globalObjects.player.getHealthMax() - globalObjects.player.getHealth()) * multiplier / 3);
+                            let whiteBall = this.scene.add.image(gameConsts.halfWidth, globalObjects.player.getY(), 'spells', 'whiteCircle.png').setDepth(99).setScale(6,6).setAlpha(0.6);
+                            let blackFade = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(99).setScale(500, 500).setAlpha(0);
+                            fades.push(whiteBall);
+                            fades.push(blackFade);
+                            fades.push(whiteFade);
+                            this.scene.tweens.add({
+                                targets: whiteBall,
+                                duration: 250,
+                                scaleX: 40,
+                                scaleY: 40
+                            });
+                            this.scene.tweens.add({
+                                targets: fades,
+                                duration: 300,
+                                ease: 'Cubic.easeIn',
+                                alpha: 0.43
+                            });
+                            messageBus.publish("startVoidForm", blackBalls);
+                            PhaserScene.time.delayedCall(250, () => {
+                                messageBus.publish("selfHeal", healPerTick);
+                                PhaserScene.time.delayedCall(750, () => {
+                                    messageBus.publish("selfHeal", healPerTick);
+                                    PhaserScene.time.delayedCall(750, () => {
+                                        messageBus.publish("selfHeal", healPerTick);
+                                        let newMaxHealth = Math.ceil(globalObjects.player.getHealthMax() - (8 * multiplier));
+                                        globalObjects.player.setHealth(newMaxHealth);
+                                        globalObjects.player.setHealthMaxTemp(newMaxHealth);
+                                        for (let i = 0; i < blackBalls.length; i++) {
+                                            let ball = blackBalls[i];
+                                            let randDir = (Math.random() - 0.5) * 4;
+                                            let randDist = 270 + Math.random() * 70;
+                                            let randX = ball.x + Math.sin(randDir) * randDist;
+                                            let randY = ball.y - Math.cos(randDir) * randDist;
+                                            this.scene.tweens.add({
+                                                targets: ball,
+                                                duration: 450,
+                                                ease: 'Cubic.easeOut',
+                                                x: randX,
+                                                y: randY,
+                                            });
+                                            this.scene.tweens.add({
+                                                targets: ball,
+                                                duration: 450 + Math.random() * 100,
+                                                ease: 'Quad.easeOut',
+                                                scaleX: 0,
+                                                scaleY: 0,
+                                                onComplete: () => {
+                                                    ball.destroy();
+                                                }
+                                            });
+                                        }
+                                        this.scene.tweens.add({
+                                            targets: fades,
+                                            duration: 25,
+                                            alpha: 0,
+                                            ease: 'Quad.easeIn',
+                                            onComplete: () => {
+                                                for (let i = 0; i < fades.length; i++) {
+                                                    fades[i].destroy();
+                                                }
+                                            }
+                                        });
+
+                                        messageBus.publish("stopVoidForm");
+
+                                    })
+                                })
+                            })
+                        } else if (i == 8) {
+                            for (let j = 0; j < 8; j++) {
+                                blackBalls[j].setScale(blackBalls[8].scaleX + 0.08);
+                            }
+                            this.scene.tweens.add({
+                                targets: blackBalls,
+                                duration: 250,
+                                ease: 'Quad.easeOut',
+                                scaleX: blackBalls[8].scaleX,
+                                scaleY: blackBalls[8].scaleX,
+                            });
+                        }
+                    }
+                });
+            }, i * 20);
+        }
+
+
+        let spellName = getBasicText('rune_void_rune_reinforce');
+        if (multiplier >= 3) {
+            spellName += " X"+multiplier;
+        }
+        this.postNonAttackCast(spellID, spellName);
     }
     castVoidEnhance(isSuper = false) {
         const spellID = 'voidEnhance';
@@ -2600,7 +2943,7 @@ class SpellManager {
         let multiplier = globalObjects.player.spellMultiplier();
         playSound('void_enhance', 0.55);
         let statusObj;
-        let buffAmt = multiplier * 2;
+        let buffAmt = multiplier * 8;
         if (existingBuff) {
             statusObj = existingBuff.statusObj;
             buffAmt += existingBuff.multiplier;
@@ -2640,7 +2983,7 @@ class SpellManager {
             ease: 'Cubic.easeOut',
             alpha: 1,
             onComplete: () => {
-                let healthLost = 3 * multiplier;
+                let healthLost = 1 * multiplier;
                 if (isSuper) {
                     healthLost = 0;
                 }
@@ -2728,6 +3071,8 @@ class SpellManager {
             scaleX: 1,
             scaleY: 1
         }
+
+        let animList = [this.voidSpikeOutOuter, this.voidSpikeOutInner, this.voidSpikeOutButton];
         messageBus.publish('animateVoidNum', gameConsts.halfWidth, globalObjects.player.getY() - 40, "+" + buffAmt + " ATK\nDAMAGE", 1 + Math.sqrt(buffAmt) * 0.18, param, param2);
 
         messageBus.publish('selfTakeEffect', {
@@ -2735,10 +3080,70 @@ class SpellManager {
             spellID: spellID,
             multiplier: buffAmt,
             statusObj: statusObj,
+            animObj: animList,
             spriteSrc1: 'rune_enhance_glow.png',
             spriteSrc2: 'rune_void_glow.png',
             displayAmt: buffAmt,
             cleanUp: (statuses) => {
+                animList[0].setVisible(true);
+                animList[1].setScale(1.47).setVisible(true);
+                animList[2].setScale(0.84).setVisible(true);
+                PhaserScene.tweens.add({
+                    targets: animList[0],
+                    duration: 150,
+                    scaleX: 1.95,
+                    scaleY: 1.95,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: animList[0],
+                            duration: 300,
+                            scaleX: 1.8,
+                            scaleY: 1.8,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
+                });
+                PhaserScene.tweens.add({
+                    targets: animList[1],
+                    duration: 150,
+                    scaleX: 1.5,
+                    scaleY: 1.5,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: animList[1],
+                            delay: 50,
+                            duration: 300,
+                            scaleX: 1.35,
+                            scaleY: 1.35,
+                            ease: 'Quart.easeIn',
+                        });
+                    }
+                });
+                PhaserScene.tweens.add({
+                    targets: animList[2],
+                    duration: 150,
+                    scaleX: 0.9,
+                    scaleY: 0.9,
+                    ease: 'Quart.easeOut',
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: animList[2],
+                            delay: 100,
+                            duration: 300,
+                            scaleX: 0.6,
+                            scaleY: 0.6,
+                            ease: 'Quart.easeIn',
+                            onComplete: () => {
+                                animList[0].destroy();
+                                animList[1].destroy();
+                                animList[2].destroy();
+                            }
+                        });
+                    }
+                });
+
                 statuses[spellID] = null;
             }
         });
@@ -3087,7 +3492,7 @@ class SpellManager {
         messageBus.publish('recordSpellAttack', spellID, spellName, undefined, additionalDamage, numAdditionalAttacks);
         messageBus.publish('messageAllSpell', spellID, spellName);
         messageBus.publish('clearAttackMultiplier');
-        messageBus.publish('clearDamageAdder');
+        messageBus.publish('clearVoidDamageAdder');
     }
 
     postNonAttackCast(spellID, spellName = "UNNAMED SPELL") {

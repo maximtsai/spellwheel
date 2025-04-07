@@ -20,6 +20,8 @@ class Dummymind extends Dummypractice {
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.numTimesHealed = 0;
+        this.disableSkip = true;
+
     }
 
 
@@ -68,6 +70,8 @@ class Dummymind extends Dummypractice {
         });
         globalObjects.bannerTextManager.setOnFinishFunc(() => {
             globalObjects.magicCircle.enableMovement();
+            this.skipBtn = this.createSkipBtn();
+            this.addToDestructibles(this.skipBtn);
             globalObjects.bannerTextManager.setOnFinishFunc(() => {});
             globalObjects.bannerTextManager.closeBanner();
             this.addTween({
@@ -531,9 +535,14 @@ class Dummymind extends Dummypractice {
                                     ease: 'Cubic.easeInOut',
                                     duration: 300,
                                     onComplete: () => {
+                                        if (this.sprite.rotateAnim) {
+                                            this.sprite.rotateAnim.stop();
+                                        }
+
                                         PhaserScene.tweens.add({
                                             targets: [this.sprite],
                                             scaleY: 0,
+                                            rotation: 0,
                                             y: "+=70",
                                             ease: 'Cubic.easeIn',
                                             duration: 600,
@@ -603,7 +612,7 @@ class Dummymind extends Dummypractice {
                     ease: 'Quart.easeOut',
                     duration: 1650,
                 });
-                PhaserScene.tweens.add({
+                this.sprite.rotateAnim = PhaserScene.tweens.add({
                     targets: [this.sprite, darkDummy],
                     rotation: "+=4",
                     x: "-=10",

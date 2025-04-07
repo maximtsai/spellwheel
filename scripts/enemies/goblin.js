@@ -9,10 +9,14 @@
 
          // this.addSubscription("clearMindBurn", this.clearMindBurn.bind(this))
          this.addSubscription("enemyOnFire", this.setOnFire.bind(this))
+
+         this.addTimeout(() => {
+             messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
+         }, 1150)
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 100 : 85;
+         this.health = gameVars.isHardMode ? 80 : 70;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -241,8 +245,8 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {45",
-                     block: 45,
+                     name: "FANCY SHIELD {30",
+                     block: 30,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 360,
@@ -284,7 +288,7 @@
                  {
                      name: gameVars.isHardMode ? "}12 " : "}8 ",
                      desc: "Goblin rams you with\nhis shield",
-                     chargeAmt: 400,
+                     chargeAmt: 325,
                      damage: gameVars.isHardMode ? 12 : 8,
                      startFunction: () => {
                         this.pullbackScale = 0.85;
@@ -701,7 +705,7 @@
                             scaleX: 1,
                             scaleY: 1,
                             ease: "Cubic.easeOut",
-                            duration: 1500,
+                            duration: 2100,
                             onComplete: () => {
                                 this.showVictory(rune);
                             }

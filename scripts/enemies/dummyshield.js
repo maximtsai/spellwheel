@@ -4,12 +4,13 @@
     }
 
      initStatsCustom() {
-        this.health = 70;
+        this.health = 65;
         this.isAsleep = true;
         this.attackScale = 1;
         this.pullbackScale = 1;
         this.damageCanEmit = true;
         this.spellsCastCount = 0;
+         this.disableSkip = true;
      }
 
      initTutorial() {
@@ -26,6 +27,8 @@
 
              this.addTimeout(() => {
                  this.createPicketSign();
+                 this.skipBtn = this.createSkipBtn();
+                 this.addToDestructibles(this.skipBtn);
              }, 100);
 
              this.playerSpellCastSub = messageBus.subscribe('playerCastedSpell', () => {
@@ -229,6 +232,7 @@
         if (this.picketVisual.currAnim) {
             this.picketVisual.currAnim.stop();
         }
+        this.picketButton = null;
         this.addTween({
             targets: this.picketVisual,
             scaleY: 0,
@@ -279,6 +283,14 @@
          if (this.malfunctionTween) {
             this.malfunctionTween.stop();
          }
+
+         if (this.text){
+             this.text.destroy();
+         }
+         if (this.backingBox) {
+             this.backingBox.destroy();
+         }
+
         playSound('clunk2');
          if (this.runTween) {
             this.runTween.stop();
@@ -288,7 +300,26 @@
          }
         if (this.picketButton) {
             this.picketButton.destroy();
+            this.flyBird();
+            if (this.picketVisual.currAnim) {
+                this.picketVisual.currAnim.stop();
+            }
+            this.addTween({
+                targets: this.picketVisual,
+                scaleY: 0,
+                scaleX: 0.5,
+                ease: "Back.easeIn",
+                duration: 400,
+                easeParams: [1.5],
+                completeDelay: 400,
+                onComplete: () => {
+                    this.picketVisual.destroy();
+                }
+            });
         }
+
+
+
         super.die();
      }
 
@@ -392,7 +423,7 @@
                     }
                  },
                  {
-                     name: "|12x2",
+                     name: "|10x2",
                      chargeAmt: 700,
                      finishDelay: 1600,
                      transitionFast: true,
@@ -409,7 +440,7 @@
                     },
                     attackFinishFunction: () => {
                         this.tempShiftSFX();
-                        this.throwWeapon('sword.png', 12, 2);
+                        this.throwWeapon('sword.png', 10, 2);
                     }
                  },
                  {
@@ -449,7 +480,7 @@
                     },
                  },
                  {
-                     name: ";30",
+                     name: ";20",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
@@ -467,11 +498,11 @@
                     attackFinishFunction: () => {
                         let throwSprite = 'dummy_dead.png';
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 30, 1);
+                        this.throwWeapon(throwSprite, 20, 1);
                     }
                  },
                  {
-                     name: ";12x3",
+                     name: ";10x3",
                      chargeAmt: 1000,
                      finishDelay: 800,
                      transitionFast: true,
@@ -489,7 +520,7 @@
                     attackFinishFunction: () => {
                         let throwSprite = 'sword.png';
                         this.tempShiftSFX();
-                        this.throwWeapon(throwSprite, 12, 3);
+                        this.throwWeapon(throwSprite, 10, 3);
                     }
                 },
                  {

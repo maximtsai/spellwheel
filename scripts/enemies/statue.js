@@ -48,7 +48,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 280 : 265;
+         this.health = gameVars.isHardMode ? 260 : 230;
          this.isAsleep = true;
          this.attackScale = 1;
          this.pullbackScale = 1;
@@ -691,16 +691,16 @@
 
 
      initAttacks() {
-        let hardModeCharge = gameVars.isHardMode ? -40 : 0;
+        let hardModeCharge = gameVars.isHardMode ? -45 : -20;
         let finDelayCrazy = -400;
          this.attacks = [
              [
                  // 0
                  {
                      name: gameVars.isHardMode ? "VOID SHIELD? #10" : "VOID SHIELD? #8",
-                     chargeAmt: 888,
+                     chargeAmt: 777,
                      chargeMult: 20,
-                     finishDelay: 2300,
+                     finishDelay: 2100,
                      damage: -1,
                      finaleFunction: () => {
                          fadeAwaySound(this.bgMusic, 1500);
@@ -715,92 +715,92 @@
              [
                  {
                      name: "BOOTING UP...",
-                     chargeAmt: gameVars.isHardMode ? 350 : 600,
+                     chargeAmt: gameVars.isHardMode ? 40 : 600,
                      damage: 0,
                  },
                  {
-                     name: "}3x2}",
-                     chargeAmt: 500 + hardModeCharge,
-                     finishDelay: 1000 + finDelayCrazy,
-                     damage: -1,
-                     startFunction: () => {
-                         //this.prepAttack();
-                     },
-                     attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 1);
-                     }
-                 },
-                 {
-                     name: "}3x4}",
+                     name: "}4x2}",
                      chargeAmt: 550 + hardModeCharge,
-                     finishDelay: 1600 + finDelayCrazy,
+                     finishDelay: 1000,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 2);
+                         this.fireVoidAttacks(4, 1);
                      }
                  },
                  {
-                     name: "}3x6}",
+                     name: "}4x4}",
                      chargeAmt: 600 + hardModeCharge,
-                     finishDelay: 2200 + finDelayCrazy,
+                     finishDelay: 1600,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 3);
+                         this.fireVoidAttacks(4, 2);
                      }
                  },
                  {
-                     name: "}}3x8}}",
+                     name: "}4x6}",
                      chargeAmt: 650 + hardModeCharge,
-                     finishDelay: 2800 + finDelayCrazy,
+                     finishDelay: 2200,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 4);
+                         this.fireVoidAttacks(4, 3);
                      }
                  },
                  {
-                     name: "}}3x10}}",
+                     name: "}}4x8}}",
                      chargeAmt: 700 + hardModeCharge,
-                     finishDelay: 3200 + finDelayCrazy,
+                     finishDelay: 2800,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 5);
+                         this.fireVoidAttacks(4, 4);
                      }
                  },
                  {
-                     name: "}}3x12}}",
-                     chargeAmt: 750 + hardModeCharge,
-                     finishDelay: 3700 + finDelayCrazy,
-                     damage: -1,
-                     startFunction: () => {
-                         //this.prepAttack();
-                     },
-                     attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 6);
-                     }
-                 },
-                 {
-                     name: "}}}3x14}}}",
+                     name: "}}4x10}}",
                      chargeAmt: 800 + hardModeCharge,
-                     finishDelay: 4150 + finDelayCrazy,
+                     finishDelay: 3200,
+                     damage: -1,
+                     startFunction: () => {
+                         //this.prepAttack();
+                     },
+                     attackFinishFunction: () => {
+                         this.fireVoidAttacks(4, 5);
+                     }
+                 },
+                 {
+                     name: "}}4x12}}",
+                     chargeAmt: 900 + hardModeCharge,
+                     finishDelay: 3700,
+                     damage: -1,
+                     startFunction: () => {
+                         //this.prepAttack();
+                     },
+                     attackFinishFunction: () => {
+                         this.fireVoidAttacks(4, 6);
+                     }
+                 },
+                 {
+                     name: "}}}4x14}}}",
+                     chargeAmt: 1000 + hardModeCharge,
+                     finishDelay: 4150,
                      isBigMove: true,
                      damage: -1,
                      startFunction: () => {
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 7);
+                         this.fireVoidAttacks(4, 7);
                      }
                  },
                  {
@@ -813,7 +813,7 @@
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 8);
+                         this.fireVoidAttacks(4, 8);
                      }
                  },
                  {
@@ -826,7 +826,7 @@
                          //this.prepAttack();
                      },
                      attackFinishFunction: () => {
-                         this.fireVoidAttacks(3, 8);
+                         this.fireVoidAttacks(4, 9);
                      }
                  },
                  {

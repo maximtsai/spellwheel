@@ -1,8 +1,8 @@
 class StatusObj {
-    constructor(scene, spellID, x, y, sprite, sprite2, displayAmt) {
+    constructor(scene, spellID, x, y, sprite, sprite2, displayAmt, infoText) {
         this.scene = scene;
         this.setup(x, y);
-        this.init(spellID, x, y, sprite, sprite2, displayAmt);
+        this.init(spellID, x, y, sprite, sprite2, displayAmt, infoText);
     }
 
     setup(x, y) {
@@ -21,7 +21,12 @@ class StatusObj {
         this.sprite2.setDepth(9999);
         this.timeLeftText.setDepth(9999);
         this.amtText.setDepth(9999);
+        this.statusInfo = "";
 
+    }
+
+    setHoverText(text) {
+        this.statusInfo = text;
     }
 
     setPosition(x, y) {
@@ -29,10 +34,11 @@ class StatusObj {
         this.sprite2.setPosition(x-11, y + 16);
         this.timeLeftText.setPosition(x + 27, y);
         this.amtText.setPosition(x + 9, y+28)
-
+        this.buttonHover.setPosition(x - 1, y - 34);
     }
 
-    init(spellID, x, y, spriteSrc = 'rune_void_glow.png', spriteSrc2, amt) {
+    init(spellID, x, y, spriteSrc = 'rune_void_glow.png', spriteSrc2, amt, infoText) {
+        this.statusInfo = infoText;
         this.spellID = spellID;
         this.active = true;
         this.sprite.setFrame(spriteSrc);
@@ -59,6 +65,44 @@ class StatusObj {
             this.amtText.setPosition(x + 9, y+28);
         }
         this.amtText.visible = true;
+        this.buttonHover = new Button({
+            normal: {
+                ref: "blackPixel",
+                alpha: 0,
+                x: this.sprite.x - 1,
+                y: this.sprite.y - 34,
+                scaleX: 29,
+                scaleY: 33
+            },
+            hover: {
+                ref: "blackPixel",
+                alpha: 0,
+                x: this.sprite.x - 1,
+                y: this.sprite.y - 34,
+                scaleX: 30,
+                scaleY: 33
+            },
+            disable: {
+                alpha: 0
+            },
+            onHover: () => {
+                this.showInfo();
+            },
+            onHoverOut: () => {
+                this.hideInfo();
+            },
+            onMouseUp: () => {
+                this.showInfo();
+            }
+        });
+    }
+
+    showInfo() {
+        messageBus.publish("showStatusInfo", this.statusInfo)
+    }
+
+    hideInfo() {
+        messageBus.publish("hideStatusInfo")
     }
 
     setDurationText(text = ' ') {
@@ -74,6 +118,7 @@ class StatusObj {
         this.sprite2.setVisible(false);
         this.timeLeftText.setVisible(false);
         this.amtText.setVisible(false);
+        this.buttonHover.setState(DISABLE);
         this.active = false;
     }
 }

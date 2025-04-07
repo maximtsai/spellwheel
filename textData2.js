@@ -220,13 +220,13 @@ let textData2 = {
     },
 
     "post_fight_newrune": {
-        "en_us": "New Rune",
-        "fr": "Nouvelle rune",
-        "zh_tw": "新符文",
-        "zh_cn": "新符文",
-        "ru": "Новая руна",
-        "es": "¡Nueva runa",
-        "jp": "新しいルーン"
+        "en_us": " ",
+        "fr": " ",
+        "zh_tw": " ",
+        "zh_cn": " ",
+        "ru": " ",
+        "es": " ",
+        "jp": " "
     },
     "post_fight_noupgrade": {
         "en_us": "No Upgrade",
@@ -466,10 +466,10 @@ let textData2 = {
         "jp": "呪文に固体の\n岩と石を使用"
     },
     "pre_fight_0g": {
-        "en_us": "Deal 12 Damage",
-        "fr": "Inflige 12 points\nde dégâts",
-        "zh_tw": "造成12點傷害",
-        "zh_cn": "造成 12 点伤害",
+        "en_us": "Deal 10 Damage",
+        "fr": "Inflige 10 points\nde dégâts",
+        "zh_tw": "造成10點傷害",
+        "zh_cn": "造成 10 点伤害",
         "ru": "Наносит 12 ед.\nурона",
         "es": "Inflige 12 de daño",
         "jp": "12ダメージを与える"
@@ -520,7 +520,7 @@ let textData2 = {
         "jp": "「これは私の盾、私の盾です! 父の兄の叔母の祖父のいとこの友人の隣人からの家宝ですか!!」"
     },
     "pre_fight_1b": {
-        "en_us": "I can't waste time bartering\nwith this creature, but I\nstill need that shield of his\nfor the journey.",
+        "en_us": "I can't waste time bartering\nwith this creature, but I\ncould still use that shield of\nhis for the journey.",
         "fr": "Je ne peux pas perdre de\ntemps à marchander avec\ncette créature, mais j'ai\ntoujours besoin de son bouclier\npour le voyage.",
         "zh_tw": "我沒有時間與這個怪物進\n行討價還價。我必須拿走\n一切能得到的資源。",
         "zh_cn": "我没有时间与这个怪物进\n行讨价还价。我必須拿走\n一切能得到的資源。",
@@ -690,6 +690,15 @@ let textData2 = {
         "es": "",
         "jp": ""
     },
+    "level1_shield": {
+        "en_us": "I only have this shield\nto defend myself.",
+        "fr": "Je n'ai que ce bouclier\npour me défendre.",
+        "zh_tw": "我只有這面盾牌來保護自己。",
+        "zh_cn": "我只有这面盾牌来保护自己。",
+        "ru": "",
+        "es": "",
+        "jp": ""
+    },
     "level1_tut_a": {
         "en_us": "Enhance rune\nmakes your\nattacks stronger\n ",
         "fr": "La rune Renforcer\nrend vos attaques\nplus fortes\n ",
@@ -718,10 +727,10 @@ let textData2 = {
         "jp": "攻撃されると\n敵が怒る!"
     },
     "level1_tut_c": {
-        "en_us": "Cast multiple\n\nfor a powerful\nattack.",
-        "fr": "Lancez plusieurs\n\npour une attaque\npuissante",
-        "zh_tw": "施放多個\n\n以進行強\n力攻擊。",
-        "zh_cn": "施放多个\n\n以进行强\n力攻击。",
+        "en_us": "Keep an eye\non the enemy's\nnext action",
+        "fr": "Gardez un œil sur\nle prochain mouvement\nde l'ennemi",
+        "zh_tw": "留意敵人的下一步行動",
+        "zh_cn": "留意敌人的\n下一步行动",
         "ru": "",
         "es": "",
         "jp": ""
@@ -754,10 +763,10 @@ let textData2 = {
         "jp": ""
     },
     "level_water_victory_post": {
-        "en_us": "I need something to\ndefend myself with.",
-        "fr": "J'ai besoin de quelque\nchose pour me défendre.",
-        "zh_tw": "我必須找到方法来保護自己",
-        "zh_cn": "我必须找到方法来保护自己",
+        "en_us": "I need a better shield...",
+        "fr": "J'ai besoin d'un meilleur bouclier...",
+        "zh_tw": "我必須找更好的\n方法來保護自己。",
+        "zh_cn": "我必须找更好的\n方法来保护自己。",
         "ru": "",
         "es": "",
         "jp": ""
@@ -926,6 +935,15 @@ let textData2 = {
         "es": "Golpe de energía hace que tu próximo ataque golpee el doble de fuerte.\n             +",
         "jp": "「エナジーストライク」は、次の攻撃のヒットを2倍にする。\n            +"
     },
+    "skip": {
+        "en_us": "SKIP",
+        "fr": "SAUTER",
+        "zh_tw": "跳过",
+        "zh_cn": "跳過",
+        "ru": "ПОКИДАТЬ",
+        "es": "ABANDONAR",
+        "jp": "やめる"
+    },
     "exit": {
         "en_us": "EXIT",
         "fr": "QUITTER",
@@ -952,6 +970,24 @@ let textData2 = {
         "ru": "ГЛАВНОЕ МЕНЮ?",
         "es": "MENÚ PRINCIPAL?",
         "jp": "メインメニュー？"
+    },
+    "skip_q": {
+        "en_us": "SKIP TRAINING?",
+        "fr": "SAUTER L'ENTRAINEMENT ?",
+        "zh_tw": "跳過訓練？",
+        "zh_cn": "跳过训练？",
+        "ru": "ГЛАВНОЕ МЕНЮ?",
+        "es": "MENÚ PRINCIPAL?",
+        "jp": "メインメニュー？"
+    },
+    "skip_long": {
+        "en_us": "Skip to the next level?",
+        "fr": "Passer au niveau suivant ?",
+        "zh_tw": "跳到下一級？",
+        "zh_cn": "跳到下一级？",
+        "ru": "Выйти из боя и вернуться\nв главное меню?",
+        "es": "¿Salir de la pelea y\nvolver al menú principal?",
+        "jp": "戦闘を終了してメイン\nメニューに戻りますか?"
     },
     "exit_long": {
         "en_us": "Exit the fight and\nreturn to main menu?",

@@ -14,6 +14,8 @@
          this.addTimeout(() => {
              globalObjects.encyclopedia.showButton();
              globalObjects.options.showButton();
+             messageBus.publish('castSpell', {runeName: "rune_matter"}, {runeName: "rune_lightprotect"}, 'shield9', 0);
+
          }, 900)
 
 
@@ -22,7 +24,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 75 : 55;
+         this.health = gameVars.isHardMode ? 55 : 45;
          this.isAsleep = false;
          this.extraRepeatDelay = 200;
          this.pullbackHoldRatio = 0.75;
@@ -827,8 +829,8 @@
                  duration: 200,
                  completeDelay: 1000,
                  onComplete: () => {
-                     this.playerSpellCastSub = this.addSubscription('playerCastedSpell', () => {
-                         this.playerSpellCastSub.unsubscribe();
+                     this.playerSpellCastSub2 = this.addSubscription('playerCastedSpell', () => {
+                         this.playerSpellCastSub2.unsubscribe();
                          this.addTimeout(() => {
                              this.addTween({
                                  targets: [this.rune3],
@@ -841,6 +843,7 @@
                              globalObjects.textPopupManager.hideInfoText();
                          }, 300);
                      });
+                     this.subscriptions.push(this.playerSpellCastSub2);
                  }
              });
          }, 500)

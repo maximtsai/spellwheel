@@ -1037,7 +1037,7 @@
                  },
                  {
                      name: "|8 ",
-                     announceName: "void strike",
+                     announceName: "dark strike",
                      chargeAmt: 750,
                      damage: 8,
                      chargeMult: 1.5,

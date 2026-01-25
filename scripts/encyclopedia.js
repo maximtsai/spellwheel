@@ -474,6 +474,7 @@ class Encyclopedia {
         }
         let plusText = '';//'_plus'
         if (gameVars.latestLevel > 8 && element === 'matter') {
+            debugger;
             if (action === 'strike' || action === 'protect') {
                 plusText = '_plus';
             }
@@ -603,17 +604,20 @@ class Encyclopedia {
 
             let actionRuneName = "rune_" + (actionAvailable ? action : 'question') + "_large.png"
             let actionRune = PhaserScene.add.image(gameConsts.halfWidth - 244, startPos1 + i * offset, 'tutorial', actionRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            actionRune.setTint(0xFAEAEA);
             this.currentPageItems.push(actionRune);
 
             let elementRuneName = "rune_" + (elementAvailable ? element : 'question') + "_large.png"
             let elementRune = PhaserScene.add.image(gameConsts.halfWidth - 199, startPos1 + i * offset, 'tutorial', elementRuneName).setAlpha(0).setDepth(this.baseDepth).setScale(0.38, 0.36);
+            elementRune.setTint(0xFFE0E0);
             this.currentPageItems.push(elementRune);
 
             if (actionAvailable && elementAvailable) {
                 if (element === 'energy') {
                     element = 'mind'
                 }
-                let descText = PhaserScene.add.text(gameConsts.halfWidth - 168, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
+                let descText = PhaserScene.add.text(gameConsts.halfWidth - 168, startPos1 + i * offset, this.removeNewlinesIfLong(getLangText(this.createDescLong(action, element))), 
+                    {fontFamily: 'robotomedium', fontSize: 16, color: '#200000', align: 'left', lineSpacing: -3}).setAlpha(0).setDepth(this.baseDepth).setScale(0.95, 1);
                 descText.setOrigin(0, 0.5);
                 this.currentPageItems.push(descText);
             }

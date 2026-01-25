@@ -669,7 +669,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc": {
-        "en_us": "Void Rune controls empty space.\nVoid spells can deal percentage health\ndamage, negate enemy attacks, or\neven fully heal you at a cost.",
+        "en_us": "Void Rune controls empty space.\nVoid spells can deal % health\ndamage, negate enemy attacks, or\neven fully heal you at a cost.",
         "fr": "La Rune du Vide permet de contrôler\nl’espace vide. Les sorts du Vide peuvent infliger\ndes dégâts basés sur un pourcentage de santé,\nannuler les attaques ennemies ou même vous\nsoigner complètement à un certain coût.",
         "zh_tw": "虛空符文賦予了你對虛\n空空間的控制權。虛空法術\n可以造成一定比例的生命值傷害、\n抵消敵人的攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚\n空空间的控制权。虚空法术\n可以造成一定比例的生命值伤害、\n抵消敌人的攻击，甚至可以完全治愈你。",
@@ -678,7 +678,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_desc_sh": {
-        "en_us": "Void Rune controls empty space.\nVoid spells can deal percentage health\ndamage, negate enemy attacks,\nor even fully heal you at\na cost.",
+        "en_us": "Void Rune controls empty space.\nVoid spells can deal % health\ndamage, negate enemy attacks,\nor even fully heal you at a cost.",
         "fr": "La Rune du Vide permet de\ncontrôler l’espace vide. Les sorts\ndu Vide peuvent infliger des\ndégâts basés sur un pourcentage\nde santé, annuler les attaques\nennemies ou même vous soigner\ncomplètement.",
         "zh_tw": "虛空符文賦予了你對虛空空間的\n控制權。虛空法術可以造成一定\n比例的生命值傷害、抵消敵人的\n攻擊，甚至可以完全治癒你。",
         "zh_cn": "虚空符文赋予了你对虚空空间的\n控制权。虚空法术可以造成一定\n比例的生命值伤害、抵消敌人的\n攻击，甚至可以完全治愈你。",
@@ -687,7 +687,7 @@ let textData = {
         "jp": ""
     },
     "void_tut_strike_desc": {
-        "en_us": "An attack that uses up all of\nyour strike runes to hit\nmultiple times. Each attack\ndamages a percent of the\nenemy's remaining health.",
+        "en_us": "Uses all your strike runes to\nlaunch destructive void tentacles.\nEach attack damages a percent\nof the enemy's remaining health.",
         "fr": "Une attaque qui frappe trois\nfois après un délai et inflige\ndes dégâts en pourcentage\nde santé.",
         "zh_tw": "延遲後發動 3 次攻擊,每次攻擊\n造成百分比的生命傷害。\n\n加強攻擊力的法術會三倍增加\n攻擊威力。",
         "zh_cn": "延迟后发动 3 次攻击,每次攻击\n造成百分比的生命伤害。\n\n加强攻击力的法术会三倍增加\n攻击威力。",
@@ -836,7 +836,7 @@ let textData = {
     "rune_time_rune_protect": "DELAY SHIELD",
     "rune_time_rune_reinforce": "UNDO WOUNDS",
     "rune_time_rune_unload": "TIME FREEZE",
-    "rune_void_rune_strike": "DARK STRIKE",
+    "rune_void_rune_strike": "VOID STRIKE",
     "rune_void_rune_enhance": "ADD DESTRUCTION",
     "rune_void_rune_protect": "NEGATION SHIELD",
     "rune_void_rune_reinforce": "REMAKE SELF",

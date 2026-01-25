@@ -198,7 +198,7 @@ function buildTutorialVoid() {
     let reinforceText = getLangText('void_tut_reinforce_desc');
     let startFrame = 'rune_void_large.png';
 
-    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 120, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 22, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
+    let tutText = PhaserScene.add.text(gameConsts.halfWidth - 120, gameConsts.halfHeight - 75, initTutText, {fontFamily: 'Verdana', fontSize: 20, color: '#2A1122', align: 'left'}).setDepth(10001).setOrigin(0, 0.34);
     globalObjects.runePicture.setVisible(true).setAlpha(0).setScale(0.96);
     globalObjects.runePictureFrame.setVisible(true).setAlpha(0).setScale(0.96);
     PhaserScene.tweens.add({

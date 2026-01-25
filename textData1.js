@@ -785,6 +785,24 @@ let textData = {
         "es": "",
         "jp": "。"
     },
+    "artbook": {
+        "en_us": "ARTBOOK!",
+        "fr": "LIVRE D'ART",
+        "zh_tw": "藝術畫冊",
+        "zh_cn": "艺术书籍",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
+    "digital_artbook": {
+        "en_us": "CHECK OUT OUR\nDIGITAL ARTBOOK!",
+        "fr": "DÉCOUVREZ NOTRE LIVRE\nD'ART NUMÉRIQUE !",
+        "zh_tw": "快來看看我們的\n電子畫冊吧！",
+        "zh_cn": "快来看看我们的\n艺术画册！",
+        "ru": "",
+        "es": "",
+        "jp": "。"
+    },
     "credits": {
         "en_us": "CREDITS",
         "fr": "CRÉDITS",

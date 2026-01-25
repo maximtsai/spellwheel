@@ -647,7 +647,7 @@ function showMainMenuButtons() {
                 "Small_Swoosh - 1.wav by SoundFlakes\n-- https://freesound.org/s/416468/\n- License: Attribution 4.0";
             let creditsUI = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'ui', 'paper.png').setDepth(100000).setScale(0.975);
             let creditsPaper =PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight - 1, 'misc', 'credits.png').setDepth(100000).setScale(0.975);
-            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 38, gameConsts.halfHeight + 142, "DIGITAL ARTBOOK WITH BEHIND\nTHE SCENES COMING SOON!", {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, -1).setDepth(100000).setAlpha(0.3).setScale(1.03);
+            let discoverText = PhaserScene.add.text(gameConsts.halfWidth - 8, gameConsts.halfHeight + 146, getLangText('digital_artbook'), {fontFamily: 'germania', fontSize: 23.5, color: '#452127', align: 'center', lineSpacing: -5}).setOrigin(0.5, -1).setDepth(100000).setAlpha(0.3).setScale(1.03);
             // let maximText = PhaserScene.add.text(gameConsts.halfWidth - 270, gameConsts.halfHeight - 206, "Programming & Game Design", {fontFamily: 'Arial', fontSize: 18, color: '#452127', align: 'left', lineSpacing: -5}).setOrigin(0, 0.25).setDepth(100000).setAlpha(0.3).setScale(0.975);
             // maximText.setFontStyle('bold');
 
@@ -699,61 +699,63 @@ function showMainMenuButtons() {
                 },
                 onMouseUp: () => {
                     playSound('flip2');
-                    artbookGlow.visible = false;
-                    bookButton.setState(DISABLE);
-                    let clickBlock;
-                    clickBlock = new Button({
-                        normal: {
-                            ref: "blackPixel",
-                            scaleX: 1000,
-                            scaleY: 1000,
-                            alpha: 0.6,
-                            x: gameConsts.halfWidth,
-                            y: gameConsts.halfHeight,
-                        },
-                        disable: {
-                            alpha: 0
-                        },
-                        onMouseUp: () => {
+                    window.open("https://adayofjoy.itch.io/spellwheel-art-book", "_blank", "noopener,noreferrer");
 
-                        }
-                    });
-                    clickBlock.setDepth(100001);
-                    let actionText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 300, "<Work in Progress>\nCheck us out later!", {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'center'}).setOrigin(0.5, 0).setDepth(100001).setAlpha(0);
-                    PhaserScene.tweens.add({
-                        targets: [actionText],
-                        duration: 250,
-                        alpha: 1,
-                    });
-
-                    PhaserScene.tweens.add({
-                        targets: [artbook],
-                        duration: 220,
-                        ease: 'Back.easeOut',
-                        scaleX: 1,
-                        scaleY: 1,
-                        x: gameConsts.halfWidth,
-                        y: gameConsts.halfHeight,
-                        onComplete: () => {
-                            clickBlock.setOnMouseUpFunc(() => {
-                                bookButton.setState(NORMAL)
-                                clickBlock.destroy();
-                                actionText.destroy();
-                                PhaserScene.tweens.add({
-                                    targets: [artbook],
-                                    duration: 180,
-                                    ease: 'Cubic.easeOut',
-                                    scaleX: 0.326,
-                                    scaleY: 0.326,
-                                    x: artbook.origX,
-                                    y: artbook.origY,
-                                });
-                                if (canvas) {
-                                    canvas.style.cursor = 'default';
-                                }
-                            })
-                        }
-                    });
+                    // artbookGlow.visible = false;
+                    // bookButton.setState(DISABLE);
+                    // let clickBlock;
+                    // clickBlock = new Button({
+                    //     normal: {
+                    //         ref: "blackPixel",
+                    //         scaleX: 1000,
+                    //         scaleY: 1000,
+                    //         alpha: 0.6,
+                    //         x: gameConsts.halfWidth,
+                    //         y: gameConsts.halfHeight,
+                    //     },
+                    //     disable: {
+                    //         alpha: 0
+                    //     },
+                    //     onMouseUp: () => {
+                    //
+                    //     }
+                    // });
+                    // clickBlock.setDepth(100001);
+                    // let actionText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.halfHeight + 300, "<Work in Progress>\nCheck us out later!", {fontFamily: 'germania', fontSize: 30, color: '#FFFFFF', align: 'center'}).setOrigin(0.5, 0).setDepth(100001).setAlpha(0);
+                    // PhaserScene.tweens.add({
+                    //     targets: [actionText],
+                    //     duration: 250,
+                    //     alpha: 1,
+                    // });
+                    //
+                    // PhaserScene.tweens.add({
+                    //     targets: [artbook],
+                    //     duration: 220,
+                    //     ease: 'Back.easeOut',
+                    //     scaleX: 1,
+                    //     scaleY: 1,
+                    //     x: gameConsts.halfWidth,
+                    //     y: gameConsts.halfHeight,
+                    //     onComplete: () => {
+                    //         clickBlock.setOnMouseUpFunc(() => {
+                    //             bookButton.setState(NORMAL)
+                    //             clickBlock.destroy();
+                    //             actionText.destroy();
+                    //             PhaserScene.tweens.add({
+                    //                 targets: [artbook],
+                    //                 duration: 180,
+                    //                 ease: 'Cubic.easeOut',
+                    //                 scaleX: 0.326,
+                    //                 scaleY: 0.326,
+                    //                 x: artbook.origX,
+                    //                 y: artbook.origY,
+                    //             });
+                    //             if (canvas) {
+                    //                 canvas.style.cursor = 'default';
+                    //             }
+                    //         })
+                    //     }
+                    // });
                 }
             });
             bookButton.setDepth(100000)
@@ -1047,7 +1049,7 @@ function showMainMenuButtons() {
             this.closeButton.setDepth(100000);
         }
     });
-    globalObjects.creditsButton.addText(getLangText('credits'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5).setAlpha(0.96);
+    globalObjects.creditsButton.addText(getLangText('artbook'), {fontFamily: 'germania', fontSize: 26, color: '#FDF6F4', align: 'center', lineSpacing: -8}).setOrigin(0.5, 0.5).setAlpha(0.96);
     globalObjects.creditsButton.setStroke('#301010', 6)
     globalObjects.creditsButton.setRotation(-0.03)
 
@@ -1128,7 +1130,7 @@ function updateMenuLanguage() {
         }
     }
     if (globalObjects.creditsButton && !globalObjects.creditsButton.isDestroyed) {
-        globalObjects.creditsButton.setText(getLangText('credits'))
+        globalObjects.creditsButton.setText(getLangText('artbook'))
     }
     if (globalObjects.extrasButton && !globalObjects.extrasButton.isDestroyed) {
         let textObj2 = globalObjects.extrasButton.setText(getLangText('extras'));

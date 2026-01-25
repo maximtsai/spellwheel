@@ -399,7 +399,7 @@ function fadeInPreFightStuff(lvl, texts, introbgs, startDisabled) {
         onComplete: () => {
             let itemsToClear = texts.concat(introbgs);
             createLvlCloseButton(lvl, itemsToClear, undefined, undefined, undefined, startDisabled);
-            createMenuCloseButton(itemsToClear)
+            // createMenuCloseButton(itemsToClear)
         }
     });
 }
@@ -409,7 +409,7 @@ function createLvlCloseButton(lvl, items, offsetX = 0, offsetY = 0, instaClose =
         normal: {
             ref: "menu_btn_normal.png",
             atlas: 'buttons',
-            x: gameConsts.halfWidth + 130 + offsetX,
+            x: gameConsts.halfWidth + offsetX,
             y: gameConsts.height - 110 + offsetY,
         },
         hover: {

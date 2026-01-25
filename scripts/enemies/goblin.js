@@ -16,7 +16,7 @@
      }
 
      initStatsCustom() {
-         this.health = gameVars.isHardMode ? 80 : 70;
+         this.health = gameVars.isHardMode ? 75 : 65;
          this.slashEffect = this.addImage(globalObjects.player.getX(), globalObjects.player.getY() - 54, 'misc', 'slash1.png').setScale(0.9).setDepth(995).setAlpha(0);
         this.pullbackScale = 0.88;
         this.attackScale = 1.22;
@@ -245,8 +245,8 @@
              [
                  // 1
                  {
-                     name: "FANCY SHIELD {30",
-                     block: 30,
+                     name: "FANCY SHIELD {40",
+                     block: 40,
                      isPassive: true,
                      customCall: " ",
                      chargeAmt: 360,
@@ -328,6 +328,38 @@
                          }
                      }
                  },
+                 {
+                     name: "REFRESH SHIELD {40",
+                     block: 40,
+                     isPassive: true,
+                     customCall: " ",
+                     chargeAmt: 360,
+                     transitionFast: true,
+                     startFunction: () => {
+                         this.attackScale = 1;
+                     },
+                     attackStartFunction: () => {
+                         playSound('clunk');
+                         let shinePattern = getTempPoolObject('spells', 'brickPattern2.png', 'brickPattern', 700);
+                         shinePattern.setPosition(this.x, this.y).setScale(0.8).setDepth(-1).setAlpha(0.5);
+                         this.addTween({
+                             targets: shinePattern,
+                             scaleX: 0.85,
+                             scaleY: 0.85,
+                             duration: 700,
+                             ease: 'Cubic.easeOut'
+                         });
+                         this.addTween({
+                             targets: shinePattern,
+                             alpha: 0,
+                             ease: 'Cubic.easeIn',
+                             duration: 700,
+                         });
+                         },
+                     attackFinishFunction: () => {
+
+                     }
+                 }
              ],
              [
                  // 3

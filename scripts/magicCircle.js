@@ -1,5 +1,5 @@
 const DECAY = 0.000036;
-let STATIC = 0.0076;
+let STATIC = 0.008;
 const MIN_VEL = 0.0001;
 const ENABLE_KEYBOARD = true;
 

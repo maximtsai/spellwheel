@@ -1,0 +1,1 @@
+uglifyjs enemyhandler.js enemy.js armordummy.js lesserdummy.js dummy.js dummypractice.js dummymind.js dummyshield.js dummybody.js dummytime.js dummyvoid.js superdummy.js water.js goblin.js statue.js killerrobot.js tree.js magician.js knight.js wall.js mantis.js death.js death2.js death2plus.js death3.js -o enemies.js -c -m

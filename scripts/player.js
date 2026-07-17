@@ -561,7 +561,7 @@ class Player {
             return;
         }
 
-        if (globalObjects.currentEnemy.dead) {
+        if (globalObjects.currentEnemy && globalObjects.currentEnemy.dead) {
             return;
         }
         this.health = Math.max(0, this.health - damageTaken);

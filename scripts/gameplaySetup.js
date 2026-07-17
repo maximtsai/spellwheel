@@ -939,9 +939,13 @@ function setupPlayer() {
     globalObjects.options = new Options(PhaserScene, gameConsts.width - 27, 27);
 }
 
+let toggleCancelSubscription = null;
 function handleGlobalKeyPresses() {
     globalObjects.currentOpenedPopups = [];
-    messageBus.subscribe('toggleCancelScreen', () => {
+    if (toggleCancelSubscription) {
+        toggleCancelSubscription.unsubscribe();
+    }
+    toggleCancelSubscription = messageBus.subscribe('toggleCancelScreen', () => {
         if (globalObjects.currentOpenedPopups.length > 0) {
             let topFunc = globalObjects.currentOpenedPopups[globalObjects.currentOpenedPopups.length - 1];
             let success = topFunc(false);

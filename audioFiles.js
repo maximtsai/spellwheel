@@ -10,7 +10,7 @@ const audioFiles = [
     {name: 'tree_timber', src: 'audio/tree_timber.mp3'},
     {name: 'tree_sfx', src: 'audio/tree_sfx.mp3'},
     {name: 'tree_rustle', src: 'audio/tree_rustle.mp3'},
-    {name: 'locket', src: 'audio/locket.mp3'},
+
     {name: 'razor_leaf', src: 'audio/razor_leaf.mp3'},
     {name: 'tree_hit', src: 'audio/tree_hit.mp3'},
     {name: 'clunk', src: 'audio/clunk.mp3'},
@@ -57,7 +57,7 @@ const audioFiles = [
     {name: 'but_never_forgotten_metal', src: 'audio/but_never_forgotten_metal.mp3'},
     {name: 'but_never_forgotten_metal_prelude', src: 'audio/but_never_forgotten_metal_prelude.mp3'},
     {name: 'but_never_forgotten_epicchoir', src: 'audio/but_never_forgotten_epicchoir.mp3'},
-    {name: 'but_never_forgotten_gameover', src: 'audio/butneverforgotten_gameover.mp3'},
+
     {name: 'but_never_forgotten', src: 'audio/but_never_forgotten.mp3'},
     {name: 'but_never_forgotten_afterthought', src: 'audio/but_never_forgotten_afterthought.mp3'},
     {name: 'sleepless', src: 'audio/sleepless.mp3'},
@@ -83,7 +83,7 @@ const audioFiles = [
     {name: 'mind_enhance', src: 'audio/mind_enhance.mp3'},
     {name: 'mind_shield', src: 'audio/mind_shield.mp3'},
     {name: 'mind_shield_retaliate', src: 'audio/mind_shield_retaliate.mp3'},
-    {name: 'mind_body', src: 'audio/mind_body.mp3'},
+
     {name: 'mind_ultimate_1', src: 'audio/mind_ultimate_1.mp3'},
     {name: 'mind_ultimate_2', src: 'audio/mind_ultimate_2.mp3'},
     {name: 'mind_ultimate_cast', src: 'audio/mind_ultimate_cast.mp3'},
@@ -135,10 +135,9 @@ const audioFiles = [
     {name: 'robot_sfx_2', src: 'audio/robot_sfx_2.mp3'},
     {name: 'robot_laser', src: 'audio/robot_laser.mp3'},
     {name: 'explosion', src: 'audio/explosion.mp3'},
-    {name: 'music_blast', src: 'audio/music_blast.mp3'},
-    {name: 'music_blast_weak', src: 'audio/music_blast_weak.mp3'},
 
-    {name: 'magician_end', src: 'audio/magician_end.mp3'},
+
+
     {name: 'magician_theme_1', src: 'audio/magician_theme_1.mp3'},
     {name: 'magician_theme_3', src: 'audio/magician_theme_3.mp3'},
     {name: 'magician_theme_4', src: 'audio/magician_theme_4.mp3'},
@@ -171,7 +170,7 @@ const audioFiles = [
     {name: 'chirp1', src: 'audio/chirp1.mp3'},
     {name: 'chirpmany', src: 'audio/chirp_many.mp3'},
     {name: 'deepdemon', src: 'audio/deepdemon.mp3'},
-    {name: 'lowbell', src: 'audio/lowbell.mp3'},
+
     {name: 'boing', src: 'audio/boing.mp3'},
 
     {name: 'water1', src: 'audio/water1.mp3'},

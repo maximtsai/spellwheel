@@ -49,7 +49,7 @@ function isSafariIOS() {
     var iOSSafari = iOS && webkit && !ua.match(/CriOS/i);
     return iOSSafari;
 }
-let game;
+var game;
 
 function onloadFunc() {
     game = new Phaser.Game(config); // var canvas = game.canvas;

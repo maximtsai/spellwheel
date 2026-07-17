@@ -5,3 +5,5 @@
 *.idea/.name
 .idea/
 *.idea/
+dist/
+node_modules/
